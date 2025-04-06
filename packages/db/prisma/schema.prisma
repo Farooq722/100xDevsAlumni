@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String             @id @default(cuid())
+  name             String
+  username         String             @unique
+  password         String
+  avatar           String?
+  role             Role
+  projects         Project[]         
+  education        Education?
+  professionalData ProfessionalData?
+  socialMedia      SocialMedia?
+  skills           Skill[]
+}
+
+model Education {
+  id            String   @id @default(cuid())
+  college       String
+  department    String
+  passingYear   Int
+  degree        String
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String   @unique
+}
+
+model ProfessionalData {
+  id                String   @id @default(cuid())
+  currentCompany    String
+  jobTitle          String
+  location          String
+  yearsOfExperience Int
+  user              User     @relation(fields: [userId], references: [id])
+  userId            String   @unique
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  liveUrl     String
+  githubUrl   String
+  description String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+}
+
+model SocialMedia {
+  id         String       @id @default(cuid())
+  linkedin   String   
+  twitter    String
+  github     String
+  instagram  String?
+  youtube    String?
+  portfolio  String?
+  user       User         @relation(fields: [userId], references: [id])
+  userId     String       @unique
+}
+
+model Skill {
+  id         String    @id @default(cuid())
+  name        String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+}
+
+enum Role {
+  Alumni
+  User
+}
