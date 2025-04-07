@@ -75,3 +75,5 @@ proffRouter.delete("/delete-proff", async (req, res) => {
         return
     }
 })
+
+/* rewrite delete route as same as profes delete for edu also and go on */
