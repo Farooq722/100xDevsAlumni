@@ -12,9 +12,9 @@ export const signinSchema = z.object({
     password: z.string().min(6)
 });
 
-export const updateAvatarSchema = z.object({
-    avatar: z.string()
-});
+export const bioSchema = z.object({
+    bio: z.string().optional()
+})
 
 export const educationSchema = z.object({
     college: z.string(),

@@ -19,6 +19,8 @@ model User {
   username         String             @unique
   password         String
   avatar           String?
+  avatarId         String?
+  bio              String?            @db.Text
   role             Role
   projects         Project[]         
   education        Education?

@@ -65,7 +65,7 @@ eduRouter.delete("/delete", async (req, res) => {
             }
         })
 
-        res.json({msg: "Education feild deleted"})
+        res.json({msg: "Education data deleted"})
     } catch (error) {
         res.status(400).json({msg: "Internal server error"})
         return
