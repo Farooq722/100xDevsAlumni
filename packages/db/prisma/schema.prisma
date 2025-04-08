@@ -14,8 +14,6 @@ model User {
   password         String
   avatar           String?
   avatarId         String?
-  verifyEmail      Boolean           @default(false)
-  verifyToken      String?           @unique
   bio              String?           @db.Text
   role             Role
   education        Education?
@@ -23,6 +21,7 @@ model User {
   projects         Project[]
   skills           Skill[]
   socialMedia      SocialMedia?
+  auth             Auth?
 }
 
 model Education {
@@ -66,6 +65,17 @@ model SocialMedia {
   userId    String  @unique
   user      User    @relation(fields: [userId], references: [id])
 }
+
+model Auth {
+  id                    String   @id @default(cuid())
+  verifyEmail           Boolean  @default(false)
+  verifyToken           String?  @unique
+  otp                   Int?     @unique
+  otpExpiresAt          DateTime?
+  user                  User     @relation(fields: [userId], references: [id])
+  userId                String   @unique
+}
+
 
 model Skill {
   id     String @id @default(cuid())
