@@ -46,6 +46,16 @@ export const socialMediaSchema = z.object({
     portfolio:  z.string().url().optional()
 });
 
+export const forgetPassSchema = z.object({
+    username: z.string().email()
+})
+
+
+export const updatePassSchema = z.object({
+    otp: z.number().min(6),
+    password: z.string().min(6)
+})
+
 export const skillSchema = z.object({
     skills: z.array(z.string().min(1))
 })
