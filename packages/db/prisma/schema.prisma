@@ -31,7 +31,7 @@ model Education {
   passingYear Int
   degree      String
   userId      String @unique
-  user        User   @relation(fields: [userId], references: [id])
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model ProfessionalData {
@@ -41,7 +41,7 @@ model ProfessionalData {
   location          String
   yearsOfExperience Int
   userId            String @unique
-  user              User   @relation(fields: [userId], references: [id])
+  user              User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Project {
@@ -51,7 +51,7 @@ model Project {
   githubUrl   String
   description String
   userId      String
-  user        User   @relation(fields: [userId], references: [id])
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model SocialMedia {
@@ -63,25 +63,24 @@ model SocialMedia {
   youtube   String?
   portfolio String?
   userId    String  @unique
-  user      User    @relation(fields: [userId], references: [id])
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Auth {
-  id                    String   @id @default(cuid())
-  verifyEmail           Boolean  @default(false)
-  verifyToken           String?  @unique
-  otp                   Int?     @unique
-  otpExpiresAt          DateTime?
-  user                  User     @relation(fields: [userId], references: [id])
-  userId                String   @unique
+  id           String   @id @default(cuid())
+  verifyEmail  Boolean  @default(false)
+  verifyToken  String?  @unique
+  otp          Int?     @unique
+  otpExpiresAt DateTime?
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-
 
 model Skill {
   id     String @id @default(cuid())
   name   String
   userId String
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum Role {
