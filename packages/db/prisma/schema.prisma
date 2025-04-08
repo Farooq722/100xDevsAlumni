@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,68 +8,70 @@ datasource db {
 }
 
 model User {
-  id               String             @id @default(cuid())
+  id               String            @id @default(cuid())
   name             String
-  username         String             @unique
+  username         String            @unique
   password         String
   avatar           String?
   avatarId         String?
-  bio              String?            @db.Text
+  verifyEmail      Boolean           @default(false)
+  verifyToken      String?           @unique
+  bio              String?           @db.Text
   role             Role
-  projects         Project[]         
   education        Education?
   professionalData ProfessionalData?
-  socialMedia      SocialMedia?
+  projects         Project[]
   skills           Skill[]
+  socialMedia      SocialMedia?
 }
 
 model Education {
-  id            String   @id @default(cuid())
-  college       String
-  department    String
-  passingYear   Int
-  degree        String
-  user          User     @relation(fields: [userId], references: [id])
-  userId        String   @unique
+  id          String @id @default(cuid())
+  college     String
+  department  String
+  passingYear Int
+  degree      String
+  userId      String @unique
+  user        User   @relation(fields: [userId], references: [id])
 }
 
 model ProfessionalData {
-  id                String   @id @default(cuid())
+  id                String @id @default(cuid())
   currentCompany    String
   jobTitle          String
   location          String
   yearsOfExperience Int
-  user              User     @relation(fields: [userId], references: [id])
-  userId            String   @unique
+  userId            String @unique
+  user              User   @relation(fields: [userId], references: [id])
 }
 
 model Project {
-  id          String   @id @default(cuid())
+  id          String @id @default(cuid())
   title       String
   liveUrl     String
   githubUrl   String
   description String
-  user        User     @relation(fields: [userId], references: [id])
   userId      String
+  user        User   @relation(fields: [userId], references: [id])
 }
 
 model SocialMedia {
-  id         String       @id @default(cuid())
-  linkedin   String   
-  twitter    String
-  github     String
-  instagram  String?
-  youtube    String?
-  portfolio  String?
-  user       User         @relation(fields: [userId], references: [id])
-  userId     String       @unique
+  id        String  @id @default(cuid())
+  linkedin  String
+  twitter   String
+  github    String
+  instagram String?
+  youtube   String?
+  portfolio String?
+  userId    String  @unique
+  user      User    @relation(fields: [userId], references: [id])
 }
 
 model Skill {
-  id         String    @id @default(cuid())
-  name        String
-  user        User     @relation(fields: [userId], references: [id])
-  userId      String
+  id     String @id @default(cuid())
+  name   String
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 enum Role {

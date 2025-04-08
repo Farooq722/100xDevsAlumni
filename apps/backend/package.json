@@ -16,11 +16,14 @@
     "@types/express": "^5.0.1",
     "bcrypt": "^5.1.1",
     "cloudinary": "^2.6.0",
+    "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "imagekit": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
     "multer": "1.4.5-lts.2",
+    "nanoid": "^5.1.5",
+    "resend": "^4.2.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
