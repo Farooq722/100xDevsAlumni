@@ -6,13 +6,11 @@ export const mediaRouter = Router();
 
 mediaRouter.post("/", async (req, res) => {
     const parseData = socialMediaSchema.safeParse(req.body);
-    console.log(req.body);
     if(!parseData.success) {
         res.status(403).json({msg: "Validations failed"});
         return
     }
 
-    console.log(parseData.success)
     try {
         const mediaRes = await prisma.socialMedia.create({
             data:{

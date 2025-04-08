@@ -1,7 +1,9 @@
 import jwt from "jsonwebtoken";
 import prisma from "@repo/db/client";
+import dotnev from "dotenv"
+dotnev.config();
 import { Router } from "express";
-import { bioSchema, projectSchema, signinSchema, signupSchema } from "../../validation";
+import { bioSchema, signinSchema, signupSchema } from "../../validation";
 import { compare, hash } from "../../script";
 import { eduRouter } from "./educationRoute";
 import { alumniMiddleware } from "../../middleware/alumniMiddleware";
@@ -10,6 +12,10 @@ import { projectRouter } from "./projectsRoute";
 import { mediaRouter } from "./mediaRoute";
 import { singleUpload } from "../../utils/multer";
 import { imagekit } from "../../utils/imageKit";
+import { sendEmail } from "../../utils/resend";
+import { verifyToken } from "../../utils/hashToken";
+import { emailTemplate } from "../../utils/emailTemplate";
+
 
 export const router = Router();
 
@@ -27,9 +33,19 @@ router.post("/signup", async (req, res) => {
                 name: parseData.data.name,
                 username: parseData.data.username,
                 password: hashPassword,
-                role: parseData.data.type === "alumni" ? "Alumni" : "User"
+                role: parseData.data.type === "alumni" ? "Alumni" : "User",
+                verifyToken: verifyToken
             }
         })
+
+        const verificationLink = `${process.env.FRONTEND_URL}/verify-email?token=${verifyToken}`;
+        
+        const data = await sendEmail({
+            sendTo: newUser.username,
+            subject: "Verify your email",
+           html: emailTemplate(newUser.name, verificationLink),
+        });
+
         res.json({userId: newUser.id});
     } catch (e) {
         res.status(400).json({msg: "User already exits"})
@@ -71,6 +87,39 @@ router.post("/signin", async (req, res) => {
         })
     } catch (e) {
         res.status(400).json({msg: "Internal server error"})
+        return
+    }
+})
+
+router.post("/verify-email", async (req, res) => {
+    
+    const { token } = req.query;
+
+    try {
+        const userToken = await prisma.user.findFirst({
+            where: {
+                verifyToken: token as string
+            }
+        })
+    
+        if(!userToken) {
+            res.status(403).json({msg: "token Invalid"})
+            return
+        }
+    
+        await prisma.user.update({
+            where: {
+                verifyToken: userToken.verifyToken!
+            },
+            data: {
+                verifyEmail: true,
+                verifyToken: null
+            }
+        })
+        res.json({msg: "Email verified"})
+    } catch (error) {
+        res.status(400).json({msg: "Internal server error"})
+        return
     }
 })
 
