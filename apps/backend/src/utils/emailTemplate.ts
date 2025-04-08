@@ -1,5 +1,5 @@
 export const emailTemplate = (name: string, url: string): string => {
-    return `
+  return `
       <!DOCTYPE html>
       <html>
         <head>
@@ -76,5 +76,4 @@ export const emailTemplate = (name: string, url: string): string => {
         </body>
       </html>
     `;
-  }
-  
+};

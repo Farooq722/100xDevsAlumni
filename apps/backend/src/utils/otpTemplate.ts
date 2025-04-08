@@ -1,5 +1,5 @@
 export const otpEmail = (otpCode: number, name: string): string => {
-    return `
+  return `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -68,5 +68,4 @@ export const otpEmail = (otpCode: number, name: string): string => {
         </body>
       </html>
     `;
-  }
-  
+};
