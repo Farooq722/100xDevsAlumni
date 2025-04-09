@@ -1,6 +1,7 @@
 import { Router } from "express";
 import prisma from "@repo/db/client";
 import jwt from "jsonwebtoken";
+import cookie from "cookie-parser";
 import dotnev from "dotenv";
 dotnev.config();
 import {
@@ -15,10 +16,11 @@ import { sendEmail } from "../../utils/resend";
 import { emailTemplate } from "../../utils/emailTemplate";
 import { otpEmail } from "../../utils/otpTemplate";
 import { userMiddleware } from "../../middleware/userMiddleware";
+import { otpRateLimit, resetPasswordRateLimit, signupRateLimit } from "../../middleware/rateLimitMiddleware";
 
 export const authRouter = Router();
 
-authRouter.post("/signup", async (req, res) => {
+authRouter.post("/signup", signupRateLimit, async (req, res) => {
   const parseData = signupSchema.safeParse(req.body);
   if (!parseData.success) {
     res.status(403).json({ msg: "Validation failed" });
@@ -62,7 +64,7 @@ authRouter.post("/signup", async (req, res) => {
   }
 });
 
-authRouter.post("/signin", async (req, res) => {
+authRouter.post("/signin", signupRateLimit, async (req, res) => {
   const parseData = signinSchema.safeParse(req.body);
   if (!parseData.success) {
     res.status(403).json({ msg: "Validation failed" });
@@ -95,8 +97,16 @@ authRouter.post("/signin", async (req, res) => {
         role: user.role,
       },
       process.env.JWT_SECRET!,
+      {expiresIn: '7d'}
     ); // " ! " is to tell the ts compailer that it wont have null or undifined means definatly will give value
+    
+    const cookieOption = {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "none" as const,
+    };
 
+    res.cookie("token", token, cookieOption)
     res.json({
       token: token,
     });
@@ -137,7 +147,7 @@ authRouter.post("/verify-email", async (req, res) => {
   }
 });
 
-authRouter.post("/forget-password", async (req, res) => {
+authRouter.post("/forget-password", resetPasswordRateLimit, async (req, res) => {
   const parseData = forgetPassSchema.safeParse(req.body);
   if (!parseData.success) {
     res.status(403).json({ msg: "Validation failed" });
@@ -185,7 +195,7 @@ authRouter.post("/forget-password", async (req, res) => {
   }
 });
 
-authRouter.post("/verify-forget-password", async (req, res) => {
+authRouter.post("/verify-forget-password", otpRateLimit, async (req, res) => {
   const parseData = updatePassSchema.safeParse(req.body);
   if (!parseData.success) {
     res.status(403).json({ msg: "Validation failed" });

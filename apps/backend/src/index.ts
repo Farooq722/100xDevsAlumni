@@ -9,15 +9,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 const allowedOrigins = [
   //deployed frontend linke here,
   "http://localhost:5173",
 ];
-
-interface originParams {
-  origin: any;
-  callback: any;
-}
 
 const corsOptions = {
   origin: function (origin: any, callback: any) {

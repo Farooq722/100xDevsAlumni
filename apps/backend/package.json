@@ -16,10 +16,12 @@
     "@types/express": "^5.0.1",
     "bcrypt": "^5.1.1",
     "cloudinary": "^2.6.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
     "imagekit": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
     "multer": "1.4.5-lts.2",
@@ -28,6 +30,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/multer": "^1.4.12",
