@@ -1,31 +1,29 @@
 import { Router } from "express";
-import prisma from "@repo/db/client";
 import jwt from "jsonwebtoken";
-import cookie from "cookie-parser";
-import dotnev from "dotenv";
-dotnev.config();
+import { adminSecretKey } from "../../utils/adminString";
 import {
+  adminSigninSchema,
+  adminSignupSchema,
   forgetPassSchema,
-  signinSchema,
-  signupSchema,
   updatePassSchema,
 } from "../../validation";
 import { compare, hash } from "../../script";
+import prisma from "@repo/db/client";
 import { verifyToken } from "../../utils/hashToken";
 import { sendEmail } from "../../utils/resend";
-import { emailTemplate } from "../../utils/emailTemplate";
+import { adminEmailTemplate } from "../../utils/adminEmailTemplate";
 import { otpEmail } from "../../utils/otpTemplate";
-import { userMiddleware } from "../../middleware/userMiddleware";
 import {
   otpRateLimit,
   resetPasswordRateLimit,
   signupRateLimit,
 } from "../../middleware/rateLimitMiddleware";
+import { adminMiddleware } from "../../middleware/adminMiddleware";
 
-export const authRouter = Router();
+export const adminAuth = Router();
 
-authRouter.post("/signup", signupRateLimit, async (req, res) => {
-  const parseData = signupSchema.safeParse(req.body);
+adminAuth.post("/signup", signupRateLimit, async (req, res) => {
+  const parseData = adminSignupSchema.safeParse(req.body);
   if (!parseData.success) {
     res.status(403).json({ msg: "Validation failed" });
     return;
@@ -33,20 +31,21 @@ authRouter.post("/signup", signupRateLimit, async (req, res) => {
 
   const hashPassword = await hash(parseData.data.password);
   try {
-    const newUser = await prisma.user.create({
+    const adminRes = await prisma.admin.create({
       data: {
-        name: parseData.data.name,
         username: parseData.data.username,
         password: hashPassword,
-        role: parseData.data.type === "alumni" ? "Alumni" : "User",
-        auth: {
+        name: parseData.data.name,
+        number: parseData.data?.number,
+        secretKey: adminSecretKey,
+        adminAuth: {
           create: {
             verifyToken: verifyToken,
           },
         },
       },
       include: {
-        auth: {
+        adminAuth: {
           select: {
             verifyToken: true,
           },
@@ -55,34 +54,35 @@ authRouter.post("/signup", signupRateLimit, async (req, res) => {
     });
 
     const verificationLink = `${process.env.FRONTEND_URL}/auth/verify-email?token=${verifyToken}`;
-
     const data = await sendEmail({
-      sendTo: newUser.username,
+      sendTo: adminRes.username,
       subject: "Verify your email",
-      html: emailTemplate(newUser.name, verificationLink),
+      html: adminEmailTemplate(adminRes.name, verificationLink, adminSecretKey),
     });
 
-    res.json({ userId: newUser.id });
-  } catch (e) {
-    res.status(400).json({ msg: "User already exits" });
+    res.json({ msg: "Admin created" });
+  } catch (error) {
+    res.status(400).json({ msg: "Internal server error" });
+    return;
   }
 });
 
-authRouter.post("/signin", signupRateLimit, async (req, res) => {
-  const parseData = signinSchema.safeParse(req.body);
+adminAuth.post("/signin", signupRateLimit, async (req, res) => {
+  const parseData = adminSigninSchema.safeParse(req.body);
   if (!parseData.success) {
     res.status(403).json({ msg: "Validation failed" });
     return;
   }
 
   try {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.admin.findUnique({
       where: {
         username: parseData.data.username,
+        secretKey: parseData.data.secretKey,
       },
     });
     if (!user) {
-      res.status(403).json({ msg: "User not found" });
+      res.status(403).json({ msg: "User not found/secrer key missing" });
       return;
     }
 
@@ -98,9 +98,8 @@ authRouter.post("/signin", signupRateLimit, async (req, res) => {
     const token = jwt.sign(
       {
         userId: user.id,
-        role: user.role,
       },
-      process.env.JWT_SECRET!,
+      process.env.JWT_ADMIN_SECRE!,
       { expiresIn: "7d" },
     ); // " ! " is to tell the ts compailer that it wont have null or undifined means definatly will give value
 
@@ -120,11 +119,11 @@ authRouter.post("/signin", signupRateLimit, async (req, res) => {
   }
 });
 
-authRouter.post("/verify-email", async (req, res) => {
+adminAuth.post("/verify-email", async (req, res) => {
   const { token } = req.query;
 
   try {
-    const userToken = await prisma.auth.findFirst({
+    const userToken = await prisma.adminAuth.findFirst({
       where: {
         verifyToken: token as string,
       },
@@ -135,7 +134,7 @@ authRouter.post("/verify-email", async (req, res) => {
       return;
     }
 
-    await prisma.auth.update({
+    await prisma.adminAuth.update({
       where: {
         verifyToken: userToken.verifyToken!,
       },
@@ -151,71 +150,67 @@ authRouter.post("/verify-email", async (req, res) => {
   }
 });
 
-authRouter.post(
-  "/forget-password",
-  resetPasswordRateLimit,
-  async (req, res) => {
-    const parseData = forgetPassSchema.safeParse(req.body);
-    if (!parseData.success) {
-      res.status(403).json({ msg: "Validation failed" });
-      return;
-    }
+adminAuth.post("/forget-password", resetPasswordRateLimit, async (req, res) => {
+  const parseData = forgetPassSchema.safeParse(req.body);
+  if (!parseData.success) {
+    res.status(403).json({ msg: "Validation failed" });
+    return;
+  }
 
-    const user = await prisma.user.findFirst({
+  const user = await prisma.admin.findFirst({
+    where: {
+      username: parseData.data.username,
+    },
+    include: {
+      adminAuth: true,
+    },
+  });
+
+  if (!user || !user.adminAuth) {
+    res.status(404).json({ msg: "User not found" });
+    return;
+  }
+
+  const otp = Math.floor(100000 + Math.random() * 900000);
+  const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
+
+  try {
+    await prisma.adminAuth.update({
       where: {
-        username: parseData.data.username,
+        id: user.adminAuth?.id,
       },
-      include: {
-        auth: true,
+      data: {
+        otp: otp,
+        otpExpiresAt: expiresAt,
       },
     });
 
-    if (!user || !user.auth) {
-      res.status(404).json({ msg: "User not found" });
-      return;
-    }
+    const data = await sendEmail({
+      sendTo: user.username,
+      subject: "Your OTP Code - 100xDevsAlumni",
+      html: otpEmail(otp, user.name),
+    });
 
-    const otp = Math.floor(100000 + Math.random() * 900000);
-    const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
+    res.json({ msg: "OTP sent to your mailID" });
+  } catch (error) {
+    res.status(400).json({ msg: "Internal server error" });
+    return;
+  }
+});
 
-    try {
-      await prisma.auth.update({
-        where: {
-          id: user.auth?.id,
-        },
-        data: {
-          otp: otp,
-          otpExpiresAt: expiresAt,
-        },
-      });
-
-      const data = await sendEmail({
-        sendTo: user.username,
-        subject: "Your OTP Code - 100xDevsAlumni",
-        html: otpEmail(otp, user.name),
-      });
-
-      res.json({ msg: "OTP sent to your mailID" });
-    } catch (error) {
-      res.status(400).json({ msg: "Internal server error" });
-      return;
-    }
-  },
-);
-
-authRouter.post("/verify-forget-password", otpRateLimit, async (req, res) => {
+adminAuth.post("/verify-forget-password", otpRateLimit, async (req, res) => {
   const parseData = updatePassSchema.safeParse(req.body);
   if (!parseData.success) {
     res.status(403).json({ msg: "Validation failed" });
     return;
   }
 
-  const otpCheck = await prisma.auth.findFirst({
+  const otpCheck = await prisma.adminAuth.findFirst({
     where: {
       otp: parseData.data.otp,
     },
     include: {
-      user: true,
+      admin: true,
     },
   });
 
@@ -225,7 +220,7 @@ authRouter.post("/verify-forget-password", otpRateLimit, async (req, res) => {
   }
 
   if (otpCheck.otpExpiresAt && new Date() > otpCheck.otpExpiresAt) {
-    await prisma.auth.update({
+    await prisma.adminAuth.update({
       where: {
         id: otpCheck.id,
       },
@@ -240,16 +235,16 @@ authRouter.post("/verify-forget-password", otpRateLimit, async (req, res) => {
 
   try {
     const hashPassword = await hash(parseData.data.password);
-    await prisma.user.update({
+    await prisma.admin.update({
       where: {
-        id: otpCheck.user.id,
+        id: otpCheck.adminId,
       },
       data: {
         password: hashPassword,
       },
     });
 
-    await prisma.auth.update({
+    await prisma.adminAuth.update({
       where: {
         id: otpCheck.id,
       },
@@ -259,20 +254,6 @@ authRouter.post("/verify-forget-password", otpRateLimit, async (req, res) => {
       },
     });
     res.json({ msg: "Password updated successfully" });
-  } catch (error) {
-    res.status(400).json({ msg: "Internal server error" });
-    return;
-  }
-});
-
-authRouter.delete("/delete", userMiddleware, async (req, res) => {
-  try {
-    await prisma.user.delete({
-      where: {
-        id: req.userId,
-      },
-    });
-    res.json({ msg: "Account deleted" });
   } catch (error) {
     res.status(400).json({ msg: "Internal server error" });
     return;

@@ -100,7 +100,6 @@ router.get("/all-data", alumniMiddleware, async (req, res) => {
   res.json({ users: safeUsers });
 });
 
-// need to write a route which fetch all alumnis
 router.get("/alumnus/data", async (req, res) => {
   try {
     const allAlumnus = await prisma.user.findMany({

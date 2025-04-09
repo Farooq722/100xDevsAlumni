@@ -1,4 +1,4 @@
-import z from "zod";
+import z, { number } from "zod";
 
 export const signupSchema = z.object({
   name: z.string(),
@@ -57,6 +57,19 @@ export const updatePassSchema = z.object({
 
 export const skillSchema = z.object({
   skills: z.array(z.string().min(1)),
+});
+
+export const adminSignupSchema = z.object({
+  username: z.string().email(),
+  password: z.string().min(7),
+  name: z.string(),
+  number: z.number().optional(),
+});
+
+export const adminSigninSchema = z.object({
+  username: z.string().email(),
+  password: z.string().min(7),
+  secretKey: z.string(),
 });
 
 declare global {

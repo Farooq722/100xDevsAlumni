@@ -2,13 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { router } from "./routes/v1";
+import { adminRouter } from "./routes/admin";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 
 const allowedOrigins = [
   //deployed frontend linke here,
@@ -36,6 +36,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1", router);
+app.use("/api/admin", adminRouter);
 
 app.listen(port, () => {
   console.log(`Port is listening on ${port}`);

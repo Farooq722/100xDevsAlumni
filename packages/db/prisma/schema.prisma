@@ -7,6 +7,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Admin {
+  id              String            @id @default(cuid())
+  username        String            @unique
+  password        String
+  name            String
+  number          Int?
+  secretKey       String
+  createdAt       DateTime          @default(now())
+  adminAuth       AdminAuth?
+}
+
 model User {
   id               String            @id @default(cuid())
   name             String
@@ -67,13 +78,23 @@ model SocialMedia {
 }
 
 model Auth {
-  id           String   @id @default(cuid())
-  verifyEmail  Boolean  @default(false)
-  verifyToken  String?  @unique
-  otp          Int?     @unique
+  id           String          @id @default(cuid())
+  verifyEmail  Boolean         @default(false)
+  verifyToken  String?         @unique
+  otp          Int?            @unique
   otpExpiresAt DateTime?
-  userId       String   @unique
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String          @unique
+  user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AdminAuth {
+  id           String          @id @default(cuid())
+  verifyEmail  Boolean         @default(false)
+  verifyToken  String?         @unique
+  otp          Int?            @unique
+  otpExpiresAt DateTime?
+  adminId      String          @unique
+  admin        Admin           @relation(fields: [adminId], references: [id], onDelete: Cascade)
 }
 
 model Skill {
