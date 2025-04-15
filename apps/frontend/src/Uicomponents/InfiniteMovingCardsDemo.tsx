@@ -1,4 +1,4 @@
-import { InfiniteMovingCards } from "@repo/ui/uicomponents/infinite-moving-cards"
+import { InfiniteMovingCards } from "@repo/ui/uicomponents/infinite-moving-cards";
 
 export function InfiniteMovingCardsDemo() {
   return (
@@ -26,7 +26,8 @@ const testimonials = [
     title: "🚀 Techy & Modern",
   },
   {
-    quote: "From zero to full-stack hero — 100xDevs gives you the skills, mindset, and real-world experience to thrive in tech.",
+    quote:
+      "From zero to full-stack hero — 100xDevs gives you the skills, mindset, and real-world experience to thrive in tech.",
     name: "",
     title: "⚡ Bold & Impactful",
   },
