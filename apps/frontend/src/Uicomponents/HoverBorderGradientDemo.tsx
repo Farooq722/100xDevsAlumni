@@ -1,10 +1,10 @@
-import { HoverBorderGradient } from "@repo/ui/uicomponents/hover-border-gradient"
+import { HoverBorderGradient } from "@repo/ui/uicomponents/hover-border-gradient";
 
 interface spanText {
-  text: string
+  text: string;
 }
 
-export function HoverBorderGradientDemo({text}: spanText) {
+export function HoverBorderGradientDemo({ text }: spanText) {
   return (
     <div className="m-16 flex justify-center text-center">
       <HoverBorderGradient
