@@ -2,8 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { CoverDemo } from "./cover";
 
 export const Navbar = () => {
-
-
   const navigate = useNavigate();
 
   return (
@@ -42,8 +40,9 @@ export const Navbar = () => {
 
         <div className="flex justify-between gap-4 text-black font-medium">
           <div className="py-3">
-            <button className="hover:bg-teal-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-400 to-pink-400 text-black py-2 rounded-2xl"
-            onClick={() => navigate("/login")}
+            <button
+              className="hover:bg-teal-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-400 to-pink-400 text-black py-2 rounded-2xl"
+              onClick={() => navigate("/login")}
             >
               Login
             </button>
