@@ -1,4 +1,4 @@
-import { Cover } from "../Uicomponents/cover";
+import { Cover } from "../../Uicomponents/cover";
 
 export function CoverDemo() {
   return (
