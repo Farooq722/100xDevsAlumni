@@ -6,8 +6,7 @@ interface spanText {
 }
 
 export function HoverBorderGradientDemo({ text }: spanText) {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="m-16 flex justify-center text-center">
@@ -15,7 +14,9 @@ export function HoverBorderGradientDemo({ text }: spanText) {
         containerClassName="rounded-full"
         as="button"
         className="dark:bg-black bg-gradient-to-bl from-teal-100 to-pink-100 text-black dark:text-white flex items-center space-x-2 px-6"
-        onClick={() => {navigate("/login")}}
+        onClick={() => {
+          navigate("/login");
+        }}
       >
         <span>{text}</span>
       </HoverBorderGradient>

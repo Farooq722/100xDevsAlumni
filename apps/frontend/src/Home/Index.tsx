@@ -3,16 +3,14 @@ import { Navbar } from "../body/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import { RingLoader } from "react-spinners";
 
-
 export const Home = () => {
-
   const [loader, setLoader] = useState(true);
-  
+
   useEffect(() => {
     requestAnimationFrame(() => {
       setTimeout(() => {
         setLoader(false);
-      }, 1000); 
+      }, 1000);
     });
   }, []);
 

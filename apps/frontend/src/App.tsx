@@ -3,8 +3,6 @@ import { Home } from "./Home/Index";
 import { LoginSignup } from "./Auth/LoginSignup";
 
 function App() {
-
-
   return (
     <div className="">
       <BrowserRouter>

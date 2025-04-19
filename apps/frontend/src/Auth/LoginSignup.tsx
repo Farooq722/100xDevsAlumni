@@ -8,12 +8,10 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { cn } from "../lib/utils";
 
-
 export const LoginSignup = () => {
-
-    const [loginState, setLoginState] = useState("Login");
-    const [loader, setLoader] = useState(false)
-    const navigate = useNavigate();
+  const [loginState, setLoginState] = useState("Login");
+  const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <WavyBackground>
@@ -60,7 +58,10 @@ export const LoginSignup = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="text-neutral-700 text-sm dark:text-neutral-300">
               Don't have an account:{"  "}
-              <Link to="/signup" className="text-black font-bold text-md hover:text-pink-700">
+              <Link
+                to="/signup"
+                className="text-black font-bold text-md hover:text-pink-700"
+              >
                 Signup
               </Link>
             </div>
@@ -94,8 +95,8 @@ const BottomGradient = () => (
 );
 
 interface Child {
-    children: any,
-    className: any
+  children: any;
+  className: any;
 }
 
 const LabelInputContainer = ({ children, className }: Child) => (
@@ -105,8 +106,8 @@ const LabelInputContainer = ({ children, className }: Child) => (
 );
 
 interface Elements {
-    icon: any,
-    label: any
+  icon: any;
+  label: any;
 }
 
 const SocialButton = ({ icon, label }: Elements) => (

@@ -210,7 +210,7 @@ export const Beam = ({
 };
 
 export const CircleIcon = ({
-  className
+  className,
 }: {
   className?: string;
   delay?: number;

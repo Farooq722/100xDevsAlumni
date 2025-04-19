@@ -30,7 +30,7 @@ export function TypewriterEffectSmoothDemo() {
         <button className="w-40 h-10 rounded-xl bg-pink-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all border dark:border-white border-transparent text-white text-sm">
           Join now
         </button>
-        <HoverBorderGradientDemo text="Signup"/>
+        <HoverBorderGradientDemo text="Signup" />
       </div>
     </div>
   );

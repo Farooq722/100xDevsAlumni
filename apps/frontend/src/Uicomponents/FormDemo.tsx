@@ -5,12 +5,9 @@ import { cn } from "../lib/utils";
 // import { RingLoader } from "react-spinners";
 // import { useNavigate } from "react-router-dom";
 
-
 export function FormDemo() {
-
   // const [loader, setLoader] = useState(false);
   // const navigate = useNavigate();
-
 
   // const submitHandler = async (e: any) => {
   //   e.prevenDefault();
@@ -55,10 +52,7 @@ export function FormDemo() {
             <Label htmlFor="number">Phone Number</Label>
             <Input id="number" placeholder="9999999999" type="number" />
           </LabelInputContainer>
-          <button
-            className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-bl from-teal-100 to-pink-100 hover:bg-gradient-to-bl hover:from-teal-200 hover:to-pink-200 font-medium text-black shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
-  
-          >
+          <button className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-bl from-teal-100 to-pink-100 hover:bg-gradient-to-bl hover:from-teal-200 hover:to-pink-200 font-medium text-black shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]">
             Contact Us &rarr;
             <BottomGradient />
           </button>
