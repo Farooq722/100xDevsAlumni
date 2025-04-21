@@ -7,11 +7,27 @@ import { RingLoader } from "react-spinners";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { cn } from "../lib/utils";
+import { Button } from "@repo/ui/uicomponents/navButton";
 
-export const LoginSignup = () => {
-  const [loginState, setLoginState] = useState("Login");
+export const Login = () => {
+  
   const [loader, setLoader] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const submitHandler = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      setLoader(true)
+      navigate("/");
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoader(false)
+    }
+  }
 
   return (
     <WavyBackground>
@@ -20,10 +36,10 @@ export const LoginSignup = () => {
           Welcome to 100xAlumni
         </h2>
         <p className="text-neutral-600 text-sm sm:text-base max-w-sm mt-2 dark:text-neutral-300">
-          {loginState} to 100xAlumni if you want to connect with 100xDevs
+          Login to 100xAlumni if you want to connect with 100xDevs
         </p>
 
-        <form className="my-8 space-y-5">
+        <form className="my-8 space-y-5" onSubmit={submitHandler}>
           <LabelInputContainer className="mb-4">
             <Label htmlFor="email">Email Address</Label>
             <Input
@@ -82,6 +98,7 @@ export const LoginSignup = () => {
             <SocialButton icon={<FcGoogle />} label="Google" />
           </div>
         </form>
+        <Button path={"/"}/>
       </div>
     </WavyBackground>
   );
@@ -125,4 +142,4 @@ const SocialButton = ({ icon, label }: Elements) => (
   </button>
 );
 
-export default LoginSignup;
+export default Login;

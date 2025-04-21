@@ -35,12 +35,12 @@ export function FormDemo() {
         <form className="my-8">
           <div className="mb-8 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
             <LabelInputContainer>
-              <Label htmlFor="firstname">First name</Label>
-              <Input id="firstname" placeholder="Tyler" type="text" />
+              <Label htmlFor="firstname">First Name</Label>
+              <Input id="firstname" placeholder="First Name" type="text" />
             </LabelInputContainer>
             <LabelInputContainer>
-              <Label htmlFor="lastname">Last name</Label>
-              <Input id="lastname" placeholder="Durden" type="text" />
+              <Label htmlFor="lastname">Last Name</Label>
+              <Input id="lastname" placeholder="Last Name" type="text" />
             </LabelInputContainer>
           </div>
           <LabelInputContainer className="mb-4">
