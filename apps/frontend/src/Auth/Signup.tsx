@@ -14,8 +14,6 @@ import {
 } from "@radix-ui/react-radio-group";
 import { Button } from "@repo/ui/uicomponents/navButton";
 
-
-
 export const Signup = () => {
   const [loader, setLoader] = useState(false);
 
@@ -74,7 +72,10 @@ export const Signup = () => {
                 >
                   <RadioGroupIndicator className="w-2.5 h-2.5 rounded-full bg-teal-600" />
                 </RadioGroupItem>
-                <label htmlFor="user" className="text-sm text-black dark:text-white">
+                <label
+                  htmlFor="user"
+                  className="text-sm text-black dark:text-white"
+                >
                   Guest user
                 </label>
               </div>
@@ -87,7 +88,10 @@ export const Signup = () => {
                 >
                   <RadioGroupIndicator className="w-2.5 h-2.5 rounded-full bg-teal-600" />
                 </RadioGroupItem>
-                <label htmlFor="alumni" className="text-sm text-black dark:text-white">
+                <label
+                  htmlFor="alumni"
+                  className="text-sm text-black dark:text-white"
+                >
                   Alumni
                 </label>
               </div>
@@ -133,7 +137,7 @@ export const Signup = () => {
             <SocialButton icon={<FcGoogle />} label="Google" />
           </div>
         </form>
-        <Button path={"/"}/>
+        <Button path={"/"} />
       </div>
     </WavyBackground>
   );
@@ -146,8 +150,16 @@ const BottomGradient = () => (
   </>
 );
 
-const LabelInputContainer = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={cn("flex flex-col space-y-2 w-full", className)}>{children}</div>
+const LabelInputContainer = ({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <div className={cn("flex flex-col space-y-2 w-full", className)}>
+    {children}
+  </div>
 );
 
 interface Elements {
@@ -163,7 +175,9 @@ const SocialButton = ({ icon, label }: Elements) => (
     {React.cloneElement(icon, {
       className: "h-4 w-4 text-neutral-800 dark:text-neutral-300",
     })}
-    <span className="text-neutral-700 dark:text-neutral-300 text-sm">{label}</span>
+    <span className="text-neutral-700 dark:text-neutral-300 text-sm">
+      {label}
+    </span>
     <BottomGradient />
   </button>
 );

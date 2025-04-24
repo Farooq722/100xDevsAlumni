@@ -10,7 +10,6 @@ import { cn } from "../lib/utils";
 import { Button } from "@repo/ui/uicomponents/navButton";
 
 export const Login = () => {
-  
   const [loader, setLoader] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,14 +19,14 @@ export const Login = () => {
     e.preventDefault();
 
     try {
-      setLoader(true)
+      setLoader(true);
       navigate("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     } finally {
-      setLoader(false)
+      setLoader(false);
     }
-  }
+  };
 
   return (
     <WavyBackground>
@@ -98,7 +97,7 @@ export const Login = () => {
             <SocialButton icon={<FcGoogle />} label="Google" />
           </div>
         </form>
-        <Button path={"/"}/>
+        <Button path={"/"} />
       </div>
     </WavyBackground>
   );

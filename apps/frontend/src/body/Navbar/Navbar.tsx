@@ -15,8 +15,8 @@ export const Navbar = () => {
 
         <div className="border bg-gradient-to-bl from-teal-300 to-pink-300 px-8 py-2 rounded-full">
           <div className="flex justify-around gap-6 text-black font-medium">
-            <Link to={"#"} className="hover:text-teal-500 ">
-              About
+            <Link to={"/Price"} className="hover:text-teal-500 ">
+              Price
             </Link>
             <Link
               to={"https://harkirat.classx.co.in"}
