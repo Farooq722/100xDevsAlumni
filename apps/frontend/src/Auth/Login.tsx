@@ -10,9 +10,8 @@ import { cn } from "../lib/utils";
 import { Button } from "@repo/ui/uicomponents/navButton";
 
 export const Login = () => {
+
   const [loader, setLoader] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const submitHandler = async (e: any) => {
@@ -55,7 +54,7 @@ export const Login = () => {
               id="password"
               placeholder="••••••••"
               type="password"
-              onChange={(e) => {}}
+              onChange={() => {}}
             />
           </LabelInputContainer>
 

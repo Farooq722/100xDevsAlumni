@@ -1,7 +1,7 @@
 import { TypewriterEffectSmooth } from "@repo/ui/uicomponents/typewriter-effect";
 import { HoverBorderGradientDemo } from "./HoverBorderGradientDemo";
 
-export function TypewriterEffectSmoothDemo() {
+export default function TypewriterEffectSmoothDemo() {
   const words = [
     {
       text: "Unlock",

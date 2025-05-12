@@ -38,7 +38,7 @@ export const Page2 = () => {
             <div className="flex-1 flex flex-col items-center justify-center gap-2 transform transition-transform duration-300 hover:scale-105 hover:rotate-1">
               {item.icon}
               <h2 className="text-center text-lg">{item.title}</h2>
-              <p className="font-normal text-center text-sm sm:text-base">
+              <p className="font-normal text-slate-600 text-center text-sm sm:text-base">
                 {item.desc}
               </p>
             </div>

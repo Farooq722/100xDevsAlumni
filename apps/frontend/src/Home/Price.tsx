@@ -13,22 +13,38 @@ export const Pricing = () => {
         </h1>
       </div>
 
-      <div className="mx-auto my-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-md border-2 border-teal-300 bg-gradient-to-bl from-teal-300 to-pink-300 rounded-xl p-6 shadow-xl transition-all duration-300 hover:shadow-2xl">
-        <div>
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-6 px-4 sm:px-8 md:px-12 lg:px-20">
+        {/* Basic Plan */}
+        <div className="w-full max-w-xs sm:max-w-sm md:max-w-md border-2 border-teal-300 bg-gradient-to-bl from-teal-200 to-pink-200 rounded-xl p-6 shadow-xl transition-all duration-300 hover:shadow-2xl">
           <h1 className="text-start font-bold text-xl text-gray-800 dark:text-white">
             Basic
           </h1>
-          <h1 className="text-start text-md text-gray-700 dark:text-gray-300">
-            Best for personal use.
-          </h1>
+          <h2 className="text-start text-md text-gray-700 dark:text-gray-300">
+            Complement For Us If You Can
+          </h2>
           <p className="mt-6 text-gray-900 dark:text-white">
             <span className="text-3xl font-semibold">$1</span> / Month
           </p>
+          <button className="mt-10 w-full py-2 bg-gradient-to-bl from-pink-400 to-teal-400 hover:from-teal-300 hover:to-pink-300 transition-all duration-300 rounded-lg font-medium text-gray-800 shadow-md hover:shadow-lg">
+            Donate
+          </button>
         </div>
 
-        <button className="mt-10 w-full py-2 bg-gradient-to-bl from-pink-200 to-teal-200 hover:from-teal-300 hover:to-pink-300 transition-all duration-300 rounded-lg font-medium text-gray-800 shadow-md hover:shadow-lg">
-          Donate
-        </button>
+        {/* Free Plan */}
+        <div className="w-full max-w-xs sm:max-w-sm md:max-w-md border-2 border-teal-300 bg-gradient-to-bl from-teal-200 to-pink-200 rounded-xl p-6 shadow-xl transition-all duration-300 hover:shadow-2xl">
+          <h1 className="text-start font-bold text-xl text-gray-800 dark:text-white">
+            Free Plan
+          </h1>
+          <h2 className="text-start text-md text-gray-700 dark:text-gray-300">
+            Free For Everyone
+          </h2>
+          <p className="mt-6 text-gray-900 dark:text-white">
+            <span className="text-3xl font-semibold">$0</span> / Month
+          </p>
+          <button className="mt-10 w-full py-2 bg-gradient-to-bl from-pink-400 to-teal-400 hover:from-teal-300 hover:to-pink-300 transition-all duration-300 rounded-lg font-medium text-gray-800 shadow-md hover:shadow-lg">
+            Free
+          </button>
+        </div>
       </div>
     </div>
   );
