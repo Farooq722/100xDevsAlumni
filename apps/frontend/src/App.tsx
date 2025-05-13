@@ -6,7 +6,6 @@ import { Pricing } from "./Home/Price";
 import Dashboard from "./Dashboard/Dashboard";
 import AlumniFrom from "./Dashboard/form/AlumniForm";
 
-
 function App() {
   return (
     <div className="">
@@ -16,7 +15,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/Price" element={<Pricing />} />
-          <Route path="/dashboard"element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/alumniform" element={<AlumniFrom />} />
         </Routes>
       </BrowserRouter>

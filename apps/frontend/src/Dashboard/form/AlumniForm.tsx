@@ -120,7 +120,7 @@ const AlumniForm = () => {
                   className="mt-2"
                 />
               </LabelInputContainer>
-            )
+            ),
           )}
 
           {["Country", "State"].map((item, index) => (
@@ -171,7 +171,7 @@ const AlumniForm = () => {
             </Button>
           ) : (
             <button className="w-full sm:w-auto lg:w-32 p-2 rounded-xl text-black font-medium bg-gradient-to-bl from-teal-500 to-pink-500 hover:bg-gray-700 hover:text-white">
-                Submit
+              Submit
             </button>
           )}
         </div>

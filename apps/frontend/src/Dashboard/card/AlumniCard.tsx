@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IconBrandGithub, IconBrandTwitter } from "@tabler/icons-react";
 
 export default function AlumniCard({ user }: any) {
-  console.log("user is: ",user)
+  console.log("user is: ", user);
   const navigate = useNavigate();
   const profilePhoto =
     user?.profile?.profilePhoto ||
@@ -35,7 +35,7 @@ export default function AlumniCard({ user }: any) {
           {user.company}
         </p>
         <p className="text-xs sm:text-sm text-center text-neutral-800 dark:text-neutral-400 mt-1">
-          <span className="font-medium">Role:</span> 
+          <span className="font-medium">Role:</span>
           {/* {user?.role || "N/A"} */}
           {user.role}
         </p>
@@ -58,9 +58,7 @@ export default function AlumniCard({ user }: any) {
         </div>
 
         <div className="flex justify-center items-center mt-4">
-          <button
-            className="rounded-lg py-2 px-4 bg-black text-white dark:bg-zinc-800 text-xs sm:text-sm font-semibold transition hover:bg-gray-900"
-          >
+          <button className="rounded-lg py-2 px-4 bg-black text-white dark:bg-zinc-800 text-xs sm:text-sm font-semibold transition hover:bg-gray-900">
             View Details
           </button>
         </div>
