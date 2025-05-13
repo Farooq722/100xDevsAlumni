@@ -10,7 +10,6 @@ import { cn } from "../lib/utils";
 import { Button } from "@repo/ui/uicomponents/navButton";
 
 export const Login = () => {
-
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
 
