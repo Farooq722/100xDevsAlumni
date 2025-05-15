@@ -5,11 +5,13 @@ import { Signup } from "./Auth/Signup";
 import { Pricing } from "./Home/Price";
 import Dashboard from "./Dashboard/Dashboard";
 import AlumniFrom from "./Dashboard/form/AlumniForm";
+import { Toaster } from "sonner";
 
 function App() {
   return (
     <div className="">
       <BrowserRouter>
+        <Toaster richColors />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

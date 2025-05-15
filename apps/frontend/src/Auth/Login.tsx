@@ -8,19 +8,48 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { cn } from "../lib/utils";
 import { Button } from "@repo/ui/uicomponents/navButton";
+import { toast } from "sonner";
+import axios, { AxiosError } from "axios";
+const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export const Login = () => {
-  const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
+  const [loader, setLoader] = useState(false);
+  const [input, setInput] = useState({
+    username: "",
+    password: "",
+  });
 
-  const submitHandler = async (e: any) => {
-    e.preventDefault();
+  const eventHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    if (e) {
+      e.preventDefault();
+    }
 
     try {
       setLoader(true);
-      navigate("/");
+      const { data } = await axios.post(
+        `${backendURL}/auth/signin`,
+        { ...input },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        },
+      );
+      if (data.success) {
+        toast.success("Login Successfully");
+        localStorage.setItem("token", data.token);
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
+      const err = error as AxiosError<{ msg: string }>;
+      toast.error(err.response?.data?.msg || "Something went down");
     } finally {
       setLoader(false);
     }
@@ -41,9 +70,12 @@ export const Login = () => {
             <Label htmlFor="email">Email Address</Label>
             <Input
               id="email"
+              name="username"
+              value={input.username}
               placeholder="email@gmail.com"
               type="email"
-              onChange={(e) => {}}
+              onChange={eventHandler}
+              required
             />
           </LabelInputContainer>
 
@@ -51,9 +83,12 @@ export const Login = () => {
             <Label htmlFor="password">Password</Label>
             <Input
               id="password"
+              name="password"
+              value={input.password}
               placeholder="••••••••"
               type="password"
-              onChange={() => {}}
+              onChange={eventHandler}
+              required
             />
           </LabelInputContainer>
 
