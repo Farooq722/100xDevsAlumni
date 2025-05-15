@@ -27,7 +27,7 @@ export const authRouter = Router();
 authRouter.post("/signup", signupRateLimit, async (req, res) => {
   const parseData = signupSchema.safeParse(req.body);
   if (!parseData.success) {
-    res.status(403).json({ msg: "Validation failed" });
+    res.status(403).json({ msg: "Validation failed bro" });
     return;
   }
 
@@ -62,9 +62,18 @@ authRouter.post("/signup", signupRateLimit, async (req, res) => {
       html: emailTemplate(newUser.name, verificationLink),
     });
 
-    res.json({ userId: newUser.id });
+    res.json({
+      userId: newUser.id,
+      msg: "User created successfully",
+      success: true,
+      error: false,
+    });
   } catch (e) {
-    res.status(400).json({ msg: "User already exits" });
+    res.status(400).json({
+      msg: "User already exits",
+      success: false,
+      error: true,
+    });
   }
 });
 
@@ -112,10 +121,17 @@ authRouter.post("/signin", signupRateLimit, async (req, res) => {
 
     res.cookie("token", token, cookieOption);
     res.json({
+      msg: "User loggin successfully",
+      success: true,
+      error: false,
       token: token,
     });
   } catch (e) {
-    res.status(400).json({ msg: "Internal server error" });
+    res.status(400).json({
+      msg: "Internal server error",
+      success: false,
+      error: true,
+    });
     return;
   }
 });

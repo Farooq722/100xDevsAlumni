@@ -1,11 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { CoverDemo } from "./cover";
-import { useAuth } from "@repo/zustand/authStore";
 import Avatar from "@mui/material/Avatar";
 
 export const Navbar = () => {
-  const { user, login, logout, setLoader, loader } = useAuth();
   const navigate = useNavigate();
+  const user = true;
 
   return (
     <div className="text-white p-3 bg-gradient-to-bl from-teal-200 to-pink-200">

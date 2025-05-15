@@ -5,7 +5,7 @@ import { WavyBackground } from "@repo/ui/uicomponents/wavy-background";
 import { RingLoader } from "react-spinners";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cn } from "../lib/utils";
 import {
   Root as RadioGroupRoot,
@@ -13,9 +13,52 @@ import {
   Indicator as RadioGroupIndicator,
 } from "@radix-ui/react-radio-group";
 import { Button } from "@repo/ui/uicomponents/navButton";
+const backendURL = import.meta.env.VITE_BACKEND_URI;
+import { toast } from "sonner";
+import axios from "axios";
 
 export const Signup = () => {
+  const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
+  const [input, setInput] = useState({
+    name: "",
+    username: "",
+    password: "",
+    type: "user",
+  });
+
+  const eventHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    if (e) {
+      e.preventDefault();
+    }
+
+    try {
+      setLoader(true);
+      const { data } = await axios.post(
+        `${backendURL}/auth/signup`,
+        { ...input },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        },
+      );
+      if (data.success) {
+        toast.success("Account Created Successfully");
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong");
+    } finally {
+      setLoader(false);
+    }
+  };
 
   return (
     <WavyBackground>
@@ -27,14 +70,17 @@ export const Signup = () => {
           Signup to 100xAlumni if you want to connect with 100xDevs
         </p>
 
-        <form className="my-8 space-y-3">
+        <form className="my-8 space-y-3" onSubmit={submitHandler}>
           <LabelInputContainer>
             <Label htmlFor="name">Full Name</Label>
             <Input
               id="name"
+              name="name"
+              value={input.name}
               placeholder="Full Name"
               type="text"
-              onChange={() => {}}
+              onChange={eventHandler}
+              required
             />
           </LabelInputContainer>
 
@@ -42,9 +88,12 @@ export const Signup = () => {
             <Label htmlFor="email">Email Address</Label>
             <Input
               id="email"
+              name="username"
+              value={input.username}
               placeholder="email@gmail.com"
               type="email"
-              onChange={() => {}}
+              onChange={eventHandler}
+              required
             />
           </LabelInputContainer>
 
@@ -52,49 +101,47 @@ export const Signup = () => {
             <Label htmlFor="password">Password</Label>
             <Input
               id="password"
+              name="password"
+              value={input.password}
               placeholder="••••••••"
+              onChange={eventHandler}
               type="password"
-              onChange={() => {}}
+              required
             />
           </LabelInputContainer>
 
           <LabelInputContainer>
             <RadioGroupRoot
               className="flex flex-wrap items-center justify-center gap-10"
-              defaultValue="user"
+              value={input.type}
+              onValueChange={(value: string) =>
+                setInput({ ...input, type: value })
+              }
               aria-label="User Type"
             >
-              <div className="flex items-center space-x-2 font-semibold ">
-                <RadioGroupItem
-                  className="w-5 h-5 rounded-full border border-gray-400 dark:border-gray-600 flex items-center justify-center data-[state=checked]:border-teal-600 focus:outline-none"
-                  value="user"
-                  id="user"
+              {[
+                { id: "user", label: "Guest user" },
+                { id: "alumni", label: "Alumni" },
+              ].map(({ id, label }) => (
+                <div
+                  key={id}
+                  className="flex items-center space-x-2 font-semibold"
                 >
-                  <RadioGroupIndicator className="w-2.5 h-2.5 rounded-full bg-teal-600" />
-                </RadioGroupItem>
-                <label
-                  htmlFor="user"
-                  className="text-sm text-black dark:text-white"
-                >
-                  Guest user
-                </label>
-              </div>
-
-              <div className="flex items-center space-x-2 font-semibold ">
-                <RadioGroupItem
-                  className="w-5 h-5 rounded-full border border-gray-400 dark:border-gray-600 flex items-center justify-center data-[state=checked]:border-teal-600 focus:outline-none"
-                  value="alumni"
-                  id="alumni"
-                >
-                  <RadioGroupIndicator className="w-2.5 h-2.5 rounded-full bg-teal-600" />
-                </RadioGroupItem>
-                <label
-                  htmlFor="alumni"
-                  className="text-sm text-black dark:text-white"
-                >
-                  Alumni
-                </label>
-              </div>
+                  <RadioGroupItem
+                    className="w-5 h-5 rounded-full border border-gray-400 dark:border-gray-600 flex items-center justify-center data-[state=checked]:border-teal-600 focus:outline-none"
+                    value={id}
+                    id={id}
+                  >
+                    <RadioGroupIndicator className="w-2.5 h-2.5 rounded-full bg-teal-600" />
+                  </RadioGroupItem>
+                  <label
+                    htmlFor={id}
+                    className="text-sm text-black dark:text-white"
+                  >
+                    {label}
+                  </label>
+                </div>
+              ))}
             </RadioGroupRoot>
           </LabelInputContainer>
 
@@ -137,6 +184,7 @@ export const Signup = () => {
             <SocialButton icon={<FcGoogle />} label="Google" />
           </div>
         </form>
+
         <Button path={"/"} />
       </div>
     </WavyBackground>
@@ -162,12 +210,12 @@ const LabelInputContainer = ({
   </div>
 );
 
-interface Elements {
+interface SocialButtonProps {
   icon: any;
-  label: any;
+  label: string;
 }
 
-const SocialButton = ({ icon, label }: Elements) => (
+const SocialButton = ({ icon, label }: SocialButtonProps) => (
   <button
     className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
     type="button"
@@ -181,5 +229,3 @@ const SocialButton = ({ icon, label }: Elements) => (
     <BottomGradient />
   </button>
 );
-
-export default Signup;
