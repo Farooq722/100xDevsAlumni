@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { CoverDemo } from "./cover";
 import Avatar from "@mui/material/Avatar";
+import { useStore } from "@repo/zustand";
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const user = true;
+  const { user, setUser } = useStore();
 
+  console.log(user)
   return (
     <div className="text-white p-3 bg-gradient-to-bl from-teal-200 to-pink-200">
       <div className="flex justify-between items-center m-2 mx-8">
@@ -15,7 +17,7 @@ export const Navbar = () => {
           </Link>
         </div>
         <div className="border bg-gradient-to-bl from-teal-300 to-pink-300 px-8 py-2 rounded-full">
-          {user ? (
+          {!user ? (
             <div className="flex justify-around gap-6 text-black font-medium">
               <Link to={"/price"} className="hover:text-teal-500 ">
                 Price
@@ -60,10 +62,16 @@ export const Navbar = () => {
               >
                 100xSchool
               </Link>
+
+              <button onClick={() => {
+                localStorage.removeItem("token")
+                setUser(false)
+                navigate("/")
+              }}>logout</button>
             </div>
           )}
         </div>
-        {user ? (
+        {!user ? (
           <div className="flex justify-between gap-4 text-black font-medium">
             <div className="py-3">
               <button

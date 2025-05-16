@@ -13,13 +13,15 @@ import {
   Indicator as RadioGroupIndicator,
 } from "@radix-ui/react-radio-group";
 import { Button } from "@repo/ui/uicomponents/navButton";
+import { useStore } from "@repo/zustand";
 const backendURL = import.meta.env.VITE_BACKEND_URI;
 import { toast } from "sonner";
 import axios from "axios";
 
 export const Signup = () => {
+
+  const { loader, setLoader } = useStore();
   const navigate = useNavigate();
-  const [loader, setLoader] = useState(false);
   const [input, setInput] = useState({
     name: "",
     username: "",
