@@ -3,7 +3,6 @@ import { Navbar } from "../body/Navbar/Navbar";
 import { HoverBorderGradientDemo } from "../Uicomponents/HoverBorderGradientDemo";
 
 export const Pricing = () => {
-
   const navigate = useNavigate();
 
   return (
@@ -45,7 +44,8 @@ export const Pricing = () => {
           <p className="mt-6 text-gray-900 dark:text-white">
             <span className="text-3xl font-semibold">$0</span> / Month
           </p>
-          <button className="mt-10 w-full py-2 bg-gradient-to-bl from-pink-400 to-teal-400 hover:from-teal-300 hover:to-pink-300 transition-all duration-300 rounded-lg font-medium text-gray-800 shadow-md hover:shadow-lg"
+          <button
+            className="mt-10 w-full py-2 bg-gradient-to-bl from-pink-400 to-teal-400 hover:from-teal-300 hover:to-pink-300 transition-all duration-300 rounded-lg font-medium text-gray-800 shadow-md hover:shadow-lg"
             onClick={() => navigate("/login")}
           >
             Free
