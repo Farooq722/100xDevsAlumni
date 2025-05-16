@@ -10,11 +10,12 @@ import { cn } from "../lib/utils";
 import { Button } from "@repo/ui/uicomponents/navButton";
 import { toast } from "sonner";
 import axios, { AxiosError } from "axios";
+import { useStore } from "@repo/zustand";
 const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export const Login = () => {
   const navigate = useNavigate();
-  const [loader, setLoader] = useState(false);
+  const { setUser, loader, setLoader } = useStore();
   const [input, setInput] = useState({
     username: "",
     password: "",
@@ -44,7 +45,8 @@ export const Login = () => {
       if (data.success) {
         toast.success("Login Successfully");
         localStorage.setItem("token", data.token);
-        navigate("/");
+        setUser(true)
+        navigate("/dashboard");
       }
     } catch (error) {
       console.log(error);
