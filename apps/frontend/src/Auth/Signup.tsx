@@ -19,7 +19,6 @@ import { toast } from "sonner";
 import axios from "axios";
 
 export const Signup = () => {
-
   const { loader, setLoader } = useStore();
   const navigate = useNavigate();
   const [input, setInput] = useState({

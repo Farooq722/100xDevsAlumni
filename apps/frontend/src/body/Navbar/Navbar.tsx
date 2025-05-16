@@ -7,7 +7,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const { user, setUser } = useStore();
 
-  console.log(user)
+  console.log(user);
   return (
     <div className="text-white p-3 bg-gradient-to-bl from-teal-200 to-pink-200">
       <div className="flex justify-between items-center m-2 mx-8">
@@ -63,11 +63,15 @@ export const Navbar = () => {
                 100xSchool
               </Link>
 
-              <button onClick={() => {
-                localStorage.removeItem("token")
-                setUser(false)
-                navigate("/")
-              }}>logout</button>
+              <button
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  setUser(false);
+                  navigate("/");
+                }}
+              >
+                logout
+              </button>
             </div>
           )}
         </div>

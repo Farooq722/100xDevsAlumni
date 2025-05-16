@@ -16,5 +16,4 @@ export const useStore = create<UserStore>((set) => ({
   setLoader: (status) => {
     set({ loader: status });
   },
-  
 }));

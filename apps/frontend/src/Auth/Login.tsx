@@ -45,7 +45,7 @@ export const Login = () => {
       if (data.success) {
         toast.success("Login Successfully");
         localStorage.setItem("token", data.token);
-        setUser(true)
+        setUser(true);
         navigate("/dashboard");
       }
     } catch (error) {
