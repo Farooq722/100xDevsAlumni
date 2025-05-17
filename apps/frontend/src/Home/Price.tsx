@@ -1,22 +1,40 @@
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../body/Navbar/Navbar";
 import { HoverBorderGradientDemo } from "../Uicomponents/HoverBorderGradientDemo";
+import { motion } from "framer-motion";
+import { useStore } from "@repo/zustand";
 
 export const Pricing = () => {
   const navigate = useNavigate();
+  const { user } = useStore();
+  console.log("user", user);
 
   return (
     <div className="bg-gradient-to-bl from-teal-100 to-pink-100 min-h-screen">
       <Navbar />
-      <HoverBorderGradientDemo text={"Our Plans 🔥"} />
+      <div>
+        <HoverBorderGradientDemo text={"Our Plans 🔥"} />
+      </div>
 
-      <div className="mb-4">
+      <motion.div
+        className="mb-8"
+        initial={{ opacity: 0.2, y: 100 }}
+        transition={{ duration: 1 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
         <h1 className="text-center font-semibold text-2xl text-gray-800 dark:text-white">
           Choose the plan
         </h1>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col lg:flex-row justify-center items-center gap-6 px-4 sm:px-8 md:px-12 lg:px-20">
+      <motion.div
+        className="flex flex-col lg:flex-row justify-center items-center gap-6 px-4 sm:px-8 md:px-12 lg:px-20"
+        initial={{ opacity: 0.2, y: 100 }}
+        transition={{ duration: 1 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
         {/* Basic Plan */}
         <div className="w-full max-w-xs sm:max-w-sm md:max-w-md border-2 border-teal-300 bg-gradient-to-bl from-teal-200 to-pink-200 rounded-xl p-6 shadow-xl transition-all duration-300 hover:shadow-2xl">
           <h1 className="text-start font-bold text-xl text-gray-800 dark:text-white">
@@ -51,7 +69,7 @@ export const Pricing = () => {
             Free
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

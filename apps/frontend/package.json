@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint":"eslint",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -25,6 +25,7 @@
     "dotenv": "^16.4.7",
     "framer-motion": "^12.6.5",
     "lucide-react": "^0.501.0",
+    "material-ui-popup-state": "^5.3.6",
     "motion": "^12.6.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

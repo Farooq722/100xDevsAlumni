@@ -7,13 +7,11 @@ import {
 
 module.exports = {
   content: [
-    // './app/**/*.{js,ts,jsx,tsx,mdx}', // Note the addition of the `app` directory.
-    // './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    // './components/**/*.{js,ts,jsx,tsx,mdx}',
-    // // packages content
-    '../../packages/**/*.{js,ts,jx,tsx}',
-    // Or if using `src` directory:
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}', // frontend local source files
+    '../../packages/ui/**/*.{js,ts,jsx,tsx,mdx}', // shared UI components
+    '../../packages/zustand/**/*.{js,ts,jsx,tsx,mdx}', // zustand store package
+    '../../packages/tailwind-config/**/*.{js,ts,jsx,tsx,mdx}', // Tailwind config if used as a package
+    '../../packages/typescript-config/**/*.{js,ts,jsx,tsx,mdx}', // TS config if containing components or styles
   ],
   theme: {
     extend: {

@@ -4,7 +4,7 @@ import { cn } from "../lib/utils";
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
-  speed = "fast",
+  speed = "slow",
   pauseOnHover = true,
   className,
 }: {
@@ -66,7 +66,7 @@ export const InfiniteMovingCards = ({
       let duration = "40s"; // Default duration
       if (speed === "fast") duration = "20s";
       if (speed === "normal") duration = "40s";
-      if (speed === "slow") duration = "80s";
+      if (speed === "slow") duration = "150s";
       containerRef.current.style.setProperty("--animation-duration", duration);
     }
   };

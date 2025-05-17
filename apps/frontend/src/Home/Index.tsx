@@ -1,20 +1,21 @@
+import { useEffect, useState } from "react";
+// import { useStore } from "@repo/zustand";
 import { Body } from "../body/Body";
 import { Navbar } from "../body/Navbar/Navbar";
-import { useEffect, useState } from "react";
 import { RingLoader } from "react-spinners";
 
-export const Home = () => {
-  const [loader, setLoader] = useState(true);
+const Home = () => {
+  const [mainLoader, setMainLoader] = useState(true);
 
   useEffect(() => {
     requestAnimationFrame(() => {
       setTimeout(() => {
-        setLoader(false);
-      }, 1000);
+        setMainLoader(false);
+      }, 200);
     });
   }, []);
 
-  if (loader)
+  if (mainLoader)
     return (
       <div className="flex items-center justify-center h-dvh w-full bg-white dark:bg-black">
         <div className="flex flex-col justify-center items-center gap-4 px-4 text-center">
@@ -27,9 +28,11 @@ export const Home = () => {
     );
 
   return (
-    <div className="">
+    <div>
       <Navbar />
       <Body />
     </div>
   );
 };
+
+export default Home;

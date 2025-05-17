@@ -1,5 +1,4 @@
 import { TypewriterEffectSmooth } from "@repo/ui/uicomponents/typewriter-effect";
-import { HoverBorderGradientDemo } from "./HoverBorderGradientDemo";
 import { motion } from "motion/react";
 
 export default function TypewriterEffectSmoothDemo() {
@@ -40,7 +39,6 @@ export default function TypewriterEffectSmoothDemo() {
         <button className="w-40 h-10 rounded-xl bg-pink-300 hover:text-white hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all border dark:border-white border-transparent text-black text-sm">
           Signup
         </button>
-        
       </div>
     </motion.div>
   );

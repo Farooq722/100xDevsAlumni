@@ -27,13 +27,15 @@ export const Page1 = () => {
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        <motion.div className="w-64 border bg-gradient-to-bl from-teal-100 to-pink-100 rounded-xl p-5 flex flex-col items-center justify-center gap-2"
+        <motion.div
+          className="w-64 border bg-gradient-to-bl from-teal-100 to-pink-100 rounded-xl p-5 flex flex-col items-center justify-center gap-2"
           whileHover={{ scale: 1.05 }}
         >
           <h1 className="text-center text-lg">5000+</h1>
           <h1 className="text-center text-sm sm:text-base">Alumni Worldwide</h1>
         </motion.div>
-        <motion.div className="w-64 border bg-gradient-to-bl from-teal-100 to-pink-100 rounded-xl p-5 flex flex-col items-center justify-center gap-2"
+        <motion.div
+          className="w-64 border bg-gradient-to-bl from-teal-100 to-pink-100 rounded-xl p-5 flex flex-col items-center justify-center gap-2"
           whileHover={{ scale: 1.05 }}
         >
           <h1 className="text-center text-lg">120+</h1>
@@ -41,7 +43,8 @@ export const Page1 = () => {
             Country Represented
           </h1>
         </motion.div>
-        <motion.div className="w-64 border bg-gradient-to-bl from-teal-100 to-pink-100 rounded-xl p-5 flex flex-col items-center justify-center gap-2"
+        <motion.div
+          className="w-64 border bg-gradient-to-bl from-teal-100 to-pink-100 rounded-xl p-5 flex flex-col items-center justify-center gap-2"
           whileHover={{ scale: 1.05 }}
         >
           <h1 className="text-center text-lg">87%</h1>
@@ -49,7 +52,8 @@ export const Page1 = () => {
             Career Advancement
           </h1>
         </motion.div>
-        <motion.div className="w-64 border bg-gradient-to-bl from-teal-100 to-pink-100 rounded-xl p-5 flex flex-col items-center justify-center gap-2"
+        <motion.div
+          className="w-64 border bg-gradient-to-bl from-teal-100 to-pink-100 rounded-xl p-5 flex flex-col items-center justify-center gap-2"
           whileHover={{ scale: 1.05 }}
         >
           <h1 className="text-center text-lg">250+</h1>

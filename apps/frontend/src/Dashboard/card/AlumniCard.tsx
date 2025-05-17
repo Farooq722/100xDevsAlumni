@@ -1,10 +1,8 @@
 import { BackgroundGradient } from "@repo/ui/uicomponents/background-gradient";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IconBrandGithub, IconBrandTwitter } from "@tabler/icons-react";
 
 export default function AlumniCard({ user }: any) {
-  console.log("user is: ", user);
-  const navigate = useNavigate();
   const profilePhoto =
     user?.profile?.profilePhoto ||
     user?.profilePhoto ||

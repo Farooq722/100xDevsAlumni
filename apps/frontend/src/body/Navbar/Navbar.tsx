@@ -1,14 +1,18 @@
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CoverDemo } from "./cover";
 import Avatar from "@mui/material/Avatar";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { useStore } from "@repo/zustand";
 import { motion } from "motion/react";
+import { Button } from "@mui/material";
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useStore();
+  const { user, setUser, logout } = useStore();
 
-  console.log(user);
   return (
     <motion.div
       className="text-white p-3 bg-gradient-to-bl from-teal-200 to-pink-200"
@@ -78,7 +82,7 @@ export const Navbar = () => {
 
               <button
                 onClick={() => {
-                  localStorage.removeItem("token");
+                  logout();
                   setUser(false);
                   navigate("/");
                 }}
@@ -102,6 +106,20 @@ export const Navbar = () => {
         ) : (
           <div>
             <Avatar alt="Travis Howard" src="https://github.com/shadcn.png" />
+            <PopupState variant="popover" popupId="demo-popup-menu">
+              {(popupState) => (
+                <React.Fragment>
+                  <Button variant="contained" {...bindTrigger(popupState)}>
+                    Dashboard
+                  </Button>
+                  <Menu {...bindMenu(popupState)}>
+                    <MenuItem onClick={popupState.close}>Profile</MenuItem>
+                    <MenuItem onClick={popupState.close}>My account</MenuItem>
+                    <MenuItem onClick={popupState.close}>Logout</MenuItem>
+                  </Menu>
+                </React.Fragment>
+              )}
+            </PopupState>
           </div>
         )}
       </motion.div>
