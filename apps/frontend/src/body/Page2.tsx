@@ -1,8 +1,15 @@
 import { BookCopy, BriefcaseBusiness, Users } from "lucide-react";
+import { motion } from "motion/react";
 
 export const Page2 = () => {
   return (
-    <div className="mt-28 px-4">
+    <motion.div
+      className="mt-28 px-4"
+      initial={{ opacity: 0.2, y: 100 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
       <div className="text-center font-semibold">
         <h1 className="text-2xl sm:text-3xl bg-gradient-to-bl from-teal-500 to-pink-500 bg-clip-text text-transparent italic">
           Exclusive Benefits
@@ -45,6 +52,6 @@ export const Page2 = () => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };

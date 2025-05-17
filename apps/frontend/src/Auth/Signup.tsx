@@ -53,9 +53,9 @@ export const Signup = () => {
         toast.success("Account Created Successfully");
         navigate("/login");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      toast.error("Something went wrong");
+      toast.error( error.response?.data.msg || "Something went wrong");
     } finally {
       setLoader(false);
     }

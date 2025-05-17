@@ -2,6 +2,7 @@ import React from "react";
 import { Label } from "@repo/ui/uicomponents/label";
 import { Input } from "@repo/ui/uicomponents/input";
 import { cn } from "../lib/utils";
+import { motion } from "motion/react";
 // import { RingLoader } from "react-spinners";
 // import { useNavigate } from "react-router-dom";
 
@@ -23,8 +24,20 @@ export function FormDemo() {
   // }
 
   return (
-    <div className="border-4 rounded-3xl mx-4 sm:mx-8 md:mx-16 lg:mx-32 xl:mx-60 my-10 bg-gradient-to-bl from-teal-200 to-pink-200 mt-28">
-      <div className="shadow-input my-10 mx-auto w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl rounded-none bg-gradient-to-bl from-teal-400 to-pink-400 p-4 md:rounded-2xl md:p-8 dark:bg-black">
+    <motion.div
+      className="border-4 rounded-3xl mx-4 sm:mx-8 md:mx-16 lg:mx-32 xl:mx-60 my-10 bg-gradient-to-bl from-teal-200 to-pink-200 mt-28"
+      initial={{ opacity: 0.2, y: 100 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
+      <motion.div
+        className="shadow-input my-10 mx-auto w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl rounded-none bg-gradient-to-bl from-teal-400 to-pink-400 p-4 md:rounded-2xl md:p-8 dark:bg-black"
+        initial={{ opacity: 0.2, y: 100 }}
+        transition={{ duration: 1 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
         <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
           Contact us
         </h2>
@@ -57,8 +70,8 @@ export function FormDemo() {
             <BottomGradient />
           </button>
         </form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
