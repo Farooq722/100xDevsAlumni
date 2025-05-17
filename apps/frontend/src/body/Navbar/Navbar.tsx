@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { CoverDemo } from "./cover";
 import Avatar from "@mui/material/Avatar";
 import { useStore } from "@repo/zustand";
+import { motion } from "motion/react";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -9,8 +10,20 @@ export const Navbar = () => {
 
   console.log(user);
   return (
-    <div className="text-white p-3 bg-gradient-to-bl from-teal-200 to-pink-200">
-      <div className="flex justify-between items-center m-2 mx-8">
+    <motion.div
+      className="text-white p-3 bg-gradient-to-bl from-teal-200 to-pink-200"
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <motion.div
+        className="flex justify-between items-center m-2 mx-8"
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
         <div className="text-2xl italic rounded-full font-medium">
           <Link to={"/"}>
             <CoverDemo />
@@ -91,7 +104,7 @@ export const Navbar = () => {
             <Avatar alt="Travis Howard" src="https://github.com/shadcn.png" />
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
