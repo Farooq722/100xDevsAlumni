@@ -4,24 +4,25 @@ import { Input } from "@repo/ui/uicomponents/input";
 import { cn } from "../lib/utils";
 import { motion } from "motion/react";
 // import { RingLoader } from "react-spinners";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useStore } from "@repo/zustand";
 
 export function FormDemo() {
-  // const [loader, setLoader] = useState(false);
-  // const navigate = useNavigate();
+  const { loader, setLoader } = useStore();
+  const navigate = useNavigate();
 
-  // const submitHandler = async (e: any) => {
-  //   e.prevenDefault();
-  //   try {
-  //     setLoader(true);
-  //     navigate("/");
-
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoader(false)
-  //   }
-  // }
+  console.log(loader);
+  const submitHandler = async (e: any) => {
+    e.prevenDefault();
+    try {
+      setLoader(true);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoader(false);
+    }
+  };
 
   return (
     <motion.div
@@ -33,7 +34,7 @@ export function FormDemo() {
     >
       <motion.div
         className="shadow-input my-10 mx-auto w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl rounded-none bg-gradient-to-bl from-teal-400 to-pink-400 p-4 md:rounded-2xl md:p-8 dark:bg-black"
-        initial={{ opacity: 0.2, y: 100 }}
+        initial={{ opacity: 0.2, y: 60 }}
         transition={{ duration: 1 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -45,7 +46,7 @@ export function FormDemo() {
           Contact us if you encounter any issue 🚀
         </p>
 
-        <form className="my-8">
+        <form className="my-8" onSubmit={submitHandler}>
           <div className="mb-8 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
             <LabelInputContainer>
               <Label htmlFor="firstname">First Name</Label>

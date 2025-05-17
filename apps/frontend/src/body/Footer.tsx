@@ -4,14 +4,14 @@ export const Footer = () => {
   return (
     <motion.footer
       className="bg-gradient-to-bl from-teal-200 to-pink-200 text-black mt-20"
-      initial={{ opacity: 0.2, y: 100 }}
+      initial={{ opacity: 0.2, y: 50 }}
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
       <motion.div
         className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
-        initial={{ opacity: 0.2, y: 100 }}
+        initial={{ opacity: 0.2, y: 50 }}
         transition={{ duration: 1.05 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

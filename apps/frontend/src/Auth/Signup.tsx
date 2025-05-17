@@ -18,7 +18,7 @@ const backendURL = import.meta.env.VITE_BACKEND_URI;
 import { toast } from "sonner";
 import axios from "axios";
 
-export const Signup = () => {
+const Signup = () => {
   const { loader, setLoader } = useStore();
   const navigate = useNavigate();
   const [input, setInput] = useState({
@@ -55,7 +55,7 @@ export const Signup = () => {
       }
     } catch (error: any) {
       console.error(error);
-      toast.error( error.response?.data.msg || "Something went wrong");
+      toast.error(error.response?.data.msg || "Something went wrong");
     } finally {
       setLoader(false);
     }
@@ -230,3 +230,5 @@ const SocialButton = ({ icon, label }: SocialButtonProps) => (
     <BottomGradient />
   </button>
 );
+
+export default Signup;
