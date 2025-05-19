@@ -4,33 +4,35 @@ import { Loader2 } from "lucide-react";
 import { Navbar } from "../../body/Navbar/Navbar";
 import { cn } from "../../lib/utils";
 import { Button } from "@mui/material";
-const backendURL = import.meta.env.VITE_BACKEND_URI;
-import { useStore } from "@repo/zustand";
-import axios from "axios";
+// const backendURL = import.meta.env.VITE_BACKEND_URI;
+// import { useStore } from "@repo/zustand";
+// import axios from "axios";
 
 const AlumniForm = () => {
-  const { loader, setLoader } = useStore();
+  // const { loader, setLoader } = useStore();
 
-  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    if (e) {
-      e.preventDefault();
-    }
+  // const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   if (e) {
+  //     e.preventDefault();
+  //   }
 
-    try {
-      setLoader(true);
-      const { data } = await axios.post(`${backendURL}`);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //   try {
+  //     setLoader(true);
+  //     const { data } = await axios.post(`${backendURL}`);
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoader(false)
+  //   }
+  // };
 
   return (
     <div className="px-4 sm:px-6 lg:px-0">
       <Navbar />
       <form
         className="max-w-4xl mx-auto mt-10 p-4 sm:p-6 lg:p-8 bg-gradient-to-bl from-teal-100 to-pink-200 shadow-md rounded-lg"
-        onSubmit={submitHandler}
+        // onSubmit={submitHandler}
       >
         <h1 className="text-center text-3xl sm:text-4xl italic font-mono underline mb-8">
           Alumni Details
@@ -183,7 +185,7 @@ const AlumniForm = () => {
           </LabelInputContainer>
         </div>
 
-        <div className="flex justify-center mt-8">
+        {/* <div className="flex justify-center mt-8">
           {loader ? (
             <Button className="w-full sm:w-auto">
               <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait
@@ -193,7 +195,7 @@ const AlumniForm = () => {
               Submit
             </button>
           )}
-        </div>
+        </div> */}
       </form>
     </div>
   );

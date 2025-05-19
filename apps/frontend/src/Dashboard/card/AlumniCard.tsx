@@ -1,12 +1,11 @@
 import { BackgroundGradient } from "@repo/ui/uicomponents/background-gradient";
 import { Link } from "react-router-dom";
-import { IconBrandGithub, IconBrandTwitter } from "@tabler/icons-react";
+
 
 export default function AlumniCard({ user }: any) {
-  const profilePhoto =
-    user?.profile?.profilePhoto ||
-    user?.profilePhoto ||
-    "https://github.com/shadcn.png";
+
+  const profilePhoto = user.avatar || "https://github.com/shadcn.png";
+  // console.log(user)
 
   return (
     <div className="flex justify-center items-center p-4">
@@ -30,7 +29,8 @@ export default function AlumniCard({ user }: any) {
         <p className="text-xs sm:text-sm text-center text-neutral-800 dark:text-neutral-400 mt-3">
           <span className="font-medium">Company:</span>{" "}
           {/* {user?.profile?.present_company || "N/A"} */}
-          {user.company}
+          {/* {user.company} */}
+          {user.username}
         </p>
         <p className="text-xs sm:text-sm text-center text-neutral-800 dark:text-neutral-400 mt-1">
           <span className="font-medium">Role:</span>
@@ -44,14 +44,14 @@ export default function AlumniCard({ user }: any) {
             target="_blank"
             className="hover:text-blue-300"
           >
-            <IconBrandTwitter />
+            {/* <IconBrandTwitter /> */}
           </Link>
           <Link
             to={user?.profile?.socialLinks?.github || "#"}
             target="_blank"
             className="hover:text-slate-400"
           >
-            <IconBrandGithub />
+            {/* <IconBrandGithub /> */}
           </Link>
         </div>
 

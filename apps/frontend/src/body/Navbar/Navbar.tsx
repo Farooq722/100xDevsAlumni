@@ -79,16 +79,6 @@ export const Navbar = () => {
               >
                 100xSchool
               </Link>
-
-              <button
-                onClick={() => {
-                  logout();
-                  setUser(false);
-                  navigate("/");
-                }}
-              >
-                logout
-              </button>
             </div>
           )}
         </div>
@@ -105,17 +95,31 @@ export const Navbar = () => {
           </div>
         ) : (
           <div>
-            <Avatar alt="Travis Howard" src="https://github.com/shadcn.png" />
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <React.Fragment>
-                  <Button variant="contained" {...bindTrigger(popupState)}>
-                    Dashboard
+                  <Button {...bindTrigger(popupState)}>
+                    <Avatar
+                      alt="Travis Howard"
+                      src="https://github.com/shadcn.png"
+                      sx={{ width: 45, height: 45 }}
+                    />
                   </Button>
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>Profile</MenuItem>
+                    <MenuItem onClick={() => navigate("/profile")}>
+                      Profile
+                    </MenuItem>
                     <MenuItem onClick={popupState.close}>My account</MenuItem>
-                    <MenuItem onClick={popupState.close}>Logout</MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        logout();
+                        setUser(false);
+                        navigate("/");
+                      }}
+                      className=""
+                    >
+                      Logout
+                    </MenuItem>
                   </Menu>
                 </React.Fragment>
               )}
