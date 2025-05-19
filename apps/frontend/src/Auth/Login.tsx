@@ -25,7 +25,6 @@ export const Login = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     if (e) {
       e.preventDefault();
@@ -41,7 +40,7 @@ export const Login = () => {
             "Content-Type": "application/json",
           },
           withCredentials: true,
-        }
+        },
       );
       if (data.success) {
         setToken(data.token);

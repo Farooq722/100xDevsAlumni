@@ -1,9 +1,7 @@
 import { BackgroundGradient } from "@repo/ui/uicomponents/background-gradient";
 import { Link } from "react-router-dom";
 
-
 export default function AlumniCard({ user }: any) {
-
   const profilePhoto = user.avatar || "https://github.com/shadcn.png";
   // console.log(user)
 
