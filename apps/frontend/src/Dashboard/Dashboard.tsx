@@ -18,7 +18,7 @@ export default function Dashboard() {
       });
       // console.log(user)
       // console.log("res here : ", res.data.users);
-      setData(res.data.users)
+      setData(res.data.users);
     };
     setLoader(false);
     data();
