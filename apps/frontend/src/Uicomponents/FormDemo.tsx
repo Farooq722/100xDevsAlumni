@@ -11,7 +11,6 @@ export function FormDemo() {
   const { loader, setLoader } = useStore();
   const navigate = useNavigate();
 
-  console.log(loader);
   const submitHandler = async (e: any) => {
     e.prevenDefault();
     try {

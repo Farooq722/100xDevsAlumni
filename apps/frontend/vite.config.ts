@@ -10,12 +10,14 @@ export default defineConfig({
     chunkSizeWarningLimit: 500, // Show warning if any chunk exceeds this
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          // Split node_modules into a separate vendor chunk
-          if (id.includes("node_modules")) {
-            return "vendor";
-          }
-        },
+       manualChunks(id) {
+      if (id.includes("node_modules/@tabler/icons-react")) {
+        return "tabler-icons";
+      }
+      if (id.includes("node_modules")) {
+        return "vendor";
+      }
+    },
       },
     },
   },

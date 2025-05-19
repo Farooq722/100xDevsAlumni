@@ -4,6 +4,7 @@ import { Pricing } from "./Home/Price";
 import { Toaster } from "sonner";
 import { Loader } from "./Home/Loader";
 import Home from "./Home/Index";
+import ProfileHome from "./profile/ProfileHome";
 
 // Lazy-loaded components
 // const Home = React.lazy(() => import("./Home/Index"));
@@ -52,6 +53,7 @@ function App() {
             }
           />
           <Route path="/price" element={<Pricing />} />
+          <Route path="/profile" element={<ProfileHome />} />
         </Routes>
       </BrowserRouter>
     </div>
