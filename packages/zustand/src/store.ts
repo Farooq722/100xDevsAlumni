@@ -16,7 +16,6 @@ export const useStore = create<UserStore>()(
     (set) => ({
       user: false,
       loader: false,
-
       token: null,
 
       setUser: (user) => set({ user }),
