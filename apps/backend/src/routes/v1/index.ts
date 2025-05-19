@@ -81,19 +81,17 @@ router.post("/bio", alumniMiddleware, async (req, res) => {
     },
   });
 
-  res.json({ msg: "Bio updated" });
+  res.json({
+    msg: "Bio updated",
+    success: true,
+    error: false,
+  });
 });
 
 router.get("/all-data", alumniMiddleware, async (req, res) => {
   const allUsers = await prisma.user.findMany({
     where: {
       id: req.userId,
-    },
-    include: {
-      professionalData: true,
-      education: true,
-      projects: true,
-      socialMedia: true,
     },
   });
   const safeUsers = allUsers.map(({ password, ...rest }) => rest);

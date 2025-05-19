@@ -1,7 +1,6 @@
 import { Router } from "express";
 import prisma from "@repo/db/client";
 import jwt from "jsonwebtoken";
-import cookie from "cookie-parser";
 import dotnev from "dotenv";
 dotnev.config();
 import {
@@ -115,8 +114,9 @@ authRouter.post("/signin", signupRateLimit, async (req, res) => {
 
     const cookieOption = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
       sameSite: "none" as const,
+      maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days in milliseconds
     };
 
     res.cookie("token", token, cookieOption);
