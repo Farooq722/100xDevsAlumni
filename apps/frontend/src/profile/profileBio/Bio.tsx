@@ -7,7 +7,7 @@ const Bio = () => {
         rerum hic unde.
       </div>
       <div
-        className="bg-gradient-to-bl from-indigo-500 via-purple-500 to-blue-500 mt-2 p-2 text-md font-semibold rounded-lg md:w-[220px] mx-auto hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 
+        className="bg-gradient-to-bl from-indigo-500 via-purple-500 to-blue-500 mt-2 py-2 text-md font-semibold rounded-lg md:w-[220px] mx-auto hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 
         transition duration-300 shadow-md cursor-pointer"
       >
         <button className="text-white text-md ">Edit</button>
