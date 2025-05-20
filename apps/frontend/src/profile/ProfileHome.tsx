@@ -1,7 +1,8 @@
 import { Navbar } from "../body/Navbar/Navbar";
 import Profile from "./avatar/Profile";
 import Bio from "./profileBio/Bio";
-import TimelineData from "./timeline/timelineData";
+import SocialMedia from "./socialPresence/SocialMedia";
+import TimelineData from "./timeline/TimelineData";
 
 const ProfileHome = () => {
   return (
@@ -15,6 +16,7 @@ const ProfileHome = () => {
             <div className="w-[320px] flex flex-col gap-4">
               <Profile />
               <Bio />
+              <SocialMedia />
             </div>
 
             {/* Right column: takes remaining space */}

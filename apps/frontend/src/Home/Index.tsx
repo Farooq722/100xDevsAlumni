@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Body } from "../body/Body";
 import { Navbar } from "../body/Navbar/Navbar";
 import { RingLoader } from "react-spinners";
-import ProfileHome from "../profile/ProfileHome";
 
 const Home = () => {
   const [mainLoader, setMainLoader] = useState(true);
@@ -32,7 +31,6 @@ const Home = () => {
     <div>
       <Navbar />
       <Body />
-      <ProfileHome />
     </div>
   );
 };

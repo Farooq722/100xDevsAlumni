@@ -1,10 +1,10 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Pricing } from "./Home/Price";
+// import { Pricing } from "./Home/Price";
 import { Toaster } from "sonner";
 import { Loader } from "./Home/Loader";
 import Home from "./Home/Index";
-import ProfileHome from "./profile/ProfileHome";
+// import ProfileHome from "./profile/ProfileHome";
 
 // Lazy-loaded components
 // const Home = React.lazy(() => import("./Home/Index"));
@@ -12,6 +12,8 @@ const Login = React.lazy(() => import("./Auth/Login"));
 const Signup = React.lazy(() => import("./Auth/Signup"));
 const Dashboard = React.lazy(() => import("./Dashboard/Dashboard"));
 const AlumniForm = React.lazy(() => import("./Dashboard/form/AlumniForm"));
+const Pricing = React.lazy(() => import("./Home/Price"));
+const ProfileHome = React.lazy(() => import("./profile/ProfileHome"));
 
 function App() {
   return (
@@ -52,8 +54,22 @@ function App() {
               </Suspense>
             }
           />
-          <Route path="/price" element={<Pricing />} />
-          <Route path="/profile" element={<ProfileHome />} />
+          <Route
+            path="/price"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Pricing />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Suspense fallback={<Loader />}>
+                <ProfileHome />
+              </Suspense>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

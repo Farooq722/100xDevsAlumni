@@ -4,7 +4,7 @@ import { HoverBorderGradientDemo } from "../Uicomponents/HoverBorderGradientDemo
 import { motion } from "framer-motion";
 import { useStore } from "@repo/zustand";
 
-export const Pricing = () => {
+const Pricing = () => {
   const navigate = useNavigate();
   const { user } = useStore();
   console.log("user", user);
@@ -73,3 +73,5 @@ export const Pricing = () => {
     </div>
   );
 };
+
+export default Pricing;
