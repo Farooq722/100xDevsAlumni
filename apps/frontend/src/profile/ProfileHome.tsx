@@ -1,10 +1,39 @@
+import { useEffect, useState } from "react";
 import { Navbar } from "../body/Navbar/Navbar";
 import Profile from "./avatar/Profile";
 import Bio from "./profileBio/Bio";
+import Projects from "./projectsDirectory/Projects";
 import SocialMedia from "./socialPresence/SocialMedia";
 import TimelineData from "./timeline/TimelineData";
+import axios from "axios";
+import Github from "./Github";
+const backendURL = import.meta.env.VITE_BACKEND_URI;
+
+type ProjectData = {
+  id: string;
+  title: string;
+  description: string;
+  githubUrl: string;
+  liveUrl: string;
+};
 
 const ProfileHome = () => {
+  const [data, setData] = useState<ProjectData[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`${backendURL}/projects/get-pro`, {
+          withCredentials: true,
+        });
+        setData(res.data.allPro);
+      } catch (error) {
+        console.error("Failed to fetch projects", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -20,8 +49,16 @@ const ProfileHome = () => {
             </div>
 
             {/* Right column: takes remaining space */}
-            <div className="flex-1 ml-10 ">
+            <div className="flex-1 ml-10 space-y-4">
               <TimelineData />
+              <Projects data={data} />
+              <Github />
+
+              {/* <div className=" mt-4 grid grid-cols-3 gap-4 p-4">
+                <Box />
+                <Box />
+                <Box />
+              </div> */}
             </div>
           </div>
         </div>

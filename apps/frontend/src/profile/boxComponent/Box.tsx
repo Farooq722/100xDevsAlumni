@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { FaRegEdit } from "react-icons/fa";
+import { CiEdit } from "react-icons/ci";
 
-const TimelineData = () => {
+const Box = () => {
   const [bio, setBio] = useState("This is your bio.");
   const [isEditing, setIsEditing] = useState(false);
   const [tempBio, setTempBio] = useState(bio);
@@ -21,11 +21,11 @@ const TimelineData = () => {
   };
 
   return (
-    <div className="bg-gradient-to-bl from-emerald-200 via-cyan-200 to-blue-200 text-center border-2 rounded-lg border-pink-200 p-2">
+    <div className="bg-white p-2 rounded shadow text-center text-base">
       <div className="flex justify-end items-end">
         {!isEditing && (
-          <FaRegEdit
-            className="text-cyan-400 hover:text-cyan-700 cursor-pointer"
+          <CiEdit
+            className="text-violet-400 hover:text-violet-700 cursor-pointer"
             size={20}
             onClick={handleEdit}
             title="Edit Bio"
@@ -44,7 +44,7 @@ const TimelineData = () => {
           <div className="flex gap-2">
             <button
               className="px-6 py-1 bg-gradient-to-bl from-indigo-500 via-purple-500 to-blue-500 text-white rounded hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 
-        transition duration-300 shadow-md cursor-pointer"
+                   transition duration-300 shadow-md cursor-pointer"
               onClick={handleSave}
             >
               Save
@@ -62,13 +62,10 @@ const TimelineData = () => {
           <h3 className="text-3xl text-black font-semibold mb-1">
             Hi, 👋 {bio}
           </h3>
-          <p className="text-xl font-light text-gray-700 mb-4">
-            farooq@gmail.com
-          </p>
         </div>
       )}
     </div>
   );
 };
 
-export default TimelineData;
+export default Box;
