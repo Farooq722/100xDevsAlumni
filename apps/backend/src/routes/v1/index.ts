@@ -89,16 +89,23 @@ router.post("/bio", alumniMiddleware, async (req, res) => {
 });
 
 router.get("/all-data", alumniMiddleware, async (req, res) => {
-  const allUsers = await prisma.user.findMany({
+  const user = await prisma.user.findUnique({
     where: {
       id: req.userId,
     },
   });
-  const safeUsers = allUsers.map(({ password, ...rest }) => rest);
-  res.json({ users: safeUsers });
+
+  if (!user) {
+    res.status(404).json({ message: "User not found" });
+    return;
+  }
+
+  // Exclude password
+  const { password, ...safeUser } = user;
+  res.json(safeUser);
 });
 
-router.get("/alumnus/data", async (req, res) => {
+router.get("/alumnus/data", alumniMiddleware, async (req, res) => {
   try {
     const allAlumnus = await prisma.user.findMany({
       where: {

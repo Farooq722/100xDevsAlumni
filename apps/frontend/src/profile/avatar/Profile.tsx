@@ -1,6 +1,10 @@
-const Profile = () => {
-  const profile = "https://github.com/shadcn.png";
+import { useData } from "@repo/zustand";
 
+const Profile = () => {
+  const { selfData } = useData();
+  const profile = selfData?.avatar || "https://github.com/shadcn.png";
+
+  console.log(selfData);
   return (
     <div className="rounded-full overflow-hidden w-32 h-32 sm:w-50 sm:h-50 md:ml-2 md:w-[300px] md:h-[300px] border-2 border-gray-900 dark:border-gray-900">
       <img

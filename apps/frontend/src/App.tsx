@@ -1,13 +1,10 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { Pricing } from "./Home/Price";
 import { Toaster } from "sonner";
 import { Loader } from "./Home/Loader";
 import Home from "./Home/Index";
-// import ProfileHome from "./profile/ProfileHome";
 
 // Lazy-loaded components
-// const Home = React.lazy(() => import("./Home/Index"));
 const Login = React.lazy(() => import("./Auth/Login"));
 const Signup = React.lazy(() => import("./Auth/Signup"));
 const Dashboard = React.lazy(() => import("./Dashboard/Dashboard"));
