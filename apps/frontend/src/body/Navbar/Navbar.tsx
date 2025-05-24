@@ -5,13 +5,15 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import { useStore } from "@repo/zustand";
 import { motion } from "motion/react";
 import { Button } from "@mui/material";
+import { useData, useStore } from "@repo/zustand";
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const { user, setUser, logout } = useStore();
+  const { selfData } = useData();
+  const profile = selfData?.avatar || "https://github.com/shadcn.png";
 
   return (
     <motion.div
@@ -100,8 +102,8 @@ export const Navbar = () => {
                 <React.Fragment>
                   <Button {...bindTrigger(popupState)}>
                     <Avatar
-                      alt="Travis Howard"
-                      src="https://github.com/shadcn.png"
+                      alt={selfData?.name}
+                      src={profile}
                       sx={{ width: 45, height: 45 }}
                     />
                   </Button>
@@ -109,7 +111,7 @@ export const Navbar = () => {
                     <MenuItem onClick={() => navigate("/profile")}>
                       Profile
                     </MenuItem>
-                    <MenuItem onClick={popupState.close}>My account</MenuItem>
+                    <MenuItem onClick={popupState.close}>Setting</MenuItem>
                     <MenuItem
                       onClick={() => {
                         logout();

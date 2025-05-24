@@ -15,7 +15,7 @@ const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export const Login = () => {
   const navigate = useNavigate();
-  const { setUser, loader, setLoader, setToken } = useStore();
+  const { setUser, loader, setLoader } = useStore();
   const [input, setInput] = useState({
     username: "",
     password: "",
@@ -43,7 +43,6 @@ export const Login = () => {
         },
       );
       if (data.success) {
-        setToken(data.token);
         setUser(true);
         navigate("/dashboard");
         toast.success("Login Successfully");

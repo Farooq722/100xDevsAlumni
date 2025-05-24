@@ -69,3 +69,22 @@ const Box = () => {
 };
 
 export default Box;
+
+/**
+ *
+ 
+<div className="inline-block mt-6 text-center sm:w-50 md:w-[320px]">
+      <div className="border border-red-300 text-[14px] sm:text-[16px] md:text-[18px] leading-relaxed text-gray-800 dark:text-gray-200 max-w-3xl mx-auto py-2 px-4 text-left antialiased break-words">
+        <p className="w-full">
+          Hello there! 👋I'm B Farooq, a driven Full Stack developer hailing
+          from the vibrant tech landscape of India. Currently, I'm pursuing my
+          undergraduate from KLU
+        </p>
+      </div>
+
+      <div className="bg-gradient-to-bl from-indigo-500 via-purple-500 to-blue-500 mt-2 py-2 font-semibold rounded-lg md:w-[220px] mx-auto hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 transition duration-300 shadow-md cursor-pointer">
+        <button className="text-white text-md">Edit</button>
+      </div>
+    </div>
+  );
+ */

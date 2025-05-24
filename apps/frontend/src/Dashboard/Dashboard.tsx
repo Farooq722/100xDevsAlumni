@@ -1,4 +1,4 @@
-import { useStore } from "@repo/zustand";
+import { useData, useStore } from "@repo/zustand";
 import { Navbar } from "../body/Navbar/Navbar";
 import AlumniCard from "./card/AlumniCard";
 import { motion } from "motion/react";
@@ -9,17 +9,21 @@ const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export default function Dashboard() {
   const { user, setLoader } = useStore();
-  const [data, setData] = useState([]);
+  const { setSelfData, allAlumniData, setAllAlumniData } = useData();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoader(true);
       try {
-        const res = await axios.get(`${backendURL}/all-data`, {
-          withCredentials: true,
-        });
-        setData(res.data.users || []);
+        const [alumniRes, selfRes] = await Promise.all([
+          axios.get(`${backendURL}/alumnus/data`, { withCredentials: true }),
+          axios.get(`${backendURL}/all-data`, { withCredentials: true }),
+        ]);
+        // console.log("selfdata ", selfRes)
+        // console.log("alldata ", alumniRes.data.allAlumnus)
+        setAllAlumniData(alumniRes.data.allAlumnus || []);
+        setSelfData(selfRes.data);
       } catch (error) {
         console.error("Error fetching users:", error);
       } finally {
@@ -29,107 +33,7 @@ export default function Dashboard() {
     };
 
     fetchData();
-  }, [setLoader]);
-
-  // console.log("state data: ", data);
-  // const users = [
-  //   {
-  //     name: "farooq",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq1",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq2",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq3",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq1",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq2",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq3",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq1",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq2",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq3",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq1",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq2",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  //   {
-  //     name: "farooq3",
-  //     bio: "aklsjhgsghsa",
-  //     company: "google",
-  //     role: "alumni",
-  //   },
-  // ];
+  }, []);
 
   return (
     <div className="bg-slate-200 min-h-screen">
@@ -139,7 +43,7 @@ export default function Dashboard() {
           <Loader />
         ) : (
           <div className="grid grid-cols-1 gap-2 sm:gap-4 lg:gap-8 xl:gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-            {data.map((user, index) => (
+            {allAlumniData.map((user, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0.2, y: 40 }}
