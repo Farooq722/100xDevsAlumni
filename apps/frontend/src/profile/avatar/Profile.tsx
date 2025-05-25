@@ -1,7 +1,7 @@
-import { useData } from "@repo/zustand";
+import { useUserData } from "@repo/zustand/user";
 
 const Profile = () => {
-  const { selfData } = useData();
+  const { selfData } = useUserData();
   const profile = selfData?.avatar || "https://github.com/shadcn.png";
 
   console.log(selfData);

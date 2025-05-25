@@ -2,14 +2,17 @@ import { BackgroundGradient } from "@repo/ui/uicomponents/background-gradient";
 import { Link } from "react-router-dom";
 
 export default function AlumniCard({ user }: any) {
-  const profilePhoto = user.avatar || "https://github.com/shadcn.png";
+  const profilePhoto = user.avatar;
   // console.log(user)
 
   return (
     <div className="flex justify-center items-center p-4">
       <BackgroundGradient className="rounded-2xl w-64 h-[370px] sm:w-72 sm:h-[430px] overflow-hidden dark:bg-zinc-900 shadow-md">
         <img
-          src={profilePhoto}
+          src={profilePhoto || "https://github.com/shadcn.png"}
+          onError={(e) => {
+            e.currentTarget.src = "https://github.com/shadcn.png";
+          }}
           alt="Profile Pic"
           className="object-cover w-24 h-24 sm:w-28 sm:h-28 rounded-full mx-auto border-4 border-gray-200 dark:border-zinc-700 mt-2"
         />

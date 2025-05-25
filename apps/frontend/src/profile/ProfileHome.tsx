@@ -7,7 +7,6 @@ import SocialMedia from "./socialPresence/SocialMedia";
 import TimelineData from "./timeline/TimelineData";
 import axios from "axios";
 import Github from "./Github";
-import { useData } from "@repo/zustand";
 const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 type ProjectData = {
@@ -21,19 +20,19 @@ type ProjectData = {
 const ProfileHome = () => {
   const [data, setData] = useState<ProjectData[]>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`${backendURL}/projects/get-pro`, {
-          withCredentials: true,
-        });
-        setData(res.data.allPro);
-      } catch (error) {
-        console.error("Failed to fetch projects", error);
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await axios.get(`${backendURL}/projects/get-pro`, {
+  //         withCredentials: true,
+  //       });
+  //       setData(res.data.allPro);
+  //     } catch (error) {
+  //       console.error("Failed to fetch projects", error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
     <div>
@@ -49,7 +48,7 @@ const ProfileHome = () => {
 
             <div className="flex-1 ml-10 space-y-4">
               <TimelineData />
-              <Projects data={data} />
+              {/* <Projects data={data} /> */}
               <Github />
 
               {/* <div className=" mt-4 grid grid-cols-3 gap-4 p-4">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CoverDemo } from "./cover";
 import Avatar from "@mui/material/Avatar";
@@ -7,13 +7,34 @@ import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { motion } from "motion/react";
 import { Button } from "@mui/material";
-import { useData, useStore } from "@repo/zustand";
+import { useStore } from "@repo/zustand/store";
+import { useUserData } from "@repo/zustand/user";
+import axios from "axios";
+const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const { user, setUser, logout } = useStore();
-  const { selfData } = useData();
+  const { user, setUser, logout, setLoader } = useStore();
+  const { selfData, setSelfData, clearData } = useUserData();
   const profile = selfData?.avatar || "https://github.com/shadcn.png";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoader(true);
+      try {
+        const res = await axios.get(`${backendURL}/all-data`, {
+          withCredentials: true,
+        });
+        setSelfData(res.data);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      } finally {
+        setLoader(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <motion.div
@@ -25,7 +46,7 @@ export const Navbar = () => {
     >
       <motion.div
         className="flex justify-between items-center m-2 mx-8"
-        initial={{ y: -50, opacity: 0 }}
+        initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true }}
@@ -115,6 +136,7 @@ export const Navbar = () => {
                     <MenuItem
                       onClick={() => {
                         logout();
+                        clearData();
                         setUser(false);
                         navigate("/");
                       }}

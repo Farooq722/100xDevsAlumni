@@ -1,4 +1,4 @@
-import { useData, useStore } from "@repo/zustand";
+import { useData, useStore } from "@repo/zustand/store";
 import { Navbar } from "../body/Navbar/Navbar";
 import AlumniCard from "./card/AlumniCard";
 import { motion } from "motion/react";
@@ -9,21 +9,17 @@ const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export default function Dashboard() {
   const { user, setLoader } = useStore();
-  const { setSelfData, allAlumniData, setAllAlumniData } = useData();
+  const { allAlumniData, setAllAlumniData } = useData();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoader(true);
       try {
-        const [alumniRes, selfRes] = await Promise.all([
-          axios.get(`${backendURL}/alumnus/data`, { withCredentials: true }),
-          axios.get(`${backendURL}/all-data`, { withCredentials: true }),
-        ]);
-        // console.log("selfdata ", selfRes)
-        // console.log("alldata ", alumniRes.data.allAlumnus)
+        const alumniRes = await axios.get(`${backendURL}/alumnus/data`, {
+          withCredentials: true,
+        });
         setAllAlumniData(alumniRes.data.allAlumnus || []);
-        setSelfData(selfRes.data);
       } catch (error) {
         console.error("Error fetching users:", error);
       } finally {
