@@ -5,7 +5,7 @@ import { cn } from "../lib/utils";
 import { motion } from "motion/react";
 // import { RingLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "@repo/zustand";
+import { useStore } from "@repo/zustand/store";
 
 export function FormDemo() {
   const { loader, setLoader } = useStore();

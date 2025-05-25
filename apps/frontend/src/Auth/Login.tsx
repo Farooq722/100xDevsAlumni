@@ -10,7 +10,7 @@ import { cn } from "../lib/utils";
 import { Button } from "@repo/ui/uicomponents/navButton";
 import { toast } from "sonner";
 import axios, { AxiosError } from "axios";
-import { useStore } from "@repo/zustand";
+import { useStore } from "@repo/zustand/store";
 const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export const Login = () => {

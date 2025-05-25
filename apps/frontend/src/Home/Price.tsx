@@ -2,12 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { Navbar } from "../body/Navbar/Navbar";
 import { HoverBorderGradientDemo } from "../Uicomponents/HoverBorderGradientDemo";
 import { motion } from "framer-motion";
-import { useStore } from "@repo/zustand";
 
 const Pricing = () => {
   const navigate = useNavigate();
-  const { user } = useStore();
-  console.log("user", user);
 
   return (
     <div className="bg-gradient-to-bl from-teal-100 to-pink-100 min-h-screen">
@@ -47,7 +44,7 @@ const Pricing = () => {
             <span className="text-3xl font-semibold">$1</span> / Month
           </p>
           <button className="mt-10 w-full py-2 bg-gradient-to-bl from-pink-400 to-teal-400 hover:from-teal-300 hover:to-pink-300 transition-all duration-300 rounded-lg font-medium text-gray-800 shadow-md hover:shadow-lg">
-            Donate
+            Buy
           </button>
         </div>
 
