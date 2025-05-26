@@ -24,7 +24,6 @@ export default function AlumniCard({ user }: any) {
         <p className="text-xs sm:text-sm text-center text-neutral-700 dark:text-neutral-400 mt-2 px-2 line-clamp-5">
           {/* {user?.profile?.bio || "No bio available"} */}
           {user.bio}
-          Bio
         </p>
 
         <p className="text-xs sm:text-sm text-center text-neutral-800 dark:text-neutral-400 mt-3">

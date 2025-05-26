@@ -25,7 +25,7 @@ model User {
   password         String
   avatar           String?
   avatarId         String?
-  bio              String?           @db.Text
+  bio              String?           @db.Text @default("Write Your Bio")
   role             Role
   education        Education?
   professionalData ProfessionalData?

@@ -36,9 +36,18 @@ router.post("/avatar", alumniMiddleware, singleUpload, async (req, res) => {
         avatarId: imageRes.fileId,
       },
     });
-    res.json({ msg: "Avatar uploaded" });
+    res.json({
+      msg: "Avatar uploaded",
+      avatar: imageRes.url,
+      avatarId: imageRes.fileId,
+      success: true,
+      error: false,
+    });
   } catch (error) {
-    res.status(400).json({ msg: "Internal server error" });
+    res
+      .status(400)
+      .json({ msg: "Internal server error", success: false, error: true });
+    console.log(error);
     return;
   }
 });
@@ -66,32 +75,39 @@ router.delete("/avatar/delete", alumniMiddleware, async (req, res) => {
   res.json({ msg: "avatar deleted from DB" });
 });
 
-router.post("/bio", alumniMiddleware, async (req, res) => {
+router.put("/bio", alumniMiddleware, async (req, res) => {
   const parseData = bioSchema.safeParse(req.body);
   if (!parseData.success) {
     res.status(403).json({ msg: "Validation failed" });
     return;
   }
-  await prisma.user.update({
-    where: {
-      id: req.userId,
-    },
-    data: {
-      bio: parseData.data.bio,
-    },
-  });
-
-  res.json({
-    msg: "Bio updated",
-    success: true,
-    error: false,
-  });
+  try {
+    await prisma.user.update({
+      where: { id: req.userId },
+      data: { bio: parseData.data.bio },
+    });
+    res.json({
+      msg: "Bio updated",
+      success: true,
+      error: false,
+    });
+  } catch (error) {
+    console.error("Update bio error:", error);
+    res.status(500).json({
+      msg: "Could not update bio",
+      success: false,
+      error: true,
+    });
+  }
 });
 
 router.get("/all-data", alumniMiddleware, async (req, res) => {
   const user = await prisma.user.findUnique({
     where: {
       id: req.userId,
+    },
+    include: {
+      socialMedia: true,
     },
   });
 
@@ -179,4 +195,4 @@ router.use("/auth", authRouter);
 router.use("/education", alumniMiddleware, eduRouter);
 router.use("/professionalData", alumniMiddleware, proffRouter);
 router.use("/projects", alumniMiddleware, projectRouter);
-router.use("/accouts", alumniMiddleware, mediaRouter);
+router.use("/accounts", alumniMiddleware, mediaRouter);

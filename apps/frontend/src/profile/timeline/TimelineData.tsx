@@ -1,72 +1,18 @@
-import { useState } from "react";
-import { FaRegEdit } from "react-icons/fa";
+import { useUserData } from "@repo/zustand/user";
 
 const TimelineData = () => {
-  const [bio, setBio] = useState("This is your bio.");
-  const [isEditing, setIsEditing] = useState(false);
-  const [tempBio, setTempBio] = useState(bio);
-
-  const handleEdit = () => {
-    setTempBio(bio);
-    setIsEditing(true);
-  };
-
-  const handleSave = () => {
-    setBio(tempBio);
-    setIsEditing(false);
-  };
-
-  const handleCancel = () => {
-    setIsEditing(false);
-  };
+  const { selfData } = useUserData();
 
   return (
     <div className="bg-gradient-to-bl from-emerald-200 via-cyan-200 to-blue-200 text-center border-2 rounded-lg border-pink-200 p-2">
-      <div className="flex justify-end items-end">
-        {!isEditing && (
-          <FaRegEdit
-            className="text-cyan-400 hover:text-cyan-700 cursor-pointer"
-            size={20}
-            onClick={handleEdit}
-            title="Edit Bio"
-          />
-        )}
+      <div className="text-center">
+        <h3 className="text-3xl text-black font-mono font-semibold mb-3">
+          Hi, 👋 {selfData?.name}
+        </h3>
+        <p className="text-xl font-light font-mono text-gray-500 mb-2">
+          <li>{selfData?.username}</li>
+        </p>
       </div>
-
-      {isEditing ? (
-        <div className="text-left">
-          <textarea
-            className="w-full p-2 border rounded mb-2 bg-gradient-to-bl from-emerald-100 via-cyan-100 to-blue-100 text-black"
-            rows={4}
-            value={tempBio}
-            onChange={(e) => setTempBio(e.target.value)}
-          />
-          <div className="flex gap-2">
-            <button
-              className="px-6 py-1 bg-gradient-to-bl from-indigo-500 via-purple-500 to-blue-500 text-white rounded hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 
-        transition duration-300 shadow-md cursor-pointer"
-              onClick={handleSave}
-            >
-              Save
-            </button>
-            <button
-              className="px-4 py-1 bg-gray-400 rounded hover:bg-gray-300"
-              onClick={handleCancel}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="text-center">
-          <h3 className="text-3xl text-black font-semibold mb-1">
-            Hi, 👋 {bio}
-          </h3>
-          <p className="text-xl font-light text-gray-700 mb-4">
-            farooq@gmail.com
-          </p>
-        </div>
-      )}
     </div>
   );
 };

@@ -2,7 +2,10 @@ import { useState } from "react";
 import { CiEdit } from "react-icons/ci";
 
 const Box = () => {
-  const [bio, setBio] = useState("This is your bio.");
+  const [bio, setBio] =
+    useState(` Hello there! 👋I'm B Farooq, a driven Full Stack developer hailing
+          from the vibrant tech landscape of India. Currently, I'm pursuing my
+          undergraduate from KLU`);
   const [isEditing, setIsEditing] = useState(false);
   const [tempBio, setTempBio] = useState(bio);
 
@@ -19,6 +22,8 @@ const Box = () => {
   const handleCancel = () => {
     setIsEditing(false);
   };
+  // console.log("self data ", selfData?.bio)
+  // console.log("setr self data ", setSelfData)
 
   return (
     <div className="bg-white p-2 rounded shadow text-center text-base">

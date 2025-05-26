@@ -11,6 +11,9 @@ const Dashboard = React.lazy(() => import("./Dashboard/Dashboard"));
 const AlumniForm = React.lazy(() => import("./Dashboard/form/AlumniForm"));
 const Pricing = React.lazy(() => import("./Home/Price"));
 const ProfileHome = React.lazy(() => import("./profile/ProfileHome"));
+const UpdateSetting = React.lazy(
+  () => import("./profile/socialPresence/UpdateSetting"),
+);
 
 function App() {
   return (
@@ -64,6 +67,15 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <ProfileHome />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/setting"
+            element={
+              <Suspense fallback={<Loader />}>
+                <UpdateSetting />
               </Suspense>
             }
           />
