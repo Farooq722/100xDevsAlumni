@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Navbar } from "../body/Navbar/Navbar";
 import Profile from "./avatar/Profile";
 import Bio from "./profileBio/Bio";
-import Projects from "./projectsDirectory/Projects";
 import SocialMedia from "./socialPresence/SocialMedia";
 import TimelineData from "./timeline/TimelineData";
-import axios from "axios";
 import Github from "./Github";
-const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 type ProjectData = {
   id: string;

@@ -132,7 +132,13 @@ export const Navbar = () => {
                     <MenuItem onClick={() => navigate("/profile")}>
                       Profile
                     </MenuItem>
-                    <MenuItem onClick={popupState.close}>Setting</MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        navigate("/setting");
+                      }}
+                    >
+                      Setting
+                    </MenuItem>
                     <MenuItem
                       onClick={() => {
                         logout();

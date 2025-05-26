@@ -6,6 +6,7 @@ export const mediaRouter = Router();
 
 mediaRouter.post("/", async (req, res) => {
   const parseData = socialMediaSchema.safeParse(req.body);
+
   if (!parseData.success) {
     res.status(403).json({ msg: "Validations failed" });
     return;
@@ -27,14 +28,10 @@ mediaRouter.post("/", async (req, res) => {
     });
     res.json({ mediaRes });
   } catch (error) {
-    res.status(400).json({ msg: "Internal server error" });
+    res.status(400).json({ msg: "Internal server errorrrr" });
     return;
   }
 });
-
-// mediaRouter.get("/", async (req, res) => {
-
-// })
 
 mediaRouter.put("/update", async (req, res) => {
   const accounts = [
@@ -48,7 +45,6 @@ mediaRouter.put("/update", async (req, res) => {
   const updateData = Object.fromEntries(
     Object.entries(req.body).filter(([key]) => accounts.includes(key)),
   );
-
   try {
     await prisma.socialMedia.update({
       where: {
@@ -56,9 +52,11 @@ mediaRouter.put("/update", async (req, res) => {
       },
       data: updateData,
     });
-    res.json({ msg: `account updated` });
+    res.json({ msg: `account updated`, success: true, error: false });
   } catch (error) {
-    res.status(400).json({ msg: "Internal server error" });
+    res
+      .status(400)
+      .json({ msg: "Internal server error", success: false, error: true });
     return;
   }
 });
