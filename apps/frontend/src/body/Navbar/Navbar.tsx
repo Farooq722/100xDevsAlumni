@@ -10,6 +10,7 @@ import { Button } from "@mui/material";
 import { useStore } from "@repo/zustand/store";
 import { useUserData } from "@repo/zustand/user";
 import axios from "axios";
+import { toast } from "sonner";
 const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export const Navbar = () => {
@@ -18,11 +19,13 @@ export const Navbar = () => {
   const { selfData, setSelfData, clearData } = useUserData();
   const profile = selfData?.avatar || "https://github.com/shadcn.png";
 
+  console.log(selfData);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoader(true);
       try {
-        const res = await axios.get(`${backendURL}/all-data`, {
+        const res = await axios.get(`${backendURL}/user-data`, {
           withCredentials: true,
         });
         setSelfData(res.data);
@@ -85,9 +88,21 @@ export const Navbar = () => {
               <Link to={"/dashboard"} className="hover:text-teal-500 ">
                 Dashboard
               </Link>
-              <Link to={"/alumniform"} className="hover:text-teal-500 ">
-                Form
-              </Link>
+              {selfData?.role === "Alumni" ? (
+                <Link to={"/alumniform"} className="hover:text-teal-500">
+                  Form
+                </Link>
+              ) : (
+                <Link
+                  to={"#"}
+                  className="hover:text-slate-500 text-gray-400 cursor-not-allowed"
+                  onClick={() => {
+                    toast.warning("User don't have access to this");
+                  }}
+                >
+                  Form
+                </Link>
+              )}
               <Link
                 to={"https://harkirat.classx.co.in"}
                 target="_blank"
@@ -117,10 +132,19 @@ export const Navbar = () => {
             </div>
           </div>
         ) : (
-          <div>
+          <div className="flex items-center gap-2 max-w-[250px] ml-4 overflow-hidden">
+            <div className="min-w-0">
+              <h2
+                className="text-black text-sm md:text-base lg:text-lg truncate whitespace-nowrap overflow-hidden"
+                title={`Hey, ${selfData?.name}`}
+              >
+                Hey, {selfData?.name}
+              </h2>
+            </div>
+
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
-                <React.Fragment>
+                <>
                   <Button {...bindTrigger(popupState)}>
                     <Avatar
                       alt={selfData?.name}
@@ -132,11 +156,7 @@ export const Navbar = () => {
                     <MenuItem onClick={() => navigate("/profile")}>
                       Profile
                     </MenuItem>
-                    <MenuItem
-                      onClick={() => {
-                        navigate("/setting");
-                      }}
-                    >
+                    <MenuItem onClick={() => navigate("/setting")}>
                       Setting
                     </MenuItem>
                     <MenuItem
@@ -146,12 +166,11 @@ export const Navbar = () => {
                         setUser(false);
                         navigate("/");
                       }}
-                      className=""
                     >
                       Logout
                     </MenuItem>
                   </Menu>
-                </React.Fragment>
+                </>
               )}
             </PopupState>
           </div>
