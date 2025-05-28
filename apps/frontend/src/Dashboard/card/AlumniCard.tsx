@@ -1,9 +1,25 @@
 import { BackgroundGradient } from "@repo/ui/uicomponents/background-gradient";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
+import { CiLinkedin } from "react-icons/ci";
 
-export default function AlumniCard({ user }: any) {
+interface User {
+  avatar?: string;
+  name?: string;
+  bio?: string;
+  company?: string;
+  role?: string;
+  socialMedia?: {
+    twitter?: string;
+    github?: string;
+    linkedin?: string;
+  } | null;
+}
+
+export default function AlumniCard({ user }: { user: User }) {
   const profilePhoto = user.avatar;
-  // console.log(user)
+  const navigate = useNavigate();
 
   return (
     <div className="flex justify-center items-center p-4">
@@ -22,41 +38,53 @@ export default function AlumniCard({ user }: any) {
         </p>
 
         <p className="text-xs sm:text-sm text-center text-neutral-700 dark:text-neutral-400 mt-2 px-2 line-clamp-5">
-          {/* {user?.profile?.bio || "No bio available"} */}
-          {user.bio}
+          {user.bio || "No bio available"}
+          {/* {user.bio} */}
         </p>
 
         <p className="text-xs sm:text-sm text-center text-neutral-800 dark:text-neutral-400 mt-3">
           <span className="font-medium">Company:</span>{" "}
           {/* {user?.profile?.present_company || "N/A"} */}
-          {/* {user.company} */}
-          {user.username}
+          {user.company}
+          {/* {user.username} */}
         </p>
         <p className="text-xs sm:text-sm text-center text-neutral-800 dark:text-neutral-400 mt-1">
-          <span className="font-medium">Role:</span>
-          {/* {user?.role || "N/A"} */}
-          {user.role}
+          <span className="font-medium">Role: </span>
+          {user?.role || "N/A"}
+          {/* {user.role} */}
         </p>
 
         <div className="flex justify-center items-center gap-3 mt-3">
           <Link
-            to={user?.profile?.socialLinks?.twitter || "#"}
+            to={user.socialMedia?.twitter ?? "#"}
             target="_blank"
             className="hover:text-blue-300"
           >
-            {/* <IconBrandTwitter /> */}
+            <FaXTwitter size={20} />
           </Link>
           <Link
-            to={user?.profile?.socialLinks?.github || "#"}
+            to={user.socialMedia?.github ?? "#"}
             target="_blank"
             className="hover:text-slate-400"
           >
-            {/* <IconBrandGithub /> */}
+            <FaGithub size={20} />
+          </Link>
+          <Link
+            to={user.socialMedia?.linkedin ?? "#"}
+            target="_blank"
+            className="hover:text-slate-400"
+          >
+            <CiLinkedin size={25} />
           </Link>
         </div>
 
-        <div className="flex justify-center items-center mt-4">
-          <button className="rounded-lg py-2 px-4 bg-black text-white dark:bg-zinc-800 text-xs sm:text-sm font-semibold transition hover:bg-gray-900">
+        <div className="flex justify-center items-center mt-5">
+          <button
+            className="rounded-lg py-2 px-4 bg-black text-white dark:bg-zinc-800 text-xs sm:text-sm font-semibold transition hover:bg-gray-900"
+            onClick={() => {
+              navigate("/alumnidetails");
+            }}
+          >
             View Details
           </button>
         </div>

@@ -8,7 +8,7 @@ import { Loader } from "../Home/Loader";
 const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export default function Dashboard() {
-  const { user, setLoader } = useStore();
+  const { setLoader } = useStore();
   const { allAlumniData, setAllAlumniData } = useData();
   const [loading, setLoading] = useState(true);
 

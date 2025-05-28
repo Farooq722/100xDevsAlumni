@@ -23,6 +23,9 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+
+      // 👇 This disables the "no-explicit-any" warning
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 )
