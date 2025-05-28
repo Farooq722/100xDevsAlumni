@@ -54,6 +54,7 @@ export function HoverBorderGradient({
   //     return () => clearInterval(interval);
   //   }
   // }, [hovered]);
+
   useEffect(() => {
     if (!hovered) {
       const interval = setInterval(() => {

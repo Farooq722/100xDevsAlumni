@@ -3,6 +3,7 @@ import * as React from "react";
 import { useMotionTemplate, useMotionValue, motion } from "motion/react";
 import { cn } from "../lib/utils";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
@@ -11,10 +12,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const radius = 100; // change this to increase the rdaius of the hover effect
     const [visible, setVisible] = React.useState(false);
 
+    // eslint-disable-next-line prefer-const
     let mouseX = useMotionValue(0);
+    // eslint-disable-next-line prefer-const
     let mouseY = useMotionValue(0);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function handleMouseMove({ currentTarget, clientX, clientY }: any) {
+      // eslint-disable-next-line prefer-const
       let { left, top } = currentTarget.getBoundingClientRect();
 
       mouseX.set(clientX - left);

@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-export function Button({ path }: any) {
+interface PathFromFe {
+  path: string;
+}
+
+export function Button({ path }: PathFromFe) {
   const navigate = useNavigate();
 
   return (
