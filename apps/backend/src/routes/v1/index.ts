@@ -11,6 +11,7 @@ import { mediaRouter } from "./mediaRoute";
 import { singleUpload } from "../../utils/multer";
 import { imagekit } from "../../utils/imageKit";
 import { authRouter } from "./authRoute";
+import { roleMiddleware } from "../../middleware/roleMiddleware";
 
 export const router = Router();
 
@@ -101,7 +102,27 @@ router.put("/bio", alumniMiddleware, async (req, res) => {
   }
 });
 
-router.get("/all-data", alumniMiddleware, async (req, res) => {
+// router.get("/all-data", alumniMiddleware, async (req, res) => {
+//   const user = await prisma.user.findUnique({
+//     where: {
+//       id: req.userId,
+//     },
+//     include: {
+//       socialMedia: true,
+//     },
+//   });
+
+//   if (!user) {
+//     res.status(404).json({ message: "User not found" });
+//     return;
+//   }
+
+//   // Exclude password
+//   const { password, ...safeUser } = user;
+//   res.json(safeUser);
+// });
+
+router.get("/user-data", roleMiddleware, async (req, res) => {
   const user = await prisma.user.findUnique({
     where: {
       id: req.userId,
@@ -116,7 +137,6 @@ router.get("/all-data", alumniMiddleware, async (req, res) => {
     return;
   }
 
-  // Exclude password
   const { password, ...safeUser } = user;
   res.json(safeUser);
 });

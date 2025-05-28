@@ -14,7 +14,7 @@ import { verifyToken } from "../../utils/hashToken";
 import { sendEmail } from "../../utils/resend";
 import { emailTemplate } from "../../utils/emailTemplate";
 import { otpEmail } from "../../utils/otpTemplate";
-import { userMiddleware } from "../../middleware/userMiddleware";
+import { roleMiddleware } from "../../middleware/roleMiddleware";
 import {
   otpRateLimit,
   resetPasswordRateLimit,
@@ -281,7 +281,7 @@ authRouter.post("/verify-forget-password", otpRateLimit, async (req, res) => {
   }
 });
 
-authRouter.delete("/delete", userMiddleware, async (req, res) => {
+authRouter.delete("/delete", roleMiddleware, async (req, res) => {
   try {
     await prisma.user.delete({
       where: {
