@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import { Loader } from "./Home/Loader";
 import Home from "./Home/Index";
+import ForgetPassword from "./Auth/ForgetPassoword";
 
 // Lazy-loaded components
 const Login = React.lazy(() => import("./Auth/Login"));
@@ -89,6 +90,8 @@ function App() {
               </Suspense>
             }
           />
+
+          <Route path="/forget-password" element={<ForgetPassword />} />
         </Routes>
       </BrowserRouter>
     </div>

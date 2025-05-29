@@ -116,7 +116,7 @@ export const Login = () => {
             </div>
             <div>
               <Link
-                to="#"
+                to={"/forget-password"}
                 className="text-black text-sm font-medium dark:text-neutral-300 hover:text-teal-600"
               >
                 Forgot Password?
