@@ -192,7 +192,12 @@ authRouter.post(
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000);
-    const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
+    const istDate = new Date(Date.now() + 5 * 60 * 1000);
+
+    // Convert to IST
+    const expiresAt = new Date(
+      istDate.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
+    );
 
     try {
       await prisma.auth.update({
@@ -211,9 +216,11 @@ authRouter.post(
         html: otpEmail(otp, user.name),
       });
 
-      res.json({ msg: "OTP sent to your mailID" });
+      res.json({ msg: "OTP sent to your mailID", success: true, error: false });
     } catch (error) {
-      res.status(400).json({ msg: "Internal server error" });
+      res
+        .status(400)
+        .json({ msg: "Internal server error", success: false, error: true });
       return;
     }
   },
@@ -274,9 +281,15 @@ authRouter.post("/verify-forget-password", otpRateLimit, async (req, res) => {
         otpExpiresAt: null,
       },
     });
-    res.json({ msg: "Password updated successfully" });
+    res.json({
+      msg: "Password updated successfully",
+      success: true,
+      error: false,
+    });
   } catch (error) {
-    res.status(400).json({ msg: "Internal server error" });
+    res
+      .status(400)
+      .json({ msg: "Internal server error", success: false, error: true });
     return;
   }
 });
