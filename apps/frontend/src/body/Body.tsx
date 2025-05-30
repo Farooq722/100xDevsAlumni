@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FormDemo } from "../Uicomponents/FormDemo";
 import { HeroHighlightDemo } from "../Uicomponents/HeroHighlightDemo";
 import { InfiniteMovingCardsDemo } from "../Uicomponents/InfiniteMovingCardsDemo";
@@ -7,6 +8,10 @@ import { Page2 } from "./Page2";
 import TypewriterEffectSmoothDemo from "../Uicomponents/TypewriterEffectSmoothDemo";
 
 export const Body = () => {
+  useEffect(() => {
+    setTimeout(() => {}, 2000);
+  }, []);
+
   return (
     <div className="">
       <HeroHighlightDemo />

@@ -14,7 +14,7 @@ const Profile = () => {
   const profile = selfData?.avatar || "https://github.com/shadcn.png";
 
   const handleImageClick = () => {
-    avatarRef.current?.click(); // this will make pop up to select avatar
+    avatarRef.current?.click(); //this will make popup when i click on it
   };
 
   const FileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,9 +27,7 @@ const Profile = () => {
     try {
       setLoader(true);
       const { data } = await axios.post(`${backendURL}/avatar`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });
       setLoader(false);
@@ -44,7 +42,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="rounded-full overflow-hidden w-32 h-32 sm:w-50 sm:h-50 md:ml-2 md:w-[300px] md:h-[300px] border-2 border-gray-900 dark:border-gray-900">
+    <div className="rounded-full overflow-hidden w-32 h-32 sm:w-40 sm:h-40 md:w-60 md:h-60 border-2 border-gray-900 dark:border-gray-900 mx-auto">
       {loader ? (
         <div className="flex items-center justify-center w-full h-full">
           <RingLoader size={25} color="purple" />

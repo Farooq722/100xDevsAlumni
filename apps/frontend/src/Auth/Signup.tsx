@@ -63,7 +63,7 @@ const Signup = () => {
 
   return (
     <WavyBackground>
-      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto rounded-none md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-input bg-gradient-to-bl from-teal-200 to-pink-200 dark:bg-black">
+      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto  rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-input bg-gradient-to-bl from-teal-200 to-pink-200 dark:bg-black">
         <h2 className="font-bold text-xl sm:text-2xl text-neutral-800 dark:text-neutral-200">
           Welcome to 100xAlumni
         </h2>
@@ -180,7 +180,7 @@ const Signup = () => {
 
           <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-4 h-[1px] w-full" />
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-2">
             <SocialButton icon={<FaGithub />} label="GitHub" />
             <SocialButton icon={<FcGoogle />} label="Google" />
           </div>

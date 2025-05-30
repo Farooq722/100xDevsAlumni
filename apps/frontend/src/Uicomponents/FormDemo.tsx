@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useStore } from "@repo/zustand/store";
 
 export function FormDemo() {
-  const { loader, setLoader } = useStore();
+  const { setLoader } = useStore();
   const navigate = useNavigate();
 
   const submitHandler = async (e: any) => {
