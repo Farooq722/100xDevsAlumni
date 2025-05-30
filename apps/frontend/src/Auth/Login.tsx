@@ -9,7 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 import { cn } from "../lib/utils";
 import { Button } from "@repo/ui/uicomponents/navButton";
 import { toast } from "sonner";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { useStore } from "@repo/zustand/store";
 const backendURL = import.meta.env.VITE_BACKEND_URI;
 
@@ -47,10 +47,13 @@ export const Login = () => {
         navigate("/dashboard");
         toast.success("Login Successfully");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      const err = error as AxiosError<{ msg: string }>;
-      toast.error(err.response?.data?.msg || "Something went down");
+      toast.error(
+        error.response?.datan ||
+          error.response?.data?.msg ||
+          "Something Went Wrong",
+      );
     } finally {
       setLoader(false);
     }
@@ -58,7 +61,7 @@ export const Login = () => {
 
   return (
     <WavyBackground>
-      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto rounded-none md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-input bg-gradient-to-bl from-teal-200 to-pink-200 dark:bg-black">
+      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-input bg-gradient-to-bl from-teal-200 to-pink-200 dark:bg-black">
         <h2 className="font-bold text-xl sm:text-2xl text-neutral-800 dark:text-neutral-200">
           Welcome to 100xAlumni
         </h2>

@@ -10,10 +10,8 @@ const Bio = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [tempBio, setTempBio] = useState(selfData?.bio);
 
-  const handleEdit = () => {
-    // setTempBio(bio);
-    setIsEditing(true);
-  };
+  const handleEdit = () => setIsEditing(true);
+  const handleCancel = () => setIsEditing(false);
 
   const handleSave = async () => {
     try {
@@ -23,9 +21,7 @@ const Bio = () => {
           bio: tempBio,
         },
         {
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           withCredentials: true,
         },
       );
@@ -43,12 +39,8 @@ const Bio = () => {
     setIsEditing(false);
   };
 
-  const handleCancel = () => {
-    setIsEditing(false);
-  };
-
   return (
-    <div className="w-full max-w-md mx-auto mt-6">
+    <div className="w-full mt-6 px-2 sm:px-0">
       {isEditing ? (
         <div className="text-left">
           <textarea
@@ -57,35 +49,28 @@ const Bio = () => {
             value={tempBio}
             onChange={(e) => setTempBio(e.target.value)}
           />
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
-              className="px-6 py-1 bg-gradient-to-bl from-indigo-500 via-purple-500 to-blue-500 text-white rounded hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 transition duration-300 shadow-md"
+              className="px-6 py-1 bg-gradient-to-bl from-indigo-500 via-purple-500 to-blue-500 text-white rounded shadow-md"
               onClick={handleSave}
-              aria-label="Save bio"
             >
               Save
             </button>
             <button
-              className="px-4 py-1 bg-gray-400 rounded hover:bg-gray-300 transition duration-200"
+              className="px-4 py-1 bg-gray-400 rounded hover:bg-gray-300"
               onClick={handleCancel}
-              aria-label="Cancel editing"
             >
               Cancel
             </button>
           </div>
         </div>
       ) : (
-        <div className="inline-block text-center w-full">
-          <div className=" text-sm sm:text-base md:text-sm leading-relaxed text-gray-800 dark:text-gray-200 py-2 px-4 text-left antialiased break-words rounded-md">
-            <p className="w-full">{selfData?.bio}</p>
+        <div className="text-center w-full">
+          <div className="text-sm sm:text-base leading-relaxed text-gray-800 dark:text-gray-200 py-2 px-4 text-left break-words rounded-md">
+            <p>{selfData?.bio}</p>
           </div>
-
-          <div className="bg-gradient-to-bl from-indigo-500 via-purple-500 to-blue-500 mt-2 py-2 font-semibold rounded-lg w-[220px] mx-auto hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 transition duration-300 shadow-md cursor-pointer">
-            <button
-              className="text-white text-md"
-              onClick={handleEdit}
-              aria-label="Edit bio"
-            >
+          <div className="bg-gradient-to-bl from-indigo-500 via-purple-500 to-blue-500 mt-2 py-2 rounded-lg w-56 mx-auto hover:brightness-110 shadow-md">
+            <button className="text-white text-md" onClick={handleEdit}>
               Edit
             </button>
           </div>

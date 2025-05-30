@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CoverDemo } from "./cover";
 import Avatar from "@mui/material/Avatar";
@@ -11,15 +11,17 @@ import { useStore } from "@repo/zustand/store";
 import { useUserData } from "@repo/zustand/user";
 import axios from "axios";
 import { toast } from "sonner";
+import { CiMenuFries } from "react-icons/ci";
+import { RxCross2 } from "react-icons/rx";
+
 const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const { user, setUser, logout, setLoader } = useStore();
   const { selfData, setSelfData, clearData } = useUserData();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const profile = selfData?.avatar || "https://github.com/shadcn.png";
-
-  console.log(selfData);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +40,14 @@ export const Navbar = () => {
 
     fetchData();
   }, []);
+
+  const handleLogout = () => {
+    logout();
+    clearData();
+    setUser(false);
+    navigate("/");
+    setIsMenuOpen(false);
+  };
 
   return (
     <motion.div
@@ -59,33 +69,41 @@ export const Navbar = () => {
             <CoverDemo />
           </Link>
         </div>
-        <div className="border bg-gradient-to-bl from-teal-300 to-pink-300 px-8 py-2 rounded-full">
+
+        <button
+          className="md:hidden text-black"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <RxCross2 size={30} /> : <CiMenuFries size={30} />}
+        </button>
+
+        <div className="hidden md:flex border bg-gradient-to-bl from-teal-400 via-emerald-200 to-pink-400 px-8 py-2 rounded-2xl">
           {!user ? (
             <div className="flex justify-around gap-6 text-black font-medium">
-              <Link to={"/price"} className="hover:text-teal-500 ">
+              <Link to={"/price"} className="hover:text-teal-500">
                 Price
               </Link>
               <Link
                 to={"https://harkirat.classx.co.in"}
                 target="_blank"
-                className="hover:text-teal-500 "
+                className="hover:text-teal-500"
               >
                 100xDevs
               </Link>
               <Link
                 to={"https://school.100xdevs.com"}
                 target="_blank"
-                className="hover:text-teal-500 "
+                className="hover:text-teal-500"
               >
                 100xSchool
               </Link>
-              <Link to={"#"} className="hover:text-teal-500 ">
+              <Link to={"#"} className="hover:text-teal-500">
                 Contact us
               </Link>
             </div>
           ) : (
             <div className="flex justify-around gap-6 text-black font-medium">
-              <Link to={"/dashboard"} className="hover:text-teal-500 ">
+              <Link to={"/dashboard"} className="hover:text-teal-500">
                 Dashboard
               </Link>
               {selfData?.role === "Alumni" ? (
@@ -93,35 +111,35 @@ export const Navbar = () => {
                   Form
                 </Link>
               ) : (
-                <Link
-                  to={"#"}
+                <button
                   className="hover:text-slate-500 text-gray-400 cursor-not-allowed"
-                  onClick={() => {
-                    toast.warning("User don't have access to this");
-                  }}
+                  onClick={() =>
+                    toast.warning("User don't have access to this")
+                  }
                 >
                   Form
-                </Link>
+                </button>
               )}
               <Link
                 to={"https://harkirat.classx.co.in"}
                 target="_blank"
-                className="hover:text-teal-500 "
+                className="hover:text-teal-500"
               >
                 100xDevs
               </Link>
               <Link
                 to={"https://school.100xdevs.com"}
                 target="_blank"
-                className="hover:text-teal-500 "
+                className="hover:text-teal-500"
               >
                 100xSchool
               </Link>
             </div>
           )}
         </div>
+
         {!user ? (
-          <div className="flex justify-between gap-4 text-black font-medium">
+          <div className="hidden md:flex justify-between gap-4 text-black font-medium">
             <div className="py-3">
               <button
                 className="hover:bg-teal-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-400 to-pink-400 text-black py-2 rounded-2xl"
@@ -132,7 +150,7 @@ export const Navbar = () => {
             </div>
           </div>
         ) : (
-          <div className="flex items-center gap-2 max-w-[250px] ml-4 overflow-hidden">
+          <div className="hidden md:flex items-center gap-2 max-w-[250px] ml-4 overflow-hidden">
             <div className="min-w-0">
               <h2
                 className="text-black text-sm md:text-base lg:text-lg truncate whitespace-nowrap overflow-hidden"
@@ -153,22 +171,17 @@ export const Navbar = () => {
                     />
                   </Button>
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={() => navigate("/profile")}>
-                      Profile
-                    </MenuItem>
-                    <MenuItem onClick={() => navigate("/setting")}>
-                      Setting
-                    </MenuItem>
-                    <MenuItem
-                      onClick={() => {
-                        logout();
-                        clearData();
-                        setUser(false);
-                        navigate("/");
-                      }}
-                    >
-                      Logout
-                    </MenuItem>
+                    {selfData?.role === "Alumni" && (
+                      <MenuItem onClick={() => navigate("/profile")}>
+                        Profile
+                      </MenuItem>
+                    )}
+                    {selfData?.role === "Alumni" && (
+                      <MenuItem onClick={() => navigate("/setting")}>
+                        Setting
+                      </MenuItem>
+                    )}
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </Menu>
                 </>
               )}
@@ -176,6 +189,65 @@ export const Navbar = () => {
           </div>
         )}
       </motion.div>
+
+      {isMenuOpen && (
+        <div className="md:hidden flex flex-col items-center space-y-4 mt-4 text-black font-medium">
+          {!user ? (
+            <>
+              <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                Login
+              </Link>
+              <Link to="/price" onClick={() => setIsMenuOpen(false)}>
+                Price
+              </Link>
+              <Link
+                to="https://harkirat.classx.co.in"
+                target="_blank"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                100xDevs
+              </Link>
+              <Link
+                to="https://school.100xdevs.com"
+                target="_blank"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                100xSchool
+              </Link>
+              <Link to="#" onClick={() => setIsMenuOpen(false)}>
+                Contact us
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
+                Dashboard
+              </Link>
+              {selfData?.role === "Alumni" ? (
+                <Link to="/alumniform" onClick={() => setIsMenuOpen(false)}>
+                  Form
+                </Link>
+              ) : (
+                <button
+                  className="text-gray-400 cursor-not-allowed"
+                  onClick={() => {
+                    toast.warning("User don't have access to this");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Form
+                </button>
+              )}
+              <Link to="/profile" onClick={() => setIsMenuOpen(false)}>
+                Profile
+              </Link>
+              <button className="text-red-500" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </motion.div>
   );
 };
