@@ -2,7 +2,7 @@ import rateLimit from "express-rate-limit";
 
 export const signupRateLimit = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 min
-  limit: 5, //max 5 request per ip
+  limit: 100, //max 5 request per ip
   message: "Too many signup/login requests, please try again after 10 minutes",
   standardHeaders: true,
   legacyHeaders: false,
