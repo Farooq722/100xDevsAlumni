@@ -1,6 +1,5 @@
 {
-  "buildCommand": "pnpm turbo run build --filter=frontend...",
+  "buildCommand": "pnpm --filter apps/frontend run build",
   "installCommand": "pnpm install",
-  "outputDirectory": "apps/frontend/dist",
-  "rootDirectory": "."
+  "outputDirectory": "apps/frontend/dist"
 }
