@@ -5,6 +5,7 @@ import { Loader } from "./Home/Loader";
 import Home from "./Home/Index";
 import ForgetPassword from "./Auth/ForgetPassoword";
 import { DeviceCheckLayout } from "./body/DeviceCheckLayout";
+import Analtyics from "./analytics/Analtyics";
 
 // Lazy-loaded components
 const Login = React.lazy(() => import("./Auth/Login"));
@@ -94,6 +95,7 @@ function App() {
             />
 
             <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/analtyics" element={<Analtyics />} />
           </Routes>
         </BrowserRouter>
       </DeviceCheckLayout>

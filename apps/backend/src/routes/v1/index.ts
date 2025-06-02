@@ -156,7 +156,7 @@ router.get("/alumnus/data", async (req, res) => {
       },
     });
 
-    const safeAlumni = allAlumnus.map(({ password, ...rest }) => rest);
+    const safeAlumni = allAlumnus.map(({ password, ...rest }: any) => rest);
 
     const departmentCount: Record<string, number> = {};
     const degreeCount: Record<string, number> = {};
@@ -204,9 +204,14 @@ router.get("/alumnus/data", async (req, res) => {
     res.json({
       allAlumnus: safeAlumni,
       analytics,
+      msg: "all analtyics",
+      success: true,
+      error: false,
     });
   } catch (error) {
-    res.status(400).json({ msg: "Internal server error" });
+    res
+      .status(400)
+      .json({ msg: "Internal server error", success: false, error: true });
     return;
   }
 });

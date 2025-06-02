@@ -9,7 +9,7 @@ const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export default function Dashboard() {
   const { setLoader } = useStore();
-  const { allAlumniData, setAllAlumniData } = useData();
+  const { allAlumniData, setAllAlumniData, setAnalytics } = useData();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ export default function Dashboard() {
           withCredentials: true,
         });
         setAllAlumniData(alumniRes.data.allAlumnus || []);
+        setAnalytics(alumniRes.data.analytics);
       } catch (error) {
         console.error("Error fetching users:", error);
       } finally {

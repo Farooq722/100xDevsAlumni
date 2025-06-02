@@ -4,17 +4,54 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 
+interface Education {
+  id: string;
+  college: string;
+  department: string;
+  passingYear: number;
+  degree: string;
+}
+
+interface ProfessionalData {
+  id: string;
+  currentCompany: string;
+  jobTitle: string;
+  location: string;
+  yearsOfExperience: number;
+  resumeUrl?: string;
+}
+
+interface SocialMedia {
+  id: string;
+  linkedin?: string;
+  twitter?: string;
+  github?: string;
+  instagram?: string;
+  [key: string]: string | undefined;
+}
+
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  githubUrl?: string;
+  liveUrl?: string;
+  techStack?: string[];
+}
+
 interface User {
-  avatar?: string;
-  name?: string;
+  id: string;
+  avatar?: string | null;
+  avatarId?: string | null;
+  name: string;
+  username: string;
   bio?: string;
-  company?: string;
-  role?: string;
-  socialMedia?: {
-    twitter?: string;
-    github?: string;
-    linkedin?: string;
-  } | null;
+  role: "Alumni" | "User" | string;
+  education?: Education;
+  professionalData?: ProfessionalData;
+  socialMedia?: SocialMedia | null;
+  projects?: Project[];
+  skills?: string[];
 }
 
 export default function AlumniCard({ user }: { user: User }) {
@@ -39,19 +76,15 @@ export default function AlumniCard({ user }: { user: User }) {
 
         <p className="text-xs sm:text-sm text-center text-neutral-700 dark:text-neutral-400 mt-2 px-2 line-clamp-5">
           {user.bio || "No bio available"}
-          {/* {user.bio} */}
         </p>
 
         <p className="text-xs sm:text-sm text-center text-neutral-800 dark:text-neutral-400 mt-3">
           <span className="font-medium">Company:</span>{" "}
-          {/* {user?.profile?.present_company || "N/A"} */}
-          {user.company}
-          {/* {user.username} */}
+          {user.professionalData?.currentCompany || "N/A"}
         </p>
         <p className="text-xs sm:text-sm text-center text-neutral-800 dark:text-neutral-400 mt-1">
           <span className="font-medium">Role: </span>
-          {user?.role || "N/A"}
-          {/* {user.role} */}
+          {user.professionalData?.jobTitle || "N/A"}
         </p>
 
         <div className="flex justify-center items-center gap-3 mt-3">
