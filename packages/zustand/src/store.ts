@@ -24,12 +24,32 @@ export const useStore = create<UserStore>()(
   ),
 );
 
-type allAlumniData = {
+interface Analytics {
+  departmentPercentage: Record<string, string>;
+  degreePercentage: Record<string, string>;
+  jobTitlePercentage: Record<string, string>;
+  locationPercentage: Record<string, string>;
+  experiencePercentage: Record<string, string>;
+}
+
+type AllAlumniDataStore = {
   allAlumniData: Array<any>;
-  setAllAlumniData: (allAlumniData: Array<any>) => void;
+  analytics: Analytics;
+  setAllAlumniData: (data: Array<any>) => void;
+  setAnalytics: (data: Analytics) => void;
 };
 
-export const useData = create<allAlumniData>()((set) => ({
+const defaultAnalytics: Analytics = {
+  departmentPercentage: {},
+  degreePercentage: {},
+  jobTitlePercentage: {},
+  locationPercentage: {},
+  experiencePercentage: {},
+};
+
+export const useData = create<AllAlumniDataStore>((set) => ({
   allAlumniData: [],
-  setAllAlumniData: (allAlumniData) => set({ allAlumniData }),
+  analytics: defaultAnalytics,
+  setAllAlumniData: (data) => set({ allAlumniData: data }),
+  setAnalytics: (data) => set({ analytics: data }),
 }));

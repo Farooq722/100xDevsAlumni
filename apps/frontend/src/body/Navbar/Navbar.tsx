@@ -120,19 +120,15 @@ export const Navbar = () => {
                   Form
                 </button>
               )}
+              <Link to={"/analtyics"} className="hover:text-teal-500">
+                Analtyics
+              </Link>
               <Link
                 to={"https://harkirat.classx.co.in"}
                 target="_blank"
                 className="hover:text-teal-500"
               >
                 100xDevs
-              </Link>
-              <Link
-                to={"https://school.100xdevs.com"}
-                target="_blank"
-                className="hover:text-teal-500"
-              >
-                100xSchool
               </Link>
             </div>
           )}
@@ -238,6 +234,9 @@ export const Navbar = () => {
                   Form
                 </button>
               )}
+              <Link to="/analtyics" onClick={() => setIsMenuOpen(false)}>
+                Analtyics
+              </Link>
               <Link to="/profile" onClick={() => setIsMenuOpen(false)}>
                 Profile
               </Link>
