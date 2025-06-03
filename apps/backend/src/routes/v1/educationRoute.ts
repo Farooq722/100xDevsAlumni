@@ -33,9 +33,15 @@ eduRouter.post("/", async (req, res) => {
       },
     });
 
-    res.json({ msg: "Education feilds created/updated" });
+    res.json({
+      msg: "Education feilds created/updated",
+      success: true,
+      error: false,
+    });
   } catch (error) {
-    res.status(400).json({ msg: "Internal server error" });
+    res
+      .status(400)
+      .json({ msg: "Internal server error", success: false, error: true });
   }
 });
 
