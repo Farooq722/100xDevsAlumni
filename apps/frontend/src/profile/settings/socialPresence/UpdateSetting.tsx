@@ -2,21 +2,17 @@ import axios from "axios";
 import { Input } from "@repo/ui/uicomponents/input";
 import { useState } from "react";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
-import { Navbar } from "../../body/Navbar/Navbar";
 import { FaInstagram } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiYoutube } from "react-icons/fi";
 import { TbWorldWww } from "react-icons/tb";
-import { useStore } from "@repo/zustand/store";
 import { RingLoader } from "react-spinners";
 const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 const UpdateSetting = () => {
-  const { loader, setLoader } = useStore();
-  const navigate = useNavigate();
+  const [loader, setLoader] = useState(false);
 
   const [linkedin, setLinkedin] = useState("");
   const [github, setGithub] = useState("");
@@ -77,19 +73,8 @@ That value is added to the payload object with the key "linkedin".`;
     }
   };
 
-  const handleLogout = async () => {
-    try {
-      toast.success("Logged out");
-      navigate("/login");
-    } catch (error) {
-      toast.error("Logout failed");
-      console.error("Logout error:", error);
-    }
-  };
-
   return (
     <div>
-      <Navbar />
       <div className="max-w-lg mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md dark:bg-gray-900 mt-10">
         <h2 className="text-xl font-base mb-4 text-center">
           Settings & Edit Social Links
@@ -172,17 +157,6 @@ That value is added to the payload object with the key "linkedin".`;
             </button>
           )}
         </div>
-      </div>
-      <div className="max-w-lg mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md dark:bg-gray-900 mt-10">
-        <div className="font-bold mb-4">
-          <h1>Want to Delete your account ?</h1>
-        </div>
-        <button
-          onClick={handleLogout}
-          className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700"
-        >
-          Delete Account
-        </button>
       </div>
     </div>
   );

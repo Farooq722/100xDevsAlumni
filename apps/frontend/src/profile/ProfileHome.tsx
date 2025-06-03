@@ -1,9 +1,9 @@
 import { Navbar } from "../body/Navbar/Navbar";
 import Profile from "./avatar/Profile";
 import Bio from "./profileBio/Bio";
-import SocialMedia from "./socialPresence/SocialMedia";
 import TimelineData from "./timeline/TimelineData";
 import Github from "./Github";
+import SocialMedia from "./settings/socialPresence/SocialMedia";
 
 const ProfileHome = () => {
   return (
