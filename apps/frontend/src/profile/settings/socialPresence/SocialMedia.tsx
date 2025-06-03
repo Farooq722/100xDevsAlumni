@@ -3,13 +3,12 @@ import { FaGithub } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiYoutube } from "react-icons/fi";
-import { TbWorldWww } from "react-icons/tb";
+import { CgWebsite } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { useUserData } from "@repo/zustand/user";
 
 const SocialMedia = () => {
   const { selfData } = useUserData();
-  console.log(selfData);
 
   return (
     <div className="inline-block mt-2 items-center text-center w-full sm:w-72 md:w-[320px] px-2">
@@ -43,7 +42,7 @@ const SocialMedia = () => {
             />
           </Link>
           <Link to={selfData?.socialMedia?.portfolio ?? ""} target="_blank">
-            <TbWorldWww
+            <CgWebsite
               size={25}
               className="text-cyan-500 hover:text-cyan-700"
             />

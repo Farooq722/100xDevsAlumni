@@ -115,7 +115,11 @@ export default function AlumniCard({ user }: { user: User }) {
           <button
             className="rounded-lg py-2 px-4 bg-black text-white dark:bg-zinc-800 text-xs sm:text-sm font-semibold transition hover:bg-gray-900"
             onClick={() => {
-              navigate("/alumnidetails");
+              navigate("/alumnidetails", {
+                state: {
+                  user: user,
+                },
+              });
             }}
           >
             View Details
