@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: backend
+    env: node
+    # This points Render to your monorepo root
+    rootDir: .
+    buildCommand: |
+      pnpm install
+      pnpm --filter @repo/db prisma generate
+      pnpm --filter ./apps/backend build
+    startCommand: pnpm --filter ./apps/backend start
+    plan: starter  # or whatever plan you use
+    autoDeploy: true
