@@ -1,14 +1,22 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import path from "path";
 
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      "@repo/ui": path.resolve(__dirname, "../../packages/ui"),
+      "@repo/zustand": path.resolve(__dirname, "../../packages/zustand"),
+      "@repo/tailwind-config": path.resolve(__dirname, "../../packages/tailwind-config"),
+    },
+  },
   build: {
     outDir: "dist",
-    target: "esnext", // For modern browsers
-    minify: "esbuild", // Faster minification
-    sourcemap: false, // Avoid large source maps
-    chunkSizeWarningLimit: 500, // Show warning if any chunk exceeds this
+    target: "esnext",
+    minify: "esbuild",
+    sourcemap: false,
+    chunkSizeWarningLimit: 500,
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -24,7 +32,6 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: [
-      // Add only the exact packages you use
       "@tabler/icons-react",
     ],
   },
