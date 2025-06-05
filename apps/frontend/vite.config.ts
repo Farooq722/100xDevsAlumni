@@ -5,10 +5,13 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      "@repo/ui": path.resolve(__dirname, "../../packages/ui"),
-      "@repo/zustand": path.resolve(__dirname, "../../packages/zustand"),
-      "@repo/tailwind-config": path.resolve(__dirname, "../../packages/tailwind-config"),
+     alias: {
+      "@repo/ui": path.resolve(__dirname, "../../packages/ui/dist"),
+      "@repo/zustand": path.resolve(__dirname, "../../packages/zustand/dist"),
+      "@repo/tailwind-config": path.resolve(
+        __dirname,
+        "../../packages/tailwind-config/dist"
+      ),
     },
   },
   build: {
@@ -31,8 +34,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: [
-      "@tabler/icons-react",
-    ],
+    include: ["@tabler/icons-react"],
   },
 });
