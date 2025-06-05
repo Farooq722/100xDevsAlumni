@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   build: {
+    outDir: "dist",
     target: "esnext", // For modern browsers
     minify: "esbuild", // Faster minification
     sourcemap: false, // Avoid large source maps
