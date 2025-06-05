@@ -190,7 +190,7 @@ router.get("/alumnus/data", async (req, res) => {
         Object.entries(count).map(([key, value]) => [
           key,
           ((value / total) * 100).toFixed(2) + "%",
-        ]),
+        ])
       );
 
     const analytics = {
