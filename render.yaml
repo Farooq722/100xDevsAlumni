@@ -2,7 +2,7 @@ services:
   - type: web
     name: backend
     env: node
-    rootDir: .
+    rootDir: ./apps/backend
     buildCommand: |
       pnpm install
       pnpm --filter @repo/db prisma generate
