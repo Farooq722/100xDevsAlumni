@@ -1,8 +1,10 @@
 {
   "name": "@repo/zustand",
   "version": "1.0.0",
+  "type": "module",
   "exports": {
-    "./*": "./dist/*.js"
+    "./user": "./dist/user.js",
+    "./store": "./dist/store.js"
   },
   "scripts": {
     "build": "tsc --outDir dist --declaration"
