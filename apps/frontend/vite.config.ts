@@ -5,7 +5,7 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
   resolve: {
-     alias: {
+    alias: {
       "@repo/ui": path.resolve(__dirname, "../../packages/ui/dist"),
       "@repo/zustand": path.resolve(__dirname, "../../packages/zustand/dist"),
       "@repo/tailwind-config": path.resolve(
