@@ -54,6 +54,7 @@ interface User {
   skills?: string[];
 }
 
+//user card here
 export default function AlumniCard({ user }: { user: User }) {
   const profilePhoto = user.avatar;
   const navigate = useNavigate();
