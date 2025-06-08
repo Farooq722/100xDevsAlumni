@@ -7,7 +7,7 @@
     "./*": "./dist/*.js"
   },
   "scripts": {
-    "build": "tsc --outDir dist --declaration",
+    "build": "tsc -p tsconfig.json",
     "lint": "eslint",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"

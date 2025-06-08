@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@repo/ui": path.resolve(__dirname, "../../packages/ui/dist"),
-      "@repo/zustand": path.resolve(__dirname, "../../packages/zustand/dist"),
+      "@repo/ui": path.resolve(__dirname, "../../packages/ui/src"),
+      "@repo/zustand": path.resolve(__dirname, "../../packages/zustand/src"),
       "@repo/tailwind-config": path.resolve(
         __dirname,
-        "../../packages/tailwind-config/dist"
+        "../../packages/tailwind-config/src",
       ),
     },
   },

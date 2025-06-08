@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es2016",
     /* Modules */
+    "composite": true,
     "rootDir": "./src",                                  /* Specify the root folder within your source files. */
     "module": "NodeNext",
     "moduleDetection": "force",

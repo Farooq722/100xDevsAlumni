@@ -20,10 +20,12 @@ const Analytics = () => {
 
   const charts = Object.entries(analytics).map(([title, dataMap]) => ({
     title,
-    data: Object.entries(dataMap).map(([name, value]) => ({
-      name,
-      value: parseFloat(String(value)),
-    })),
+    data: Object.entries(dataMap as Record<string, unknown>).map(
+      ([name, value]) => ({
+        name,
+        value: parseFloat(String(value)),
+      }),
+    ),
   }));
 
   return (
