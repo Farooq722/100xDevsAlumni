@@ -64,7 +64,7 @@ export const Timeline = ({
 
           <p className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4x flex justify-center md:justify-start items-center">
             <img
-              src={info[0].avatar}
+              src={info[0]?.avatar || "https://github.com/shadcn.png"}
               className="w-[300px] h-[300px] rounded-full object-cover"
               alt="Avatar"
             />

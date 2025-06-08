@@ -12,6 +12,26 @@ export default function Dashboard() {
   const { allAlumniData, setAllAlumniData, setAnalytics } = useData();
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setLoader(true);
+  //     try {
+  //       const alumniRes = await axios.get(`${backendURL}/alumnus/data`, {
+  //         withCredentials: true,
+  //       });
+  //       setAllAlumniData(alumniRes.data.allAlumnus || []);
+  //       setAnalytics(alumniRes.data.analytics);
+  //     } catch (error) {
+  //       console.error("Error fetching users:", error);
+  //     } finally {
+  //       setLoader(false);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoader(true);
@@ -30,7 +50,7 @@ export default function Dashboard() {
     };
 
     fetchData();
-  }, []);
+  }, [setAllAlumniData, setAnalytics, setLoader]);
 
   return (
     <div className="bg-slate-200 min-h-screen">

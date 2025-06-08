@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { Timeline } from "../../Uicomponents/timeline";
+import Github from "../../profile/Github";
 
 function DetailsPage() {
   const location = useLocation();
@@ -17,19 +18,19 @@ function DetailsPage() {
             <div className="border border-purple-400 p-4 bg-gradient-to-br from-pink-100 via-teal-100 to-purple-100">
               <h1 className="text-black font-semibold">
                 <span className="text-gray-500">College:</span>{" "}
-                {user.education.college || "N/A"}
+                {user.education?.college || "N/A"}
               </h1>
               <h1 className="text-black font-semibold">
                 <span className="text-gray-500">Department:</span>{" "}
-                {user.education.department || "N/A"}
+                {user.education?.department || "N/A"}
               </h1>
               <h1 className="text-black font-semibold">
                 <span className="text-gray-500"> Passed Out Year:</span>{" "}
-                {user.education.passingYear || "N/A"}
+                {user.education?.passingYear || "N/A"}
               </h1>
               <h1 className="text-black font-semibold">
                 <span className="text-gray-500">Degree:</span>{" "}
-                {user.education.degree || "N/A"}
+                {user.education?.degree || "N/A"}
               </h1>
             </div>
           </div>
@@ -120,6 +121,19 @@ function DetailsPage() {
               No Projects Available By Now
             </div>
           )}
+        </div>
+      ),
+    },
+    {
+      title: "Github Contri Chat",
+      content: (
+        <div>
+          <p className="mb-6 text-xs font-semibold text-neutral-800 md:text-sm dark:text-neutral-200">
+            My Github Contribution Chart.
+          </p>
+          <div className="border rounded-xl p-1 shadow-md bg-gradient-to-br from-pink-300 via-teal-300 to-purple-300">
+            <Github />
+          </div>
         </div>
       ),
     },

@@ -1,12 +1,19 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "paths": {
+      "@repo/ui/*": ["../../packages/ui/src/*"],
+      "@repo/zustand/*": ["../../packages/zustand/src/*"]
+    }
+  },
+  "include": ["src"]
 }
