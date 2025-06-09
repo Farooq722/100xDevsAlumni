@@ -2,10 +2,11 @@ services:
   - type: web
     name: alumni-backend
     runtime: node
-    rootDir: .      
+    rootDir: .                      # Repo root so all packages resolve
     buildCommand: |
-      pnpm install
-      pnpm --filter @repo/db run generate
+      pnpm install                 # Installs all workspace deps
+      pnpx prisma generate --schema=packages/db/prisma/schema.prisma
+      pnpx prisma migrate deploy --schema=packages/db/prisma/schema.prisma
       pnpm --filter @repo/db run build
       pnpm --filter backend run build
     startCommand: pnpm --filter backend run start
