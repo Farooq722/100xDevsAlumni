@@ -7,7 +7,8 @@
     "./client": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc --outDir dist --declaration"
+    "build": "tsc --outDir dist --declaration",
+    "generate": "prisma generate"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: alumni-backend
+    runtime: node
+    rootDir: apps/backend
+    buildCommand: |
+      pnpm install
+      pnpm --filter @repo/db run generate
+      pnpm --filter @repo/db run build
+      pnpm --filter ./apps/backend run build
+    startCommand: pnpm run start
+    plan: free
+    buildFilter:
+      paths:
+        - apps/backend/**/*
+        - packages/db/**/*
