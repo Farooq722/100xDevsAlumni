@@ -8,7 +8,7 @@ import {
   updatePassSchema,
 } from "../../validation";
 import { compare, hash } from "../../script";
-import prisma from "@repo/db/client";
+import prisma from "@repo/db";
 import { verifyToken } from "../../utils/hashToken";
 import { sendEmail } from "../../utils/resend";
 import { adminEmailTemplate } from "../../utils/adminEmailTemplate";

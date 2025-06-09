@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { projectSchema } from "../../validation";
-import prisma from "@repo/db/client";
+import prisma from "@repo/db";
 
 export const projectRouter = Router();
 
