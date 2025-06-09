@@ -1,5 +1,5 @@
 import { Router } from "express";
-import prisma from "@repo/db/client";
+import prisma from "@repo/db";
 import { professionalDataSchema } from "../../validation";
 
 export const proffRouter = Router();

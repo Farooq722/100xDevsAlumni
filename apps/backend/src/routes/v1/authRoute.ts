@@ -1,5 +1,5 @@
 import { Router } from "express";
-import prisma from "@repo/db/client";
+import prisma from "@repo/db";
 import jwt from "jsonwebtoken";
 import dotnev from "dotenv";
 dotnev.config();

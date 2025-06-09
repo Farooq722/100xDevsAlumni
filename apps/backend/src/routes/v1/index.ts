@@ -1,4 +1,4 @@
-import prisma from "@repo/db/client";
+import prisma from "@repo/db";
 import dotnev from "dotenv";
 dotnev.config();
 import { Router } from "express";
