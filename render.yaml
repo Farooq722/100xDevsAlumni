@@ -2,7 +2,7 @@ services:
   - type: web
     name: alumni-backend
     runtime: node
-    rootDir: apps/backend
+    rootDir: .      
     buildCommand: |
       pnpm install
       pnpm --filter @repo/db run generate
