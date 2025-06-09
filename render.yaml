@@ -8,7 +8,7 @@ services:
       pnpm --filter @repo/db run generate
       pnpm --filter @repo/db run build
       pnpm --filter backend run build
-    startCommand: pnpm run start
+    startCommand: pnpm --filter backend run start
     plan: free
     buildFilter:
       paths:
