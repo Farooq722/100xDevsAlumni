@@ -11,7 +11,7 @@ import { TbWorldWww } from "react-icons/tb";
 import { RingLoader } from "react-spinners";
 const backendURL = import.meta.env.VITE_BACKEND_URI;
 
-const UpdateSetting = () => {
+const PostSocialLinks = () => {
   const [loader, setLoader] = useState(false);
 
   const [linkedin, setLinkedin] = useState("");
@@ -22,31 +22,18 @@ const UpdateSetting = () => {
   const [portfolio, setPortfolio] = useState("");
 
   const handleSave = async () => {
-    const payload: Record<string, string> = {};
-    `
-linkedin.trim() checks if the linkedin string is not empty or just spaces.
-
-If it has a value (e.g., "https://linkedin.com/in/fara"), then:
-
-That value is added to the payload object with the key "linkedin".`;
-
-    if (linkedin.trim()) payload.linkedin = linkedin;
-    if (github.trim()) payload.github = github;
-    if (twitter.trim()) payload.twitter = twitter;
-    if (instagram.trim()) payload.instagram = instagram;
-    if (youtube.trim()) payload.youtube = youtube;
-    if (portfolio.trim()) payload.portfolio = portfolio;
-
-    if (Object.keys(payload).length === 0) {
-      toast.warning("Please enter at least one link to update.");
-      return;
-    }
-
     try {
       setLoader(true);
-      const { data } = await axios.put(
-        `${backendURL}/accounts/update`,
-        payload,
+      const { data } = await axios.post(
+        `${backendURL}/accounts/`,
+        {
+          linkedin,
+          github,
+          twitter,
+          instagram,
+          youtube,
+          portfolio,
+        },
         {
           headers: {
             "Content-Type": "application/json",
@@ -55,7 +42,7 @@ That value is added to the payload object with the key "linkedin".`;
         },
       );
       if (data.success) {
-        toast.success("Social links updated");
+        toast.success("Social links Created");
         setLinkedin("");
         setGithub("");
         setTwitter("");
@@ -63,11 +50,11 @@ That value is added to the payload object with the key "linkedin".`;
         setYoutube("");
         setPortfolio("");
       } else {
-        toast.error("Update failed");
+        toast.error("failed");
       }
     } catch (error) {
-      toast.error("Failed to update links");
-      console.error("Update error:", error);
+      toast.error("Failed to Create links");
+      console.error("Create error:", error);
     } finally {
       setLoader(false);
     }
@@ -77,7 +64,7 @@ That value is added to the payload object with the key "linkedin".`;
     <div>
       <div className="max-w-lg mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md dark:bg-gray-900 mt-10">
         <h2 className="text-xl font-base mb-4 text-center">
-          Edit Social Links
+          Post Social Links
         </h2>
 
         <div className="space-y-4">
@@ -162,4 +149,4 @@ That value is added to the payload object with the key "linkedin".`;
   );
 };
 
-export default UpdateSetting;
+export default PostSocialLinks;
