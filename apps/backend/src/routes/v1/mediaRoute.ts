@@ -26,9 +26,11 @@ mediaRouter.post("/", async (req, res) => {
         },
       },
     });
-    res.json({ mediaRes });
+    res.status(200).json({ mediaRes, success: true, error: false });
   } catch (error) {
-    res.status(400).json({ msg: "Internal server errorrrr" });
+    res
+      .status(400)
+      .json({ msg: "Internal server errorrrr", success: false, error: true });
     return;
   }
 });
