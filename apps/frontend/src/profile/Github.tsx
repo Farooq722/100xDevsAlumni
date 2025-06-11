@@ -1,10 +1,9 @@
-import { useUserData } from "@repo/zustand/user";
 
-const Github = () => {
-  const { selfData } = useUserData();
-  const url = selfData?.socialMedia?.github || "https://github.com/username";
-  const { pathname } = new URL(url!);
-  const username = pathname.split("/")[1];
+interface Username {
+  username: string
+}
+const Github = ({username}: Username) => {
+  
 
   return (
     <div className="bg-purple-200 text-center rounded-lg p-4">

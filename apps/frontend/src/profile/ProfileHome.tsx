@@ -4,8 +4,18 @@ import Bio from "./profileBio/Bio";
 import TimelineData from "./timeline/TimelineData";
 import Github from "./Github";
 import SocialMedia from "./settings/socialPresence/SocialMedia";
+import extractUsername from "../lib/username"
+import { useUserData } from "@repo/zustand/user";
 
 const ProfileHome = () => {
+  const { selfData } = useUserData();
+  const githubUrl = selfData?.socialMedia?.github;
+  const username = githubUrl
+    ? extractUsername(githubUrl)
+    : "https://github.com/username";
+
+  console.log(username);
+
   return (
     <div>
       <Navbar />
@@ -19,7 +29,7 @@ const ProfileHome = () => {
             </div>
             <div className="flex-1 ml-0 lg:ml-10 space-y-4">
               <TimelineData />
-              <Github />
+              <Github username={username} />
             </div>
           </div>
         </div>

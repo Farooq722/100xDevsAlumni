@@ -97,8 +97,8 @@ export const Navbar = () => {
               >
                 100xSchool
               </Link>
-              <Link to={"#"} className="hover:text-teal-500">
-                Contact us
+              <Link to={"/usage"} className="hover:text-teal-500">
+                How to use
               </Link>
             </div>
           ) : (
