@@ -1,10 +1,15 @@
 import { useLocation } from "react-router-dom";
 import { Timeline } from "../../Uicomponents/timeline";
 import Github from "../../profile/Github";
+import extractUsername from "../../lib/username";
 
 function DetailsPage() {
   const location = useLocation();
   const { user } = location.state!;
+  const githubUrl = user.socialMedia.github;
+  const username = githubUrl
+    ? extractUsername(githubUrl)
+    : "https://github.com/username";
 
   const data = [
     {
@@ -132,7 +137,7 @@ function DetailsPage() {
             My Github Contribution Chart.
           </p>
           <div className="border rounded-xl p-1 shadow-md bg-gradient-to-br from-pink-300 via-teal-300 to-purple-300">
-            <Github />
+            <Github username={username} />
           </div>
         </div>
       ),
