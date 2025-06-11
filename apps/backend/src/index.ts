@@ -14,7 +14,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   //deployed frontend linke here,
-  "https://100x-devs-alumni-frontend.vercel.app",
+  // "https://100x-devs-alumni-frontend.vercel.app",
   "http://localhost:5173",
 ];
 
