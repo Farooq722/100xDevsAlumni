@@ -5,10 +5,7 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [
-        "dist/**",
-        "packages/db/dist/**"
-      ],
+      "outputs": ["dist/**"],
       "env": ["VITE_BACKEND_URI", "VITE_SECRET_KEY"]
     },
     "lint": {

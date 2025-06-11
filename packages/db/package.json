@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "build": "tsc --outDir dist --declaration",
+    "build": "tsc",
     "generate": "prisma generate"
   },
   "keywords": [],
