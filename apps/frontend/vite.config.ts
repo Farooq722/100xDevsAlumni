@@ -10,10 +10,11 @@ export default defineConfig({
       "@repo/zustand": path.resolve(__dirname, "../../packages/zustand/src"),
       "@repo/tailwind-config": path.resolve(
         __dirname,
-        "../../packages/tailwind-config/src",
+        "../../packages/tailwind-config/src"
       ),
     },
   },
+  base: "./",
   build: {
     outDir: "dist",
     target: "esnext",
