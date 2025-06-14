@@ -4,7 +4,7 @@ import Bio from "./profileBio/Bio";
 import TimelineData from "./timeline/TimelineData";
 import Github from "./Github";
 import SocialMedia from "./settings/socialPresence/SocialMedia";
-import extractUsername from "../lib/username"
+import extractUsername from "../lib/username";
 import { useUserData } from "@repo/zustand/user";
 
 const ProfileHome = () => {
