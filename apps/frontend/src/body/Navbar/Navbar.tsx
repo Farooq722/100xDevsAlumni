@@ -77,37 +77,37 @@ export const Navbar = () => {
           {isMenuOpen ? <RxCross2 size={30} /> : <CiMenuFries size={30} />}
         </button>
 
-        <div className="hidden md:flex border bg-gradient-to-bl from-teal-400 via-emerald-200 to-pink-400 px-8 py-2 rounded-2xl">
+        <div className="hidden md:flex border bg-gradient-to-bl from-teal-400 to-pink-400 px-8 py-2 rounded-xl">
           {!user ? (
             <div className="flex justify-around gap-6 text-black font-medium">
-              <Link to={"/price"} className="hover:text-teal-500">
+              <Link to={"/price"} className="hover:text-teal-200">
                 Price
               </Link>
               <Link
                 to={"https://harkirat.classx.co.in"}
                 target="_blank"
-                className="hover:text-teal-500"
+                className="hover:text-teal-200"
               >
                 100xDevs
               </Link>
               <Link
                 to={"https://school.100xdevs.com"}
                 target="_blank"
-                className="hover:text-teal-500"
+                className="hover:text-teal-200"
               >
                 100xSchool
               </Link>
-              <Link to={"/usage"} className="hover:text-teal-500">
+              <Link to={"/usage"} className="hover:text-teal-200">
                 How to use
               </Link>
             </div>
           ) : (
             <div className="flex justify-around gap-6 text-black font-medium">
-              <Link to={"/dashboard"} className="hover:text-teal-500">
+              <Link to={"/dashboard"} className="hover:text-teal-200">
                 Dashboard
               </Link>
               {selfData?.role === "Alumni" ? (
-                <Link to={"/alumniform"} className="hover:text-teal-500">
+                <Link to={"/alumniform"} className="hover:text-teal-200">
                   Form
                 </Link>
               ) : (
@@ -120,13 +120,13 @@ export const Navbar = () => {
                   Form
                 </button>
               )}
-              <Link to={"/analtyics"} className="hover:text-teal-500">
+              <Link to={"/analtyics"} className="hover:text-teal-200">
                 Analtyics
               </Link>
               <Link
                 to={"https://harkirat.classx.co.in"}
                 target="_blank"
-                className="hover:text-teal-500"
+                className="hover:text-teal-200"
               >
                 100xDevs
               </Link>
@@ -138,7 +138,7 @@ export const Navbar = () => {
           <div className="hidden md:flex justify-between gap-4 text-black font-medium">
             <div className="py-3">
               <button
-                className="hover:bg-teal-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-400 to-pink-400 text-black py-2 rounded-2xl"
+                className="hover:bg-teal-300 hover:text-teal-200 hover:bg-gradient-to-bl hover:from-teal-500 hover:to-pink-500 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-400 to-pink-400 text-black py-2 rounded-lg"
                 onClick={() => navigate("/login")}
               >
                 Login

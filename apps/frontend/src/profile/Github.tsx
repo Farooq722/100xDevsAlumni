@@ -1,10 +1,7 @@
-
 interface Username {
-  username: string
+  username: string;
 }
-const Github = ({username}: Username) => {
-  
-
+const Github = ({ username }: Username) => {
   return (
     <div className="bg-purple-200 text-center rounded-lg p-4">
       <div className="flex justify-center">
