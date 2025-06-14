@@ -28,15 +28,15 @@ export default function TypewriterEffectSmoothDemo() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <p className="text-neutral-600 dark:text-neutral-300 text-xs sm:text-lg  ">
+      <p className="text-neutral-700 dark:text-neutral-700 text-xs sm:text-sm  ">
         The path to success begins with the power of connection.
       </p>
       <TypewriterEffectSmooth words={words} />
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
-        <button className="w-40 h-10 rounded-xl bg-pink-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all border dark:border-white border-transparent text-white text-sm">
+        <button className="w-40 h-10 rounded-xl bg-pink-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all border dark:border-teal-300 border-transparent text-black text-sm">
           Join now
         </button>
-        <button className="w-40 h-10 rounded-xl bg-pink-300 hover:text-white hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all border dark:border-white border-transparent text-black text-sm">
+        <button className="w-40 h-10 rounded-xl bg-pink-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all border dark:border-teal-300 border-transparent text-black text-sm">
           Signup
         </button>
       </div>

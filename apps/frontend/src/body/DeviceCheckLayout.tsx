@@ -17,7 +17,7 @@ export const DeviceCheckLayout = ({ children }: DeviceCheckLayoutProps) => {
       }, 3000); // Show warning for 3 seconds
       return () => clearTimeout(timer);
     } else {
-      setIsReady(true); // immediately render 
+      setIsReady(true); // immediately render
     }
   }, []);
 
