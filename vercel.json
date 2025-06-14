@@ -9,10 +9,7 @@
       }
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "apps/frontend/dist/index.html"
-    }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
