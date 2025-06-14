@@ -4,10 +4,10 @@ services:
     runtime: node
     rootDir: .
     buildCommand: |
-      pnpm install -w
-      pnpm --filter @repo/db run generate
-      pnpm --filter @repo/db run build
-      pnpm --filter backend run build
+      pnpm install -w --frozen-lockfile
+      pnpm --filter @repo/db exec prisma generate
+      pnpm turbo run build --filter=@repo/db...
+      pnpm turbo run build --filter=backend...
 
     startCommand: pnpm --filter backend run start
     plan: free
@@ -15,3 +15,5 @@ services:
       paths:
         - apps/backend/**/*
         - packages/db/**/*
+        - packages/ui/**/*
+        - packages/zustand/**/*
