@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import { Loader } from "./Home/Loader";
@@ -101,6 +102,7 @@ function App() {
         </BrowserRouter>
       </DeviceCheckLayout>
       <Analytics />
+      <SpeedInsights />
     </div>
   );
 }
