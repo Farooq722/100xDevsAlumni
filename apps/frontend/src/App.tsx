@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import { Loader } from "./Home/Loader";
@@ -97,6 +98,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </DeviceCheckLayout>
+      <Analytics />
     </div>
   );
 }
