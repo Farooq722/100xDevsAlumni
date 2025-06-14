@@ -8,7 +8,6 @@ import { Page2 } from "./Page2";
 import TypewriterEffectSmoothDemo from "../Uicomponents/TypewriterEffectSmoothDemo";
 
 export const Body = () => {
- 
   return (
     <div className="">
       <HeroHighlightDemo />

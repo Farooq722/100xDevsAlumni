@@ -16,13 +16,11 @@ export function HoverBorderGradientDemo({ text }: spanText) {
       viewport={{ once: true }}
     >
       <HoverBorderGradient
-        containerClassName="rounded-full"
+        containerClassName="rounded-2xl"
         as="button"
-        className="dark:bg-neutral-900 bg-neutral-100 text-neutral-900 dark:text-white flex items-center space-x-2 px-6 py-2 font-medium"
+        className="dark:bg-black bg-gradient-to-bl from-teal-200 to-pink-200 text-black dark:text-black flex items-center space-x-2 px-6"
       >
-        <span className="text-base sm:text-lg md:text-xl">
-          {text}
-        </span>
+        <span>{text}</span>
       </HoverBorderGradient>
     </motion.div>
   );

@@ -61,11 +61,11 @@ export const Login = () => {
 
   return (
     <WavyBackground>
-      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-input bg-gradient-to-bl from-teal-200 to-pink-200 dark:bg-black">
-        <h2 className="font-bold text-xl sm:text-2xl text-neutral-800 dark:text-neutral-200">
+      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-input bg-gradient-to-bl from-teal-200 to-pink-200">
+        <h2 className="font-bold text-xl sm:text-2xl text-neutral-800">
           Welcome to 100xAlumni
         </h2>
-        <p className="text-neutral-600 text-sm sm:text-base max-w-sm mt-2 dark:text-neutral-300">
+        <p className="text-neutral-600 text-sm sm:text-base max-w-sm mt-2 ">
           Login to 100xAlumni if you want to connect with 100xDevs
         </p>
 
@@ -96,7 +96,7 @@ export const Login = () => {
             />
           </LabelInputContainer>
 
-          <button className="hover:bg-teal-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-300 to-pink-300 text-black relative group/btn dark:from-zinc-900 dark:to-zinc-900 block w-full rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]">
+          <button className="hover:bg-teal-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-300 to-pink-300 text-black relative group/btn block w-full rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] ">
             Login &rarr;
             <BottomGradient />
           </button>
@@ -108,7 +108,7 @@ export const Login = () => {
           )}
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="text-neutral-700 text-sm dark:text-neutral-300">
+            <div className="text-neutral-700 text-sm">
               Don't have an account:{"  "}
               <Link
                 to="/signup"
@@ -120,7 +120,7 @@ export const Login = () => {
             <div>
               <Link
                 to={"/forget-password"}
-                className="text-black text-sm font-medium dark:text-neutral-300 hover:text-teal-600"
+                className="text-black text-sm font-medium hover:text-teal-600"
               >
                 Forgot Password?
               </Link>

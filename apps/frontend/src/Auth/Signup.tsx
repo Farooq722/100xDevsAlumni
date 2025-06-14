@@ -63,11 +63,11 @@ const Signup = () => {
 
   return (
     <WavyBackground>
-      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto  rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-input bg-gradient-to-bl from-teal-200 to-pink-200 dark:bg-black">
-        <h2 className="font-bold text-xl sm:text-2xl text-neutral-800 dark:text-neutral-200">
+      <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto  rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-input bg-gradient-to-bl from-teal-200 to-pink-200">
+        <h2 className="font-bold text-xl sm:text-2xl text-neutral-800">
           Welcome to 100xAlumni
         </h2>
-        <p className="text-neutral-600 text-sm sm:text-base max-w-sm mt-2 dark:text-neutral-300">
+        <p className="text-neutral-600 text-sm sm:text-base max-w-sm mt-2">
           Signup to 100xAlumni if you want to connect with 100xDevs
         </p>
 
@@ -135,10 +135,7 @@ const Signup = () => {
                   >
                     <RadioGroupIndicator className="w-2.5 h-2.5 rounded-full bg-teal-600" />
                   </RadioGroupItem>
-                  <label
-                    htmlFor={id}
-                    className="text-sm text-black dark:text-white"
-                  >
+                  <label htmlFor={id} className="text-sm text-black">
                     {label}
                   </label>
                 </div>
@@ -148,7 +145,7 @@ const Signup = () => {
 
           <button
             type="submit"
-            className="hover:bg-teal-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-300 to-pink-300 text-black relative group/btn dark:from-zinc-900 dark:to-zinc-900 block w-full rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+            className="hover:bg-teal-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-300 to-pink-300 text-black relative group/btn block w-full rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset]"
           >
             Signup &rarr;
             <BottomGradient />
@@ -160,12 +157,12 @@ const Signup = () => {
             </div>
           )}
 
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-700 dark:text-neutral-300">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-700 ">
             <span>
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="text-black font-bold hover:text-pink-700 dark:text-white"
+                className="text-black font-bold hover:text-pink-700 dark:text-black"
               >
                 Login
               </Link>

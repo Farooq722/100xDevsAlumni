@@ -23,7 +23,7 @@ export const Cover = ({
       const numberOfBeams = Math.floor(height / 10);
       const positions = Array.from(
         { length: numberOfBeams },
-        (_, i) => (i + 1) * (height / (numberOfBeams + 1))
+        (_, i) => (i + 1) * (height / (numberOfBeams + 1)),
       );
       setBeamPositions(positions);
     }
@@ -40,7 +40,7 @@ export const Cover = ({
         "relative group/cover text-white inline-block rounded-2xl px-3 py-2 transition duration-200",
         hovered
           ? "bg-gradient-to-r from-purple-500 to-pink-500"
-          : "dark:bg-neutral-900 bg-neutral-100"
+          : "bg-neutral-100",
       )}
     >
       <AnimatePresence>
@@ -111,9 +111,9 @@ export const Cover = ({
           filter: { duration: 0.2 },
         }}
         className={cn(
-          hovered ? "text-black" : "text-neutral-900 dark:text-white",
+          hovered ? "text-black" : "text-neutral-900 ",
           "inline-block relative z-20 transition duration-200",
-          className
+          className,
         )}
       >
         {children}
@@ -175,13 +175,11 @@ export const Beam = ({
             y2: 0,
           }}
           transition={{
-            duration: hovered ? 0.5 : duration ?? 2,
+            duration: hovered ? 0.5 : (duration ?? 2),
             ease: "linear",
             repeat: Infinity,
             delay: hovered ? Math.random() * (1 - 0.2) + 0.2 : 0,
-            repeatDelay: hovered
-              ? Math.random() * (2 - 1) + 1
-              : delay ?? 1,
+            repeatDelay: hovered ? Math.random() * (2 - 1) + 1 : (delay ?? 1),
           }}
         >
           <stop stopColor="#2EB9DF" stopOpacity="0" />
@@ -202,8 +200,8 @@ export const CircleIcon = ({
   return (
     <div
       className={cn(
-        `pointer-events-none animate-pulse group-hover/cover:hidden group-hover/cover:opacity-100 group h-2 w-2 rounded-full bg-neutral-600 dark:bg-white opacity-20 group-hover/cover:bg-white`,
-        className
+        `pointer-events-none animate-pulse group-hover/cover:hidden group-hover/cover:opacity-100 group h-2 w-2 rounded-full bg-neutral-600 opacity-20 group-hover/cover:bg-white`,
+        className,
       )}
     ></div>
   );

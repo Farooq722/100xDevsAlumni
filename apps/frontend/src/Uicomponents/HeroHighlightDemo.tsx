@@ -14,9 +14,10 @@ export function HeroHighlightDemo() {
             duration: 0.8,
             ease: [0.4, 0.0, 0.2, 1],
           }}
-          className="px-4 text-center font-bold max-w-4xl mx-auto leading-relaxed lg:leading-snug text-xl md:text-4xl lg:text-5xl mb-60 text-neutral-800 dark:text-white"
+          className="px-4 text-center font-bold max-w-4xl mx-auto leading-relaxed lg:leading-snug text-2xl md:text-4xl lg:text-5xl mb-60 text-neutral-800"
         >
-          Connect with peer&apos;s, build projects, and scale your tech journey fast. <br />
+          Connect with peer&apos;s, build projects, and scale your tech journey
+          fast. <br />
           <Highlight className="text-black dark:text-white">
             Network. Build. Scale.
           </Highlight>
