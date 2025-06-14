@@ -14,10 +14,10 @@ export const DeviceCheckLayout = ({ children }: DeviceCheckLayoutProps) => {
       setShowWarning(true);
       const timer = setTimeout(() => {
         setIsReady(true);
-      }, 4000); // Show warning for 3 seconds
+      }, 3000); // Show warning for 3 seconds
       return () => clearTimeout(timer);
     } else {
-      setIsReady(true); // immediately render on desktop
+      setIsReady(true); // immediately render 
     }
   }, []);
 

@@ -8,10 +8,7 @@ import { Page2 } from "./Page2";
 import TypewriterEffectSmoothDemo from "../Uicomponents/TypewriterEffectSmoothDemo";
 
 export const Body = () => {
-  useEffect(() => {
-    setTimeout(() => {}, 2000);
-  }, []);
-
+ 
   return (
     <div className="">
       <HeroHighlightDemo />

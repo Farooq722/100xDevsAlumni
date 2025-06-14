@@ -18,9 +18,11 @@ export function HoverBorderGradientDemo({ text }: spanText) {
       <HoverBorderGradient
         containerClassName="rounded-full"
         as="button"
-        className="dark:bg-black bg-gradient-to-bl from-teal-100 to-pink-100 text-black dark:text-white flex items-center space-x-2 px-6"
+        className="dark:bg-neutral-900 bg-neutral-100 text-neutral-900 dark:text-white flex items-center space-x-2 px-6 py-2 font-medium"
       >
-        <span>{text}</span>
+        <span className="text-base sm:text-lg md:text-xl">
+          {text}
+        </span>
       </HoverBorderGradient>
     </motion.div>
   );
