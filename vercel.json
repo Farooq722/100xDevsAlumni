@@ -1,14 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "apps/frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "apps/frontend/dist"
-      }
+  "projects": {
+    "100xDevsAlumni": {
+      "rootDirectory": "apps/frontend"
     }
-  ],
+  },
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]
