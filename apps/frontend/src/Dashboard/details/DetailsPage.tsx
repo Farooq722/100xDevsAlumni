@@ -6,7 +6,7 @@ import extractUsername from "../../lib/username";
 function DetailsPage() {
   const location = useLocation();
   const { user } = location.state!;
-  const githubUrl = user.socialMedia.github;
+  const githubUrl = user.socialMedia?.github;
   const username = githubUrl
     ? extractUsername(githubUrl)
     : "https://github.com/username";
