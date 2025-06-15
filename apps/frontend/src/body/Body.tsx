@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { FormDemo } from "../Uicomponents/FormDemo";
 import { HeroHighlightDemo } from "../Uicomponents/HeroHighlightDemo";
 import { InfiniteMovingCardsDemo } from "../Uicomponents/InfiniteMovingCardsDemo";

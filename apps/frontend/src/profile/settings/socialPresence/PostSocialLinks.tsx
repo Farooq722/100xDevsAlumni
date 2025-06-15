@@ -62,7 +62,7 @@ const PostSocialLinks = () => {
 
   return (
     <div>
-      <div className="max-w-lg mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md dark:bg-gray-900 mt-10">
+      <div className="max-w-lg mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md  mt-10">
         <h2 className="text-xl font-base mb-4 text-center">
           Post Social Links
         </h2>
@@ -75,7 +75,7 @@ const PostSocialLinks = () => {
               placeholder="LinkedIn URL"
               value={linkedin}
               onChange={(e) => setLinkedin(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
 
@@ -86,7 +86,7 @@ const PostSocialLinks = () => {
               placeholder="GitHub URL"
               value={github}
               onChange={(e) => setGithub(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
 
@@ -97,7 +97,7 @@ const PostSocialLinks = () => {
               placeholder="Twitter URL"
               value={twitter}
               onChange={(e) => setTwitter(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
           <div className="flex justify-start items-center gap-4">
@@ -107,7 +107,7 @@ const PostSocialLinks = () => {
               placeholder="Instagram URL"
               value={instagram}
               onChange={(e) => setInstagram(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
           <div className="flex justify-start items-center gap-4">
@@ -117,7 +117,7 @@ const PostSocialLinks = () => {
               placeholder="Youtube URL"
               value={youtube}
               onChange={(e) => setYoutube(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
           <div className="flex justify-start items-center gap-4">
@@ -127,7 +127,7 @@ const PostSocialLinks = () => {
               placeholder="Portfolio URL"
               value={portfolio}
               onChange={(e) => setPortfolio(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
 

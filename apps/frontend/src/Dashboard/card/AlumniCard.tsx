@@ -60,29 +60,29 @@ export default function AlumniCard({ user }: { user: User }) {
 
   return (
     <div className="flex justify-center items-center p-4">
-      <BackgroundGradient className="rounded-2xl w-64 h-[370px] sm:w-72 sm:h-[430px] overflow-hidden dark:bg-zinc-900 shadow-md">
+      <BackgroundGradient className="rounded-2xl w-64 h-[370px] sm:w-72 sm:h-[430px] overflow-hidden shadow-md">
         <img
           src={profilePhoto || "https://github.com/shadcn.png"}
           onError={(e) => {
             e.currentTarget.src = "https://github.com/shadcn.png";
           }}
           alt="Profile Pic"
-          className="object-cover w-24 h-24 sm:w-28 sm:h-28 rounded-full mx-auto border-4 border-gray-200 dark:border-zinc-700 mt-2"
+          className="object-cover w-24 h-24 sm:w-28 sm:h-28 rounded-full mx-auto border-4 border-gray-200 mt-2"
         />
 
-        <p className="text-base sm:text-lg font-semibold text-center text-black mt-4 dark:text-neutral-200">
+        <p className="text-base sm:text-lg font-semibold text-center text-black mt-4">
           {user?.name}
         </p>
 
-        <p className="text-xs sm:text-sm text-center text-neutral-700 dark:text-neutral-400 mt-2 px-2 line-clamp-5">
+        <p className="text-xs sm:text-sm text-center text-neutral-700  mt-2 px-2 line-clamp-5">
           {user.bio || "No bio available"}
         </p>
 
-        <p className="text-xs sm:text-sm text-center text-neutral-800 dark:text-neutral-400 mt-3">
+        <p className="text-xs sm:text-sm text-center text-neutral-800 mt-3">
           <span className="font-medium">Company:</span>{" "}
           {user.professionalData?.currentCompany || "N/A"}
         </p>
-        <p className="text-xs sm:text-sm text-center text-neutral-800 dark:text-neutral-400 mt-1">
+        <p className="text-xs sm:text-sm text-center text-neutral-800 mt-1">
           <span className="font-medium">Role: </span>
           {user.professionalData?.jobTitle || "N/A"}
         </p>
@@ -113,7 +113,7 @@ export default function AlumniCard({ user }: { user: User }) {
 
         <div className="flex justify-center items-center mt-5">
           <button
-            className="rounded-lg py-2 px-4 bg-black text-white dark:bg-zinc-800 text-xs sm:text-sm font-semibold transition hover:bg-gray-900"
+            className="rounded-lg py-2 px-4 bg-black text-white text-xs sm:text-sm font-semibold transition hover:text-teal-400"
             onClick={() => {
               navigate("/alumnidetails", {
                 state: {

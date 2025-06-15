@@ -29,7 +29,6 @@ export const Login = () => {
     if (e) {
       e.preventDefault();
     }
-
     try {
       setLoader(true);
       const { data } = await axios.post(
