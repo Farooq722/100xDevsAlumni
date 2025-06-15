@@ -169,7 +169,7 @@ const Signup = () => {
             </span>
             <Link
               to="#"
-              className="text-black font-medium dark:text-neutral-300 hover:text-teal-600"
+              className="text-black font-medium dark:text-red-900 hover:text-teal-600"
             >
               Forgot Password?
             </Link>

@@ -18,7 +18,7 @@ const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const { user, setUser, logout, setLoader } = useStore();
+  const { user, setUser, logout, setLoader } = useStore(); //
   const { selfData, setSelfData, clearData } = useUserData();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const profile = selfData?.avatar || "https://github.com/shadcn.png";
@@ -138,7 +138,7 @@ export const Navbar = () => {
           <div className="hidden md:flex justify-between gap-4 text-black font-medium">
             <div className="py-3">
               <button
-                className="hover:bg-teal-300 hover:text-teal-200 hover:bg-gradient-to-bl hover:from-teal-500 hover:to-pink-500 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-400 to-pink-400 text-black py-2 rounded-lg"
+                className="hover:bg-teal-300 hover:bg-gradient-to-bl hover:from-teal-500 hover:to-pink-500 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-400 to-pink-400 text-black py-2 rounded-lg"
                 onClick={() => navigate("/login")}
               >
                 Login

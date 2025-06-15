@@ -66,7 +66,7 @@ const Bio = () => {
         </div>
       ) : (
         <div className="text-center w-full">
-          <div className="text-sm sm:text-base leading-relaxed text-gray-800 dark:text-gray-200 py-2 px-4 text-left break-words rounded-md">
+          <div className="text-sm sm:text-base leading-relaxed text-gray-800 py-2 px-4 text-left break-words rounded-md">
             <p>{selfData?.bio}</p>
           </div>
           <div className="bg-gradient-to-bl from-indigo-500 via-purple-500 to-blue-500 mt-2 py-2 rounded-lg w-56 mx-auto hover:brightness-110 shadow-md">

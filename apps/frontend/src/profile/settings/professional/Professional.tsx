@@ -53,7 +53,7 @@ const Professional = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md dark:bg-gray-900 mt-10">
+    <div className="max-w-md mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md mt-10">
       <h2 className="text-xl font-base mb-4 text-center">
         Create & Update Professional Data
       </h2>
@@ -66,10 +66,11 @@ const Professional = () => {
               id="currentCompany"
               name="currentCompany"
               type="text"
+              required
               value={data.currentCompany}
               onChange={eventHandler}
               placeholder="Enter Your Current Company"
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
         </div>
@@ -81,10 +82,11 @@ const Professional = () => {
               id="jobTitle"
               name="jobTitle"
               type="text"
+              required
               value={data.jobTitle}
               onChange={eventHandler}
               placeholder="Enter Your Job Title"
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded "
             />
           </div>
         </div>
@@ -96,10 +98,11 @@ const Professional = () => {
               id="yearsOfExperience"
               name="yearsOfExperience"
               type="text"
+              required
               value={data.yearsOfExperience}
               onChange={eventHandler}
               placeholder="Enter Your Experience"
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded "
             />
           </div>
         </div>
@@ -111,10 +114,11 @@ const Professional = () => {
               id="location"
               name="location"
               type="text"
+              required
               value={data.location}
               onChange={eventHandler}
               placeholder="Eg: Hyderabad, Bangalore, Chennai, USA, UK"
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded "
             />
           </div>
         </div>

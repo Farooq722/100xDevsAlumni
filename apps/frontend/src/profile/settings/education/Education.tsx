@@ -54,7 +54,7 @@ const Education = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md dark:bg-gray-900 mt-10">
+    <div className="max-w-md mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md  mt-10">
       <h2 className="text-xl font-base mb-4 text-center">
         Create & Update Education
       </h2>
@@ -67,10 +67,11 @@ const Education = () => {
               id="department"
               name="department"
               type="text"
+              required
               value={data.department}
               onChange={eventHandler}
               placeholder="Enter Your Department"
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
         </div>
@@ -82,10 +83,11 @@ const Education = () => {
               id="college"
               name="college"
               type="text"
+              required
               value={data.college}
               onChange={eventHandler}
               placeholder="Enter Your College"
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
         </div>
@@ -97,10 +99,11 @@ const Education = () => {
               id="passingYear"
               name="passingYear"
               type="text"
+              required
               value={data.passingYear}
               onChange={eventHandler}
               placeholder="Enter Your Passing Year"
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
         </div>
@@ -112,10 +115,11 @@ const Education = () => {
               id="degree"
               name="degree"
               type="text"
+              required
               value={data.degree}
               onChange={eventHandler}
               placeholder="Eg: B Tech, BCA"
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded"
             />
           </div>
         </div>

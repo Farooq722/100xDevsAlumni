@@ -75,7 +75,7 @@ That value is added to the payload object with the key "linkedin".`;
 
   return (
     <div>
-      <div className="max-w-lg mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md dark:bg-gray-900 mt-10">
+      <div className="max-w-lg mx-auto p-6 bg-gradient-to-bl from-teal-200 to-fuchsia-300 rounded-xl shadow-md mt-10">
         <h2 className="text-xl font-base mb-4 text-center">
           Edit Social Links
         </h2>
@@ -88,7 +88,7 @@ That value is added to the payload object with the key "linkedin".`;
               placeholder="LinkedIn URL"
               value={linkedin}
               onChange={(e) => setLinkedin(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded "
             />
           </div>
 
@@ -99,7 +99,7 @@ That value is added to the payload object with the key "linkedin".`;
               placeholder="GitHub URL"
               value={github}
               onChange={(e) => setGithub(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded "
             />
           </div>
 
@@ -110,7 +110,7 @@ That value is added to the payload object with the key "linkedin".`;
               placeholder="Twitter URL"
               value={twitter}
               onChange={(e) => setTwitter(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded "
             />
           </div>
           <div className="flex justify-start items-center gap-4">
@@ -120,7 +120,7 @@ That value is added to the payload object with the key "linkedin".`;
               placeholder="Instagram URL"
               value={instagram}
               onChange={(e) => setInstagram(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded "
             />
           </div>
           <div className="flex justify-start items-center gap-4">
@@ -130,7 +130,7 @@ That value is added to the payload object with the key "linkedin".`;
               placeholder="Youtube URL"
               value={youtube}
               onChange={(e) => setYoutube(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded "
             />
           </div>
           <div className="flex justify-start items-center gap-4">
@@ -140,7 +140,7 @@ That value is added to the payload object with the key "linkedin".`;
               placeholder="Portfolio URL"
               value={portfolio}
               onChange={(e) => setPortfolio(e.target.value)}
-              className="w-96 p-2 border rounded dark:bg-gray-800"
+              className="w-96 p-2 border rounded "
             />
           </div>
 

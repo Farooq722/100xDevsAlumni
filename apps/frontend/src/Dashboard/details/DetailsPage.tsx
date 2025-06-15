@@ -16,7 +16,7 @@ function DetailsPage() {
       title: "Education",
       content: (
         <div>
-          <p className="mb-6 text-xs text-neutral-800 md:text-sm dark:text-neutral-200 font-semibold">
+          <p className="mb-6 text-xs text-neutral-800 md:text-sm font-semibold">
             Education Details
           </p>
           <div className="border border-purple-400 p-1 bg-gradient-to-br from-pink-200 via-teal-200 to-purple-200 rounded-xl">
@@ -46,7 +46,7 @@ function DetailsPage() {
       title: "Professional",
       content: (
         <div>
-          <p className="mb-6 text-xs font-semibold text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-6 text-xs font-semibold text-neutral-800 md:text-sm">
             Professional Details
           </p>
           <div className="border border-purple-300 p-1 bg-gradient-to-br from-pink-200 via-teal-200 to-purple-200 rounded-xl">
@@ -76,7 +76,7 @@ function DetailsPage() {
       title: "Projects",
       content: (
         <div>
-          <p className="mb-6 text-xs font-semibold text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-6 text-xs font-semibold text-neutral-800 md:text-sm ">
             My top {user.projects.length} projects which i built.
           </p>
           {user.projects.length !== 0 ? (
@@ -84,7 +84,7 @@ function DetailsPage() {
               {user.projects.map((project: any, index: number) => (
                 <div
                   key={index}
-                  className="border rounded-xl p-4 shadow-md bg-gradient-to-br from-pink-100 via-teal-100 to-purple-100 dark:bg-gray-800"
+                  className="border rounded-xl p-4 shadow-md bg-gradient-to-br from-pink-100 via-teal-100 to-purple-100"
                 >
                   <h3 className="text-md font-semibold mb-2">
                     <span className="text-xl font-sans text-pink-400">
@@ -92,7 +92,7 @@ function DetailsPage() {
                     </span>{" "}
                     {project.title}
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-300">
+                  <p className="text-sm text-gray-500 dark:text-gray-600">
                     <span className="text-xl font-sans text-pink-400">
                       Description:
                     </span>{" "}
@@ -133,7 +133,7 @@ function DetailsPage() {
       title: "Github Contri Chat",
       content: (
         <div>
-          <p className="mb-6 text-xs font-semibold text-neutral-800 md:text-sm dark:text-neutral-200">
+          <p className="mb-6 text-xs font-semibold text-neutral-800 md:text-sm">
             My Github Contribution Chart.
           </p>
           <div className="border rounded-xl p-1 shadow-md bg-gradient-to-br from-pink-300 via-teal-300 to-purple-300">
