@@ -1,0 +1,36 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffd89b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#19547b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffa726;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="16" cy="16" r="15" fill="url(#bgGradient)" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Graduation cap -->
+  <path d="M8 12 L16 8 L24 12 L16 16 L8 12 Z" fill="url(#accentGradient)"/>
+  <path d="M24 12 L26 13 L26 18 L24 19 Z" fill="#ff6b6b"/>
+  <circle cx="26" cy="18.5" r="1" fill="#ffa726"/>
+  
+  <!-- Code brackets -->
+  <path d="M6 18 L4 20 L6 22" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M26 18 L28 20 L26 22" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- 100x text -->
+  <text x="16" y="26" font-family="Arial, sans-serif" font-size="6" font-weight="bold" text-anchor="middle" fill="url(#textGradient)">100x</text>
+  
+  <!-- Decorative dots -->
+  <circle cx="10" cy="24" r="1" fill="#ffd89b" opacity="0.8"/>
+  <circle cx="22" cy="24" r="1" fill="#ffd89b" opacity="0.8"/>
+</svg>
