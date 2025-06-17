@@ -3,9 +3,10 @@ import { motion } from "motion/react";
 
 interface spanText {
   text: string;
+  icon: React.ReactNode;
 }
 
-export function HoverBorderGradientDemo({ text }: spanText) {
+export function HoverBorderGradientDemo({ text, icon }: spanText) {
   return (
     <motion.div
       className="m-12 flex justify-center text-center"
@@ -18,9 +19,12 @@ export function HoverBorderGradientDemo({ text }: spanText) {
       <HoverBorderGradient
         containerClassName="rounded-2xl"
         as="button"
-        className="dark:bg-black bg-gradient-to-bl from-teal-200 to-pink-200 text-black dark:text-black flex items-center space-x-2 px-6"
+        className="bg-gradient-to-bl from-teal-200 to-pink-200 text-black dark:text-black flex items-center space-x-2 px-6"
       >
-        <span>{text}</span>
+        <div className="flex justify-center items-center gap-2 font-medium">
+          <span>{icon}</span>
+          <span>{text}</span>
+        </div>
       </HoverBorderGradient>
     </motion.div>
   );
