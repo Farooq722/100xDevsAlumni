@@ -10,7 +10,7 @@ import { Button } from "@mui/material";
 import { useStore } from "@repo/zustand/store";
 import { useUserData } from "@repo/zustand/user";
 import axios from "axios";
-import { toast } from "sonner";
+// import { toast } from "sonner";
 import { CiMenuFries } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 
@@ -97,16 +97,16 @@ export const Navbar = () => {
               >
                 100xSchool
               </Link>
-              <Link to={"/usage"} className="hover:text-teal-200">
+              {/* <Link to={"/usage"} className="hover:text-teal-200">
                 How to use
-              </Link>
+              </Link> */}
             </div>
           ) : (
             <div className="flex justify-around gap-6 text-black font-medium">
               <Link to={"/dashboard"} className="hover:text-teal-200">
                 Dashboard
               </Link>
-              {selfData?.role === "Alumni" ? (
+              {/* {selfData?.role === "Alumni" ? (
                 <Link to={"/alumniform"} className="hover:text-teal-200">
                   Form
                 </Link>
@@ -119,7 +119,7 @@ export const Navbar = () => {
                 >
                   Form
                 </button>
-              )}
+              )} */}
               <Link to={"/analtyics"} className="hover:text-teal-200">
                 Analtyics
               </Link>
@@ -219,7 +219,7 @@ export const Navbar = () => {
               <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
                 Dashboard
               </Link>
-              {selfData?.role === "Alumni" ? (
+              {/* {selfData?.role === "Alumni" ? (
                 <Link to="/alumniform" onClick={() => setIsMenuOpen(false)}>
                   Form
                 </Link>
@@ -233,7 +233,7 @@ export const Navbar = () => {
                 >
                   Form
                 </button>
-              )}
+              )} */}
               <Link to="/analtyics" onClick={() => setIsMenuOpen(false)}>
                 Analtyics
               </Link>

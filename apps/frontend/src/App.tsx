@@ -8,13 +8,13 @@ import Home from "./Home/Index";
 import ForgetPassword from "./Auth/ForgetPassoword";
 import { DeviceCheckLayout } from "./body/DeviceCheckLayout";
 import Analtyics from "./analytics/Analtyics";
-import Usage from "./body/Navbar/Usage";
+// import Usage from "./body/Navbar/Usage";
 
 // Lazy-loaded components
 const Login = React.lazy(() => import("./Auth/Login"));
 const Signup = React.lazy(() => import("./Auth/Signup"));
 const Dashboard = React.lazy(() => import("./Dashboard/Dashboard"));
-const AlumniForm = React.lazy(() => import("./Dashboard/form/AlumniForm"));
+// const AlumniForm = React.lazy(() => import("./Dashboard/form/AlumniForm"));
 const Pricing = React.lazy(() => import("./Home/Price"));
 const ProfileHome = React.lazy(() => import("./profile/ProfileHome"));
 const Settings = React.lazy(() => import("./profile/settings/Settings"));
@@ -52,14 +52,14 @@ function App() {
                 </Suspense>
               }
             />
-            <Route
+            {/* <Route
               path="/alumniform"
               element={
                 <Suspense fallback={<Loader />}>
                   <AlumniForm />
                 </Suspense>
               }
-            />
+            /> */}
             <Route
               path="/price"
               element={
@@ -97,7 +97,7 @@ function App() {
 
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/analtyics" element={<Analtyics />} />
-            <Route path="/usage" element={<Usage />} />
+            {/* <Route path="/usage" element={<Usage />} /> */}
           </Routes>
         </BrowserRouter>
       </DeviceCheckLayout>

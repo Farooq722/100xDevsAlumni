@@ -1,12 +1,19 @@
 import { motion } from "motion/react";
 import { HeroHighlight, Highlight } from "@repo/ui/uicomponents/hero-highlight";
 import { HoverBorderGradientDemo } from "./HoverBorderGradientDemo";
+import { Trophy } from "lucide-react";
 
 export function HeroHighlightDemo() {
   return (
     <div>
       <HeroHighlight>
-        <HoverBorderGradientDemo text={"Connect with 100xDevs 🚀"} />
+        <div className="flex justify-center">
+          <HoverBorderGradientDemo
+            icon={<Trophy className="w-5 h-5 text-pink-500" />}
+            text={"India's Premier Developer Community"}
+          />
+        </div>
+
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: [20, -5, 0] }}
