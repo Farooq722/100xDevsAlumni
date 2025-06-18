@@ -49,7 +49,11 @@ const Pricing = () => {
             Explorer Basic
           </h1>
           <h2 className="text-start text-md text-gray-700 dark:text-gray-900">
-            Complement For Us If You Can
+            Complement For Us If You Can{" "}
+            <span className="text-red-300">
+              {" "}
+              <br /> Payments not yet added{" "}
+            </span>
           </h2>
           <div className="space-y-2 mb-6">
             <p className="mt-6 text-gray-900">
