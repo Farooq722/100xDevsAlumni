@@ -70,10 +70,9 @@ export default function AlumniCard({ user }: { user: User }) {
           className="object-cover w-24 h-24 sm:w-28 sm:h-28 rounded-full mx-auto border-4 border-gray-200 mt-2"
         />
 
-        <p className="text-base sm:text-lg font-semibold text-center text-black mt-4">
+        <p className="text-base sm:text-lg font-semibold text-center text-black mt-2">
           {user?.name}
         </p>
-
         <p className="text-xs sm:text-sm text-center text-neutral-700  mt-2 px-2 line-clamp-5">
           {user.bio || "No bio available"}
         </p>

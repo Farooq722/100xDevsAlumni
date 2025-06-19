@@ -51,7 +51,7 @@ export const Navbar = () => {
 
   return (
     <motion.div
-      className="text-white p-3 bg-gradient-to-bl from-teal-200 to-pink-200"
+      className="text-white p-3 bg-gradient-to-bl from-teal-200 to-pink-300"
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -80,6 +80,9 @@ export const Navbar = () => {
         <div className="hidden md:flex border bg-gradient-to-bl from-teal-400 to-pink-400 px-8 py-2 rounded-xl">
           {!user ? (
             <div className="flex justify-around gap-6 text-black font-medium">
+              <Link to={"/dashboard"} className="hover:text-teal-200">
+                Dashboard
+              </Link>
               <Link to={"/price"} className="hover:text-teal-200">
                 Price
               </Link>
@@ -192,6 +195,9 @@ export const Navbar = () => {
             <>
               <Link to="/login" onClick={() => setIsMenuOpen(false)}>
                 Login
+              </Link>
+              <Link to={"/dashboard"} className="hover:text-teal-200">
+                Dashboard
               </Link>
               <Link to="/price" onClick={() => setIsMenuOpen(false)}>
                 Price
