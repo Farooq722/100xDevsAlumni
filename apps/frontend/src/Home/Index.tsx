@@ -11,7 +11,7 @@ const Home = () => {
     requestAnimationFrame(() => {
       setTimeout(() => {
         setMainLoader(false);
-      }, 200);
+      }, 100);
     });
   }, []);
 
@@ -19,10 +19,7 @@ const Home = () => {
     return (
       <div className="flex items-center justify-center h-dvh w-full bg-slate-200">
         <div className="flex flex-col justify-center items-center gap-4 px-4 text-center">
-          <RingLoader color="#7c3aed" size={80} />
-          {/* <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold">
-            Loading ...
-          </h1> */}
+          <RingLoader color="#7c3aed" size={60} />
         </div>
       </div>
     );
