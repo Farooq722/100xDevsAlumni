@@ -147,15 +147,15 @@ const Signup = () => {
             type="submit"
             className="hover:bg-teal-300 hover:text-black hover:bg-gradient-to-r hover:from-purple-300 hover:to-pink-300 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-300 to-pink-300 text-black relative group/btn block w-full rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset]"
           >
-            Signup &rarr;
+            {!loader ? (
+              <>Signup &rarr;</>
+            ) : (
+              <div className="flex justify-center items-center">
+                <RingLoader color="black" size={28} />
+              </div>
+            )}
             <BottomGradient />
           </button>
-
-          {loader && (
-            <div className="fixed top-0 left-0 right-0 bottom-0 z-20 bg-black/30 flex justify-center items-center">
-              <RingLoader color="white" size={50} />
-            </div>
-          )}
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-700 ">
             <span>
