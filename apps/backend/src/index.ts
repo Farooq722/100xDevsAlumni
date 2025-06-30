@@ -14,8 +14,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   //deployed frontend linke here,
-  // "https://100x-devs-alumni-frontend.vercel.app",
-  "http://localhost:5173",
+  "https://100x-devs-alumni-frontend.vercel.app",
 ];
 
 const corsOptions = {
