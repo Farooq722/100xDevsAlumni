@@ -51,7 +51,7 @@ export const Navbar = () => {
 
   return (
     <motion.div
-      className="text-white p-3 bg-gradient-to-bl from-teal-200 to-pink-300"
+      className="text-white p-2 bg-gradient-to-bl from-teal-200 to-pink-200"
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
