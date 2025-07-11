@@ -5,11 +5,11 @@ import { Trophy } from "lucide-react";
 
 export function HeroHighlightDemo() {
   return (
-    <div>
+    <div className="">
       <HeroHighlight>
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center">
           <HoverBorderGradientDemo
-            icon={<Trophy className="w-5 h-5 text-pink-500" />}
+            icon={<Trophy className="w-6 h-6 text-pink-500 font-extrabold" />}
             text={"India's Premier Developer Community"}
           />
         </div>

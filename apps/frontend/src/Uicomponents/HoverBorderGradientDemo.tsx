@@ -17,9 +17,9 @@ export function HoverBorderGradientDemo({ text, icon }: spanText) {
       viewport={{ once: true }}
     >
       <HoverBorderGradient
-        containerClassName="rounded-2xl"
+        containerClassName="rounded-2xl "
         as="button"
-        className="bg-gradient-to-bl from-teal-200 to-pink-200 text-black dark:text-black flex items-center space-x-2 px-6"
+        className="bg-slate-300 text-black dark:text-black flex justify-center items-center space-x-2 px-6"
       >
         <div className="flex justify-center items-center gap-2 font-medium">
           <span>{icon}</span>
