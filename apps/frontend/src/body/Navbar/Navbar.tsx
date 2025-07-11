@@ -51,14 +51,14 @@ export const Navbar = () => {
 
   return (
     <motion.div
-      className="text-white p-2 bg-gradient-to-bl from-teal-200 to-pink-200"
+      className="text-white p-3 bg-gradient-to-br from-pink-200 to-teal-200"
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
     >
       <motion.div
-        className="flex justify-between items-center m-2 mx-8"
+        className="flex justify-between items-center m-2 mx-12"
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -77,9 +77,9 @@ export const Navbar = () => {
           {isMenuOpen ? <RxCross2 size={30} /> : <CiMenuFries size={30} />}
         </button>
 
-        <div className="hidden md:flex border bg-gradient-to-bl from-teal-400 to-pink-400 px-8 py-2 rounded-xl">
+        <div className=" sticky top-0 z-50 hidden ml-8 md:flex border bg-gradient-to-bl from-teal-400 to-pink-400 px-8 py-2 rounded-xl ">
           {!user ? (
-            <div className="flex justify-around gap-6 text-black font-medium">
+            <div className="flex justify-around gap-6 text-black font-semibold">
               <Link to={"/dashboard"} className="hover:text-teal-200">
                 Dashboard
               </Link>
@@ -105,7 +105,7 @@ export const Navbar = () => {
               </Link> */}
             </div>
           ) : (
-            <div className="flex justify-around gap-6 text-black font-medium">
+            <div className="flex justify-between items-center gap-6 text-black font-medium ">
               <Link to={"/dashboard"} className="hover:text-teal-200">
                 Dashboard
               </Link>
@@ -139,7 +139,7 @@ export const Navbar = () => {
 
         {!user ? (
           <div className="hidden md:flex justify-between gap-4 text-black font-medium">
-            <div className="py-3">
+            <div className="py-4">
               <button
                 className="hover:bg-teal-300 hover:bg-gradient-to-bl hover:from-teal-500 hover:to-pink-500 transition-all duration-300 px-5 bg-gradient-to-bl from-teal-400 to-pink-400 text-black py-2 rounded-lg"
                 onClick={() => navigate("/login")}

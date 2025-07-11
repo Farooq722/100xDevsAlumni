@@ -8,7 +8,7 @@ import TypewriterEffectSmoothDemo from "../Uicomponents/TypewriterEffectSmoothDe
 
 export const Body = () => {
   return (
-    <div className="">
+    <div>
       <HeroHighlightDemo />
       <TypewriterEffectSmoothDemo />
       <InfiniteMovingCardsDemo />
