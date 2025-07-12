@@ -49,7 +49,7 @@ export const Login = () => {
     } catch (error: any) {
       console.log(error);
       toast.error(
-        error.response?.datan ||
+        error.response?.data ||
           error.response?.data?.msg ||
           "Something Went Wrong",
       );

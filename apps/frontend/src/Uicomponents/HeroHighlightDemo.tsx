@@ -9,7 +9,14 @@ export function HeroHighlightDemo() {
       <HeroHighlight>
         <div className="flex justify-center items-center">
           <HoverBorderGradientDemo
-            icon={<Trophy className="w-6 h-6 text-pink-500 font-extrabold" />}
+            icon={
+              <motion.div
+                animate={{ rotate: [0, 6, -6, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <Trophy className="w-6 h-6 text-pink-600 font-extrabold" />
+              </motion.div>
+            }
             text={"India's Premier Developer Community"}
           />
         </div>

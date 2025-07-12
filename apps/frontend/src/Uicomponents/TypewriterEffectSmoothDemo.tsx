@@ -28,7 +28,7 @@ export default function TypewriterEffectSmoothDemo() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <p className="text-neutral-700 dark:text-neutral-700 text-xs sm:text-sm  ">
+      <p className="text-neutral-700 dark:text-neutral-700 text-sm sm:text-base  ">
         The path to success begins with the power of connection.
       </p>
       <TypewriterEffectSmooth words={words} />
