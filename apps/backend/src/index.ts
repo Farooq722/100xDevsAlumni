@@ -8,15 +8,15 @@ import { adminRouter } from "./routes/admin";
 dotenv.config();
 
 const app = express();
+app.set("trust proxy", 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const allowedOrigins = [
-  //deployed frontend linke here,
-  "https://100x-devs-alumni-frontend.vercel.app",
-  // "http://localhost:5173",
-];
+const allowedOrigins =
+  process.env.NODE_ENV === "production"
+    ? [process.env.FRONTEND_URL]
+    : ["http://localhost:5173"];
 
 const corsOptions = {
   origin: function (origin: any, callback: any) {
