@@ -21,7 +21,7 @@ export function HoverBorderGradientDemo({ text, icon }: spanText) {
         as="button"
         className="bg-slate-300 text-black dark:text-black flex justify-center items-center space-x-2 px-6"
       >
-        <div className="flex justify-center items-center gap-2 font-medium">
+        <div className="flex justify-center items-center gap-2 font-medium ">
           <span>{icon}</span>
           <span>{text}</span>
         </div>
