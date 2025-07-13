@@ -112,7 +112,7 @@ export default function AlumniCard({ user }: { user: User }) {
 
         <div className="flex justify-center items-center mt-5">
           <button
-            className="rounded-lg py-2 px-4 bg-black text-white text-xs sm:text-sm font-semibold transition hover:text-teal-400"
+            className="rounded-lg py-2 px-4 bg-black text-white text-xs sm:text-sm font-semibold transition hover:text-gray-300"
             onClick={() => {
               navigate("/alumnidetails", {
                 state: {
