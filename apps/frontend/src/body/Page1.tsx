@@ -53,7 +53,6 @@ export const Page1 = () => {
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        {/* Grid Layout for Responsive Design */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
           {stats.map((stat, index) => (
             <motion.div
@@ -65,16 +64,7 @@ export const Page1 = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              {/* Card with Fixed Aspect Ratio */}
               <div className="relative bg-white border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-xl group-hover:shadow-2xl transition-all duration-500 backdrop-blur-sm aspect-square flex flex-col justify-center items-center">
-                {/* Gradient Border Effect */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r ${stat.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                  style={{ padding: "2px" }}
-                >
-                  <div className="bg-white rounded-3xl w-full h-full" />
-                </div>
-
                 <div className="relative z-10 text-center">
                   <motion.h3
                     className={`text-3xl sm:text-4xl lg:text-5xl font-black mb-2 sm:mb-3 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}
