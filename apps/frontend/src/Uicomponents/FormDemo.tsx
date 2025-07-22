@@ -3,36 +3,6 @@ import { motion } from "framer-motion";
 import { Send, User, Mail, Phone, MessageSquare } from "lucide-react";
 
 export function FormDemo() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.95,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-        duration: 0.6,
-      },
-    },
-  };
-
   const submitHandler = async (
     e: React.FormEvent<HTMLFormElement>,
   ): Promise<void> => {
@@ -49,20 +19,18 @@ export function FormDemo() {
     <div className="bg-white min-h-screen py-20">
       <motion.div
         className="max-w-4xl mx-auto px-6"
-        variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        {/* Header Section */}
-        <motion.div className="text-center mb-16" variants={itemVariants}>
+        <motion.div className="text-center mb-16">
           <motion.div
             className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-full px-6 py-2 mb-6"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <MessageSquare className="w-4 h-4 text-blue-600" />
-            <span className="text-blue-700 font-semibold text-sm">
+            <MessageSquare className="w-4 h-4 text-blue-400" />
+            <span className="text-blue-500 font-semibold text-sm">
               GET IN TOUCH
             </span>
           </motion.div>
@@ -75,7 +43,7 @@ export function FormDemo() {
             }}
           >
             <motion.span
-              className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
@@ -95,30 +63,23 @@ export function FormDemo() {
           <motion.p
             className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-medium leading-relaxed"
             style={{ fontFamily: "'Inter', sans-serif" }}
-            variants={itemVariants}
           >
             Have questions or need support? We're here to help you on your
             journey 🚀
           </motion.p>
         </motion.div>
 
-        {/* Form Section */}
-        <motion.div className="max-w-2xl mx-auto" variants={itemVariants}>
+        <motion.div className="max-w-2xl mx-auto">
           <motion.div
             className="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
-            whileHover={{ y: -5 }}
+            whileHover={{ y: 0 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/50 to-pink-50/50 opacity-0 hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative z-10">
               <form onSubmit={submitHandler} className="space-y-8">
-                {/* Name Fields */}
-                <motion.div
-                  className="grid md:grid-cols-2 gap-6"
-                  variants={itemVariants}
-                >
+                <motion.div className="grid md:grid-cols-2 gap-6">
                   <LabelInputContainer>
                     <Label htmlFor="firstname">
                       <User className="w-4 h-4 mr-2" />
@@ -146,8 +107,7 @@ export function FormDemo() {
                   </LabelInputContainer>
                 </motion.div>
 
-                {/* Email Field */}
-                <motion.div variants={itemVariants}>
+                <motion.div>
                   <LabelInputContainer>
                     <Label htmlFor="email">
                       <Mail className="w-4 h-4 mr-2" />
@@ -162,8 +122,7 @@ export function FormDemo() {
                   </LabelInputContainer>
                 </motion.div>
 
-                {/* Phone Field */}
-                <motion.div variants={itemVariants}>
+                <motion.div>
                   <LabelInputContainer>
                     <Label htmlFor="phone">
                       <Phone className="w-4 h-4 mr-2" />
@@ -178,8 +137,7 @@ export function FormDemo() {
                   </LabelInputContainer>
                 </motion.div>
 
-                {/* Message Field */}
-                <motion.div variants={itemVariants}>
+                <motion.div>
                   <LabelInputContainer>
                     <Label htmlFor="message">
                       <MessageSquare className="w-4 h-4 mr-2" />
@@ -195,27 +153,17 @@ export function FormDemo() {
                   </LabelInputContainer>
                 </motion.div>
 
-                {/* Submit Button */}
-                <motion.div variants={itemVariants}>
+                <motion.div>
                   <motion.button
                     type="submit"
-                    className="group w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                    className="group w-full bg-gradient-to-br from-teal-400 to-pink-400 hover:from-teal-500 hover:to-pink-500 text-black font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
                     style={{ fontFamily: "'Inter', sans-serif" }}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <span className="flex items-center justify-center space-x-2 relative z-10">
                       <span>Send Message</span>
                       <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </span>
-
-                    {/* Button Gradient Effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      initial={false}
-                    />
-
                     <BottomGradient />
                   </motion.button>
                 </motion.div>
@@ -224,8 +172,7 @@ export function FormDemo() {
           </motion.div>
         </motion.div>
 
-        {/* Contact Info */}
-        <motion.div className="text-center mt-12" variants={itemVariants}>
+        <motion.div className="text-center mt-12">
           <p className="text-gray-600 font-medium">
             Or reach us directly at{" "}
             <motion.a
