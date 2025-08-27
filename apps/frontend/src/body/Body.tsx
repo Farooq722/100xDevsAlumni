@@ -13,7 +13,7 @@ export const Body = () => {
       <TypewriterEffectSmoothDemo />
       <InfiniteMovingCardsDemo />
       <Page1 />
-      <Page2 />
+      {/* <Page2 /> */}
       <FormDemo />
       <Footer />
     </div>
