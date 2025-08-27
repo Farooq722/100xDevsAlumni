@@ -77,7 +77,6 @@ authRouter.post("/signup", signupRateLimit, async (req, res) => {
 });
 
 authRouter.post("/signin", signupRateLimit, async (req, res) => {
-  console.log(req.body);
   const parseData = signinSchema.safeParse(req.body);
   if (!parseData.success) {
     res.status(403).json({ msg: "Validation failed" });
