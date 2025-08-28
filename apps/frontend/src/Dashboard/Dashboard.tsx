@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Loader } from "../Home/Loader";
 const backendURL = import.meta.env.VITE_BACKEND_URI;
+import { IoIosSearch } from "react-icons/io";
 
 export default function Dashboard() {
   const { setLoader } = useStore();
@@ -40,16 +41,34 @@ export default function Dashboard() {
   return (
     <div className="bg-slate-200 min-h-screen">
       <Navbar />
-      <div className="flex justify-end items-center mr-4">
+      <motion.div
+        className="
+          absolute my-4 flex items-center
+          top-20 right-10 w-1/5
+          min-w-[240px] max-w-[92vw]
+          sm:right-4 sm:top-8
+          md:right-8 md:top-16 md:w-2/5
+          lg:right-10 lg:top-20 lg:w-1/4
+          xl:w-1/5
+        "
+        initial={{ opacity: 0.2, x: 100 }}
+        transition={{ duration: 1.01 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
         <input
           placeholder="Find Your Mentor here"
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border-2 p-1 mt-2 rounded-lg border-pink-400 items-center"
+          className="border-2 p-2 rounded-lg w-full h-[45.5px] pr-10"
         />
-      </div>
-      <div className="container mx-auto px-4 py-6">
+        <p className="absolute right-2 text-red-900 flex items-center h-11">
+          <IoIosSearch size={25} />
+        </p>
+      </motion.div>
+
+      <div className="container mx-auto mt-6 px-4 py-6">
         {/* {loading ? (
           <Loader />
         ) : (
