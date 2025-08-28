@@ -152,10 +152,10 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-2 max-w-[250px] ml-4 overflow-hidden">
             <div className="min-w-0">
               <h2
-                className="text-black text-sm md:text-base lg:text-lg truncate whitespace-nowrap overflow-hidden"
+                className="text-black text-sm md:text-base lg:text-lg truncate whitespace-nowrap overflow-hidden font-medium"
                 title={`Hey, ${selfData?.name}`}
               >
-                Hey, {selfData?.name}
+                Hey {selfData?.name}
               </h2>
             </div>
 
