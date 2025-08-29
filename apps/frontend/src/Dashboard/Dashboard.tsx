@@ -61,7 +61,7 @@ export default function Dashboard() {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border-2 p-2 rounded-lg w-full h-[45.5px] pr-10"
+          className="border-2 p-2 rounded-2xl w-full h-[45.5px] pr-10"
         />
         <p className="absolute right-2 text-red-900 flex items-center h-11">
           <IoIosSearch size={25} />
@@ -69,24 +69,6 @@ export default function Dashboard() {
       </motion.div>
 
       <div className="container mx-auto mt-6 px-4 py-6">
-        {/* {loading ? (
-          <Loader />
-        ) : (
-          <div className="grid grid-cols-1 gap-2 sm:gap-4 lg:gap-8 xl:gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-            { allAlumniData.map((user, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0.2, y: 40 }}
-                transition={{ duration: 1.01 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <AlumniCard user={user} />
-              </motion.div>
-            ))}
-          </div>
-        )} */}
-
         {loading ? (
           <Loader />
         ) : filterUser.length === 0 ? (
